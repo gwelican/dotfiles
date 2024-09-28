@@ -1,5 +1,4 @@
 # Source global zprofile to set initial PATH
-#source /etc/zprofile
 
 zshrc_d="$HOME/.zshrc.d/"
 
