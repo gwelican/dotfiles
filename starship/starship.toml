@@ -1,0 +1,131 @@
+"$schema" = "https://starship.rs/config-schema.json"
+add_newline = false
+format = "$all $directory"
+palette = "green"
+scan_timeout = 10
+
+[character]
+success_symbol = "[➜](bold red)"
+
+[custom.docker]
+command = "echo 🐳"
+detect_files = ["Dockerfile", "docker-compose.yml"]
+
+[directory]
+format = "[$path ]($style)"
+style = "bold fg:directory_fg bg:directory_bg"
+truncate_to_repo = false
+truncation_length = 4
+truncation_symbol = "../"
+
+[docker_context]
+disabled = true
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style)"
+style = "bold fg:git_branch_fg bg:git_branch_bg"
+
+[git_metrics]
+disabled = true
+format = " [+$added]($added_style)/[-$deleted]($deleted_style) "
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+conflicted = "🏳"
+deleted = ""
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+format = "[($all_status$ahead_behind)]($style)"
+staged = "+${count}"
+stashed = ""
+style = "bold fg:git_dirty_fg bg:git_dirty_bg"
+untracked = "?"
+up_to_date = ""
+
+[gradle]
+disabled = true
+
+[hostname]
+format = "[$hostname]($style):"
+ssh_only = false
+style = "bold fg:hostname_fg"
+
+[kubernetes]
+disabled = false
+format = "[$symbol$context@($namespace)]($style)"
+symbol = "☸"
+[[kubernetes.contexts]]
+context_alias = "staging"
+context_pattern = "breakglass-patreon-b-staging"
+style = "bold yellow"
+symbol = "🚧 "
+
+[[kubernetes.contexts]]
+context_alias = "prod"
+context_pattern = "breakglass-patreon-b-prod"
+style = "bold red"
+symbol = "🔥 "
+
+[nix_shell]
+format = "[$symbol$state]($style) "
+impure_msg = "⎔"
+pure_msg = "λ"
+symbol = " "
+
+[package]
+disabled = true
+
+[palettes]
+[palettes.catppuccin]
+base = "#1e1e2e"
+blue = "#89b4fa"
+crust = "#11111b"
+flamingo = "#f2cdcd"
+green = "#a6e3a1"
+lavender = "#b4befe"
+mantle = "#181825"
+maroon = "#eba0ac"
+mauve = "#cba6f7"
+overlay0 = "#6c7086"
+overlay1 = "#7f849c"
+overlay2 = "#9399b2"
+peach = "#fab387"
+pink = "#f5c2e7"
+red = "#f38ba8"
+rosewater = "#f5e0dc"
+sapphire = "#74c7ec"
+sky = "#89dceb"
+subtext0 = "#a6adc8"
+subtext1 = "#bac2de"
+surface0 = "#313244"
+surface1 = "#45475a"
+surface2 = "#585b70"
+teal = "#94e2d5"
+text = "#cdd6f4"
+yellow = "#f9e2af"
+
+[palettes.green]
+directory_fg = "blue"
+git_branch_fg = "28"
+git_dirty_fg = "22"
+hostname_fg = "green"
+kube_at_fg = "green"
+kube_context_fg = "green"
+kube_namespace_fg = "blue"
+start = "228"
+time_fg = "254"
+username_fg = "green"
+
+[status]
+disabled = false
+
+[time]
+disabled = false
+format = "[$time ]($style)"
+
+[username]
+disabled = false
+format = "[$user@]($style)"
+show_always = true
+style_root = "bold fg:username_root_fg"
+style_user = "bold fg:username_fg"
