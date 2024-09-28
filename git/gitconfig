@@ -1,0 +1,148 @@
+[user]
+  name = Peter Varsanyi
+  email = {{ git.email }}
+
+[core]
+  autocrlf = input
+  excludesfile = ~/.gitignore_global
+  editor = vim
+  filemode = false
+  quotepath = false
+  whitespace = trailing-space,space-before-tab
+  pager = less -FMRiX
+
+[apply]
+  whitespace = nowarn
+
+[format]
+  pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+
+[branch]
+  autosetupmerge = true
+
+[mergetool]
+  keepBackup = false
+  keeptemporaries = false
+  keepbackups = false
+  prompt = false
+  trustexitcode = false
+
+[push]
+  default = current
+
+[color]
+  ui = true
+
+[status]
+  showUntrackedFiles = all
+
+[credential]
+  helper = cache --timeout=3600
+
+[alias]
+  sm = submodule -q foreach git pull -q origin master
+  b = branch -v                     # branch (verbose)
+  chunkyadd = add --patch           # stage commits chunk by chunk
+  d = diff                          # diff unstaged changes
+  dc = diff --cached                # diff staged changes
+  last = diff HEAD^                 # diff last committed change
+  cp = cherry-pick
+  co = checkout
+  cl = clone
+  ci = commit
+  st = status -sb
+  br = branch
+  diff = difftool
+  unstage = reset HEAD --
+  dc = diff --cached
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+
+  spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
+  # reset
+  unstage = reset HEAD              # remove files from index (tracking)
+  uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+  filelog = log -u                  # show changes to a file
+  mt = mergetool                    # fire up the merge tool
+
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  snapshots = !git stash list --grep snapshot
+
+  recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+
+  gm = git mergetool
+  gmm = git mergetool --tool=meld
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+
+[branch]
+  autosetupmerge = true
+[rerere]
+  enabled = true
+
+
+[diff]
+  tool = nvimdiff
+  renames = copies
+  mnemonicprefix = true
+  colorMoved = zebra
+
+[merge]
+  tool = nvimdiff
+  conflictStyle = diff3
+  stat = true
+
+[hooks]
+  global = /Users/pevarsanyi/.githooks
+
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
+
+[difftool "p4mergetool"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+
+[mergetool "p4mergetool"]
+  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+  trustExitCode = false
+  prompt = false
+
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+  prompt = false
+
+[tig "bind"]
+  generic = f !@git fetch
+  generic = p !@git pull
+  generic = P !@git push
+  generic = r !git rebase -i master
+  generic = U !@git up
+  generic = a !git commit --amend
+
+[tig]
+  show-changes = true
+  commit-order = auto
+  blame-options = -C -C -C
+  blame-view = date:default author:abbreviated file-name:auto id:yes,color line-number:yes,interval=5 text
+  main-view = id date:short author commit-title:graph=v2,refs:true
+  line-graphics = utf-8
+  #ignore-space = all
+  vertical-split = false
+  split-view-height = 50%
+
+[diff "sopsdiffer"]
+  textconv = sops -d
+
+[http]
+  sslVersion = tlsv1.2
+
+[pull]
+  ff = only
+  rebase = true
+
+[rebase]
+  autoStash = true
