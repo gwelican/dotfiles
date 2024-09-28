@@ -1,0 +1,32 @@
+# Source global zprofile to set initial PATH
+#source /etc/zprofile
+
+zshrc_d="$HOME/.zshrc.d/"
+
+export PATH=~/.nix-profile/bin:$PATH
+# Source files in $HOME/.zshrc.d/
+if [ -d "$zshrc_d" ]; then
+    for file in "$zshrc_d"/*.zsh; do
+        source "$file"
+    done
+fi
+
+# Add functions directory to fpath
+fpath=(
+    "$zshrc_d/functions/"
+    $fpath
+)
+#
+# Nix
+ if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+ fi
+ # End Nix
+
+# Autoload user functions
+if [ -d "$zshrc_d/functions/" ]; then
+    for function in "$zshrc_d/functions"/*; do
+        autoload -Uz "${function##*/}"
+    done
+fi
+
