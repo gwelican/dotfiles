@@ -13,11 +13,7 @@
   };
 
   outputs = { self, nix-darwin, nixpkgs, home-manager, stablePkgs}@ inputs: let
-    goTaskPackages = import stablePkgs {
-      system = "aarch64-darwin";  # Change for your architecture
-    };
-    goTask = goTaskPackages.go-task;
-    configuration = {pkgs, lib, config, ...}: {
+    macConfiguration = {pkgs, lib, config, ...}: {
 
       nixpkgs.config.allowUnfree = true;
       services.nix-daemon.enable = true;
@@ -40,13 +36,14 @@
     };
 
   in {
-
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
-
       modules = [
-        configuration
-        ./pkgs.nix
-        { environment.systemPackages = [ goTask ]; }
+        macConfiguration
+        (import ./pkgs.nix {
+          upkgs = nixpkgs;
+          spkgs = stablePkgs;
+          architecture = "aarch64-darwin";
+         })
       ];
     };
   };
