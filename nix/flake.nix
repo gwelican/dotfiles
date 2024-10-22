@@ -23,6 +23,13 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
       users.users.pvarsanyi.home = /Users/pvarsanyi;
 
+      system.defaults = {
+        dock.autohide = false;
+        NSGlobalDomain.AppleICUForce24HourTime = true;
+        NSGlobalDomain.AppleInterfaceStyle = "Dark";
+        NSGlobalDomain.KeyRepeat = 2;
+      };
+
       programs.direnv.enable = true;
       # programs.home-manager.enable = true;
       # programs.fzf.enable = true;
@@ -30,6 +37,25 @@
       # programs.zellij.enable = true;
       programs.zsh.enable = true;
       # systemd.user.startServices = "sd-switch";
+      system.activationScripts.applications.text = let
+        env = pkgs.buildEnv {
+          name = "system-applications";
+          paths = config.environment.systemPackages;
+          pathsToLink = "/Applications";
+        };
+      in
+        pkgs.lib.mkForce ''
+        # Set up applications.
+        echo "setting up /Applications..." >&2
+        rm -rf /Applications/Nix\ Apps
+        mkdir -p /Applications/Nix\ Apps
+        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+        while read src; do
+          app_name=$(basename "$src")
+            echo "copying $src" >&2
+            ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+            done
+            '';
       fonts.packages = [
         (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       ];
@@ -39,11 +65,11 @@
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [
         macConfiguration
-        (import ./pkgs.nix {
-          upkgs = nixpkgs;
-          spkgs = stablePkgs;
-          architecture = "aarch64-darwin";
-         })
+          (import ./pkgs.nix {
+           upkgs = nixpkgs;
+           spkgs = stablePkgs;
+           architecture = "aarch64-darwin";
+           })
       ];
     };
   };
