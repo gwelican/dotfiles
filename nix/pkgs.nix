@@ -56,6 +56,9 @@ in {
       unstablePkgs.discord
       unstablePkgs.wezterm
 #unstablePkgs.openscad
+      unstablePkgs.spotify
       unstablePkgs.p4v
+      unstablePkgs.obsidian
+      unstablePkgs.telegram-desktop
       ];
 }
