@@ -28,6 +28,15 @@
         NSGlobalDomain.AppleICUForce24HourTime = true;
         NSGlobalDomain.AppleInterfaceStyle = "Dark";
         NSGlobalDomain.KeyRepeat = 2;
+        dock.persistent-apps = [
+          # "${pkgs.alacritty}/Applications/Alacritty.app"
+          "${pkgs.obsidian}/Applications/Obsidian.app"
+          "${pkgs.wezterm}/Applications/Wezterm.app"
+          "${pkgs.spotify}/Applications/Spotify.app"
+          "${pkgs.telegram-desktop}/Applications/Telegram.app"
+          # "/System/Applications/Mail.app"
+          # "/System/Applications/Calendar.app"
+        ];
       };
 
       programs.direnv.enable = true;
