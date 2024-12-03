@@ -4,14 +4,24 @@
   # home.username = "pvarsanyi";
   # home.homeDirectory = "/Users/pvarsanyi";
   #
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.packages = [
+    pkgs.git
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    # ".config/nvim_2".source = "${nvimRepo}";
+    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
+    ".config/atuin/config.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/atuin/atuin.toml";
+    # ".gitconfig_2".source = "../git/gitconfig";
+    # ".gitignore_global_2".source = "${dotfilesRepo}/git/gitignore_global";
+    # ".tmux.conf_2".source = "${dotfilesRepo}/tmux/tmux.conf";
+    # ".wezterm.lua_2".source = "${dotfilesRepo}/wezterm/.wezterm.lua";
+    # ".zshrc_2".source = "${dotfilesRepo}/zsh/zshrc";
+    # ".zshrc.d_2".source = "${dotfilesRepo}/zsh/zshrc.d";
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -38,6 +48,12 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     # EDITOR = "emacs";
+  };
+  programs.git = {
+    enable = true;
+    # enableAutoConfig = true;
+    userName = "Peter Varsanyi";
+    userEmail = "email";
   };
 
   # Let Home Manager install and manage itself.

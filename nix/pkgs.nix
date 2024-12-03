@@ -26,6 +26,13 @@ in {
       unstablePkgs.starship
       unstablePkgs.tmux
       unstablePkgs.watchexec
+      unstablePkgs.nmap
+
+      # devtools
+      unstablePkgs.mosh
+      unstablePkgs.parallel
+      unstablePkgs.mise
+      unstablePkgs.tailspin
 # pkgs.helix
       unstablePkgs.zoxide
       unstablePkgs.delta
@@ -46,19 +53,20 @@ in {
       unstablePkgs.bat
       unstablePkgs.curl
       unstablePkgs.fastfetch
-      unstablePkgs.mosh
       unstablePkgs.neovim
       unstablePkgs.parallel
       unstablePkgs.up
 
-# gui
+      # gui
+      unstablePkgs.p4v
+      unstablePkgs.openscad
+      unstablePkgs.karabiner-elements
+
       unstablePkgs.vscode
       unstablePkgs.discord
       unstablePkgs.wezterm
-#unstablePkgs.openscad
       unstablePkgs.spotify
       unstablePkgs.p4v
       unstablePkgs.obsidian
-      unstablePkgs.telegram-desktop
       ];
 }
