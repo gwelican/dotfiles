@@ -100,7 +100,7 @@
         {
           home-manager = {
             useUserPackages = true;
-            backupFileExtension = ".bak";
+            backupFileExtension = "bak";
             # useGlobalPkgs = true;
             users.pvarsanyi = import ./home.nix;
           };
