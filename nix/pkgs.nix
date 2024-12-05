@@ -33,6 +33,7 @@ in {
       unstablePkgs.parallel
       unstablePkgs.mise
       unstablePkgs.tailspin
+      unstablePkgs.ncdu
 # pkgs.helix
       unstablePkgs.zoxide
       unstablePkgs.delta
@@ -40,6 +41,7 @@ in {
       unstablePkgs.bat
       unstablePkgs.fd
       unstablePkgs.jq
+      unstablePkgs.gnupg
       unstablePkgs.ripgrep
       unstablePkgs.delta
       unstablePkgs.rsync

@@ -16,7 +16,8 @@
     # ".config/nvim_2".source = "${nvimRepo}";
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
     ".config/atuin/config.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/atuin/atuin.toml";
-    # ".gitconfig_2".source = "../git/gitconfig";
+    ".gitconfig_2".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/gitconfig";
+    ".gitignore_global".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/.gitignore_global";
     # ".gitignore_global_2".source = "${dotfilesRepo}/git/gitignore_global";
     # ".tmux.conf_2".source = "${dotfilesRepo}/tmux/tmux.conf";
     # ".wezterm.lua_2".source = "${dotfilesRepo}/wezterm/.wezterm.lua";

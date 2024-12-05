@@ -75,9 +75,9 @@
 
 [branch]
   autosetupmerge = true
+
 [rerere]
   enabled = true
-
 
 [diff]
   tool = nvimdiff
@@ -90,9 +90,6 @@
   conflictStyle = diff3
   stat = true
 
-[hooks]
-  global = /Users/pevarsanyi/.githooks
-
 [filter "lfs"]
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
@@ -101,38 +98,10 @@
 [difftool "p4mergetool"]
   cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-
 [mergetool "p4mergetool"]
   cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
   trustExitCode = false
   prompt = false
-
-[mergetool "sourcetree"]
-  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-  prompt = false
-
-[tig "bind"]
-  generic = f !@git fetch
-  generic = p !@git pull
-  generic = P !@git push
-  generic = r !git rebase -i master
-  generic = U !@git up
-  generic = a !git commit --amend
-
-[tig]
-  show-changes = true
-  commit-order = auto
-  blame-options = -C -C -C
-  blame-view = date:default author:abbreviated file-name:auto id:yes,color line-number:yes,interval=5 text
-  main-view = id date:short author commit-title:graph=v2,refs:true
-  line-graphics = utf-8
-  #ignore-space = all
-  vertical-split = false
-  split-view-height = 50%
 
 [diff "sopsdiffer"]
   textconv = sops -d
