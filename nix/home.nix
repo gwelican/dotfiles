@@ -12,6 +12,7 @@ in
 
   home.file = {
     # ".config/nvim_2".source = "${nvimRepo}";
+    ".config/lazygit/config.yml" = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/lazygit/config.yml";
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
     ".config/atuin/config.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/atuin/atuin.toml";
     ".gitconfig".source = pkgs.substituteAll { src = ../git/gitconfig; git_email = secrets.git_email; };
