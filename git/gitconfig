@@ -1,6 +1,6 @@
 [user]
   name = Peter Varsanyi
-  email = {{ git.email }}
+  email = @git_email@
 
 [core]
   autocrlf = input
