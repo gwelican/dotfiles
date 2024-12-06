@@ -13,9 +13,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nix-darwin, nixpkgs, home-manager, stablePkgs, nix-homebrew}@ inputs: let
+  outputs = { self, nix-darwin, nixpkgs, home-manager, stablePkgs, nix-homebrew}@ inputs:
+  let
+    secrets = ./secrets.nix;
     macConfiguration = {pkgs, lib, config, ...}: {
-
       nixpkgs.config.allowUnfree = true;
       services.nix-daemon.enable = true;
       nix.settings.experimental-features = "nix-command flakes";

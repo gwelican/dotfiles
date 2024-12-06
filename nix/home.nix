@@ -1,9 +1,13 @@
 { config, pkgs, ... }:
-
+let
+  secrets = import ./secrets.nix;
+in
 {
   # home.username = "pvarsanyi";
   # home.homeDirectory = "/Users/pvarsanyi";
   #
+
+
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.packages = [
@@ -16,7 +20,8 @@
     # ".config/nvim_2".source = "${nvimRepo}";
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
     ".config/atuin/config.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/atuin/atuin.toml";
-    ".gitconfig_2".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/gitconfig";
+    ".gitconfig".source = pkgs.substituteAll { src = ../git/gitconfig; git_email = secrets.git_email; };
+    # ".gitconfig".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/gitconfig";
     ".gitignore_global".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/.gitignore_global";
     # ".gitignore_global_2".source = "${dotfilesRepo}/git/gitignore_global";
     # ".tmux.conf_2".source = "${dotfilesRepo}/tmux/tmux.conf";
