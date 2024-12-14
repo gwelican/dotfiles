@@ -1,0 +1,28 @@
+
+zshrc_d="$HOME/.zshrc.d/"
+
+# Source files in $HOME/.zshrc.d/
+if [ -d "$zshrc_d" ]; then
+    for file in "$zshrc_d"/*.zsh; do
+        source "$file"
+    done
+fi
+
+# Add functions directory to fpath
+fpath=(
+    "$zshrc_d/functions/"
+    $fpath
+)
+
+# Autoload user functions
+if [ -d "$zshrc_d/functions/" ]; then
+    for function in "$zshrc_d/functions"/*; do
+        autoload -Uz "${function##*/}"
+    done
+fi
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/gwelican/.local/share/mise/installs/mc/2023-11-20T16-30-59Z/bin/mc mc
+
+export PATH=/home/gwelican/.groundcover/bin:${PATH}
