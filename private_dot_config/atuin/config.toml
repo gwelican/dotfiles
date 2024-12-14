@@ -1,0 +1,3 @@
+auto_sync = true
+sync_address = "https://atuin.gwelican.eu"
+key_path = "~/.atuin-key"
