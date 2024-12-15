@@ -1,11 +1,4 @@
 alias addkeys="ssh -add -K"
-alias in='task add +in'
-alias workin='task add +in project:work'
-alias work='task project:work'
-alias v=nvim
-
-#alias vi=vim
-#alias vimgo='vim -u ~/.vimrc.go'
 
 alias gradle="./gradlew"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
@@ -43,3 +36,4 @@ alias v=nvim
 alias vi=nvim
 alias vim=nvim
 alias k=kubectl
+alias c=chezmoi
