@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+tasks:
+  apply-mac-flake:
+    desc: Apply the mac flake
+    cmds:
+      # - nixos-rebuild switch --flake .#mac
+      - nix run nix-darwin -- switch --flake .#mac
+
+  update:
+    desc: Update nix channels and flake
+    cmds:
+      - task: update-channels
+      - task: update-flake
+      - task: apply-mac-flake
+
+  update-channels:
+    desc: Update nix channels
+    cmds:
+      - nix-channel --update
+    ignore_error: true
+  update-flake:
+    desc: Update flake
+    cmds:
+      - nix flake update
+    ignore_error: true
