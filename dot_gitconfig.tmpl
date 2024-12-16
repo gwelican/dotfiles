@@ -1,6 +1,6 @@
 [user]
   name = Peter Varsanyi
-  email = {{- .git.email }}
+  email = {{ onepasswordRead "op://Tools/git_email/password" }}
 
 [core]
   autocrlf = input

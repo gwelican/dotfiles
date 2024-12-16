@@ -42,5 +42,3 @@ setopt HIST_VERIFY
 export TERM=xterm-256color
 export EDITOR=nvim
 export VISUAL=nvim
-
-export PATH=$HOME/.local/bin:$PATH
