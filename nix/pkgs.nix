@@ -16,6 +16,9 @@ in {
       unstablePkgs.rsync
       unstablePkgs.fping
       unstablePkgs.fzf
+      unstablePkgs.zsh
+      unstablePkgs.zsh-wd
+      unstablePkgs.zsh-z
       unstablePkgs.pre-commit
       unstablePkgs.kustomize
       unstablePkgs.kubectx
