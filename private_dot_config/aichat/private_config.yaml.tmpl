@@ -1,12 +1,1 @@
-# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
-
-# model: local
-clients:
-- type: openai-compatible
-  name: local
-  api_base: http://{{ onepasswordRead "op://Tools/ollama/host" }}:11434/v1
-  api_key: null
-  models:
-    - name: llama3.1:8b
-      max_input_tokens: 128000
-      supports_function_calling: true
+{{- template "aichat-config.yaml" . -}}
