@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-aichat -m "local:llama3.1:8b" "Please suggest 10 commit messages, given the following diff:
+aichat -m "openai:gpt-4o-mini" "Please suggest 10 commit messages, given the following diff:
 
 \`\`\`diff
 $(git diff --cached)
