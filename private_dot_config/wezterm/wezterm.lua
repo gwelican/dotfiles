@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 -- 
 -- vim: tabstop=2 shiftwidth=2 expandtab smarttab
+local colors = require 'helpers/colors'
 
 local wezterm = require("wezterm")
 local action = wezterm.action
@@ -20,15 +21,52 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 local config = wezterm.config_builder()
-config.color_scheme = "Catppuccino Mocha"
--- config.window_background_image = "/Users/pvarsanyi/Downloads/background.jpeg"
-local act = wezterm.action
+-- config.color_scheme = "Catppuccino Mocha"
+config.colors = {
+  tab_bar = {
+    active_tab = {
+      bg_color = colors.colors.active_tab.bg,
+      fg_color = colors.colors.active_tab.fg,
+      intensity = 'Normal',
+    },
 
-config.leader = { key = 'z', mods = 'CTRL', timeout_milliseconds = 1000 }
+    inactive_tab = {
+      bg_color = colors.colors.inactive_tab.bg,
+      fg_color = colors.colors.inactive_tab.fg,
+    },
+
+    inactive_tab_hover = {
+      bg_color = colors.colors.inactive_tab_hover.bg,
+      fg_color = colors.colors.inactive_tab_hover.fg,
+    },
+
+    new_tab = {
+      bg_color = colors.colors.new_tab.bg,
+      fg_color = colors.colors.new_tab.fg,
+    },
+
+    new_tab_hover = {
+      bg_color = colors.colors.new_tab_hover.bg,
+      fg_color = colors.colors.new_tab_hover.fg,
+    },
+  },
+}
+
+config.window_background_image = "/Users/pvarsanyi/.config/wezterm/background.jpg"
+
+
+config.window_background_image_hsb = {
+  brightness = 0.2,
+  saturation = 1.0,
+  hue = 1.0,
+}
+
+config.leader = { key = 'x', mods = 'CTRL', timeout_milliseconds = 987 }
 
 config.keys = {
   -- Quick select mode 
   { key = 'Space', mods = 'LEADER', action = action.QuickSelect },
+  -- Copy and clear
   {
     key = 'c',
     mods = 'SUPER',
@@ -38,7 +76,8 @@ config.keys = {
       window:perform_action(action.ClearSelection, pane)
     end),
   },
-  { -- Paste
+  -- Paste and clear
+  {
     key = 'p',
     mods = 'SUPER',
     action = wezterm.action_callback(function(window, pane)
@@ -54,23 +93,28 @@ config.keys = {
     end),
   },
 
-  -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
-  { key = "LeftArrow", mods = "OPT", action = act.SendString("\x1bb") },
-  -- Make Option-Right equivalent to Alt-f; forward-word
-  { key = "RightArrow", mods = "OPT", action = act.SendString("\x1bf") },
-  { key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
-  { key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
-    { -- Launcher
-    key = 't',
-    mods = 'SUPER|SHIFT',
-    action = action.ShowLauncher,
+  { -- Preferences
+    key = ',',
+    mods = 'SUPER',
+    action = action.SpawnCommandInNewTab {
+      cwd = wezterm.home_dir,
+      args = { 'code', wezterm.config_dir },
+    },
   },
+  -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
+  { key = "LeftArrow", mods = "OPT", action = action.SendString("\x1bb") },
+  -- Make Option-Right equivalent to Alt-f; forward-word
+  { key = "RightArrow", mods = "OPT", action = action.SendString("\x1bf") },
+  { key = "RightArrow", mods = "CMD", action = action.ActivateTabRelative(1) },
+  { key = "LeftArrow", mods = "CMD", action = action.ActivateTabRelative(-1) },
+    -- Launcher
+  { key = 't', mods = 'SUPER|SHIFT', action = action.ShowLauncher, },
 }
 config.font_size = 16.0
-config.window_background_opacity = 0.9
-config.macos_window_background_blur = 30
 config.enable_scroll_bar = true
 config.window_decorations = "RESIZE"
+-- config.window_background_opacity = 0.2
+-- config.macos_window_background_blur = 30
 
 function make_mouse_binding(dir, streak, button, mods, action)
   return {
@@ -79,47 +123,6 @@ function make_mouse_binding(dir, streak, button, mods, action)
     action = action,
   }
 end
--- config.mouse_bindings = {
---   {
---     event = { Up = { streak = 1, button = "Left" } },
---     mods = "CMD",
---     action = act.OpenLinkAtMouseCursor,
---   },
---   -- {
---   --   event = { Up = { streak = 2, button = "Left" } },
---   --   mods = "CMD",
---   --   action = act.SelectTextAtMouseCursor("word"),
---   -- },
---   -- {
---   --   event = { Up = { streak = 2, button = "Left" } },
---   --   mods = "ALT",
---   --   action = act.SelectTextAtMouseCursor("word"),
---   -- },
---   make_mouse_binding(
---     "Up",
---     1,
---     "Left",
---     "NONE",
---     wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor("ClipboardAndPrimarySelection")
---   ),
---   make_mouse_binding(
---     "Up",
---     1,
---     "Left",
---     "SHIFT",
---     wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor("ClipboardAndPrimarySelection")
---   ),
---   make_mouse_binding("Up", 1, "Left", "ALT", wezterm.action.CompleteSelection("ClipboardAndPrimarySelection")),
---   make_mouse_binding(
---     "Up",
---     1,
---     "Left",
---     "SHIFT|ALT",
---     wezterm.action.CompleteSelectionOrOpenLinkAtMouseCursor("ClipboardAndPrimarySelection")
---   ),
---   make_mouse_binding("Up", 2, "Left", "NONE", wezterm.action.CompleteSelection("ClipboardAndPrimarySelection")),
---   make_mouse_binding("Up", 3, "Left", "NONE", wezterm.action.CompleteSelection("ClipboardAndPrimarySelection")),
--- }
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
