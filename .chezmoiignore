@@ -5,6 +5,7 @@ secrets
 {{ if ne .chezmoi.os "darwin" }}
 Library/Application Support/aichat/config.yaml
 Library/Application Support/lazygit/config.yml
+.config/wezterm
 {{ end }}
 {{ if ne .chezmoi.os "linux" }}
 .config/aichat/config.yaml
