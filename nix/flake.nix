@@ -30,6 +30,7 @@
         brews = [
           "mas"
           "tailscale"
+          "ghostty"
         ];
         casks = [
 
