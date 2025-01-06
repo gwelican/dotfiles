@@ -11,3 +11,4 @@ Library/Application Support/lazygit/config.yml
 .config/aichat/config.yaml
 .config/lazygit/config.yaml
 {{ end }}
+key.txt.age
