@@ -20,17 +20,17 @@ keybind = super+right=next_tab
 keybind = super+shift+r=reload_config
 keybind = super+shift+enter=new_split:auto
 
-keybind = ctrl+a>left=goto_split:left
-keybind = ctrl+a>right=goto_split:right
+keybind = ctrl+e>left=goto_split:left
+keybind = ctrl+e>right=goto_split:right
 
-keybind = ctrl+a>up=goto_split:top
-keybind = ctrl+a>down=goto_split:bottom
+keybind = ctrl+e>up=goto_split:top
+keybind = ctrl+e>down=goto_split:bottom
 
-keybind = ctrl+a>-=new_split:down
-keybind = ctrl+a>shift+\=new_split:right
-keybind = ctrl+a>equal=equalize_splits
-keybind = ctrl+a>w=close_surface
-keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+e>-=new_split:down
+keybind = ctrl+e>shift+\=new_split:right
+keybind = ctrl+e>equal=equalize_splits
+keybind = ctrl+e>w=close_surface
+keybind = ctrl+e>z=toggle_split_zoom
 #keybind = super+h=goto_split:left
 
 
