@@ -1,10 +1,18 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+{{- $openapi_apikey := "" -}}
+{{- $ollama_host := "" -}}
+{{- $secret_file := "secrets.yaml" -}}
+{{- if stat $secret_file -}}
+{{- $secrets := fromYaml (include $secret_file) -}}
+{{ $openapi_apikey = $secrets.openapi_apikey -}}
+{{- $ollama_host = $secrets.ollama_host -}}
+{{- end }}
 
 # model: local
 clients:
 - type: openai
-  api_base: https://api.openai.com/v1               # Optional
-  api_key: {{ (fromYaml (include "secrets.yaml" )).openapi_apikey }}
+  api_base: https://api.openai.com/v1
+  api_key: {{ $openapi_apikey }}
   # models:
   #   - name: gpt-4o-mini
   #     max_input_tokens: 128000
