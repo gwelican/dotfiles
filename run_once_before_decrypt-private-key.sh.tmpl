@@ -8,9 +8,3 @@ if [ ! -f "${key}" ]; then
     chmod 600 "${key}"
 fi
 
-secrets="${HOME}/.config/chezmoi/secrets.yaml"
-
-if [ ! -f "${secrets}" ]; then
-    chezmoi age decrypt --output "${secrets}" --passphrase "{{ .chezmoi.sourceDir }}/secrets.yaml.age"
-    chmod 600 "${secrets}"
-fi
