@@ -1,6 +1,6 @@
 [user]
   name = Peter Varsanyi
-  email = {{ (fromYaml (include ".secrets.yaml")).git_email }}
+  email = {{ (fromYaml (include "secrets.yaml")).git_email }}
 
 [core]
   autocrlf = input
