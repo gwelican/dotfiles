@@ -7,8 +7,6 @@ encryption = "age"
 identity = {{ $age_key_file | quote }}
 recipient = "age1nmpmv6gtnaa2zlr3k566qc7j7v2cqz0k25gccpnse9redte6hekqah444z"
 
-
-
 [merge]
 command = "nvim"
 args = ["-d", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}", "{{ "{{ .Target }}" }}"]
