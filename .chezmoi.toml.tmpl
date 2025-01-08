@@ -2,13 +2,11 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 {{/* age encryption */}}
 {{- $age_key_file := joinPath .chezmoi.homeDir ".config/chezmoi/key.txt" -}}
-{{- if stat $age_key_file -}}
 encryption = "age"
 [age]
 identity = {{ $age_key_file | quote }}
 recipient = "age1nmpmv6gtnaa2zlr3k566qc7j7v2cqz0k25gccpnse9redte6hekqah444z"
 
-{{ end -}}
 
 
 [merge]
