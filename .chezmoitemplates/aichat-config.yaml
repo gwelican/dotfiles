@@ -4,14 +4,14 @@
 clients:
 - type: openai
   api_base: https://api.openai.com/v1               # Optional
-  api_key: {{ (fromYaml (include ".secrets.yaml" )).openapi_apikey }}
+  api_key: {{ (fromYaml (include "secrets.yaml" )).openapi_apikey }}
   # models:
   #   - name: gpt-4o-mini
   #     max_input_tokens: 128000
   #     supports_function_calling: true
 - type: openai-compatible
   name: local
-  api_base: http://{{ (fromYaml (include ".secrets.yaml" )).ollama_host }}:11434/v1
+  api_base: http://{{ (fromYaml (include "secrets.yaml" )).ollama_host }}:11434/v1
   api_key: null
   models:
     - name: llama3.1:8b
