@@ -1,6 +1,7 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
 [user]
   name = Peter Varsanyi
-  email = {{ (fromYaml (include "secrets.yaml")).git_email }}
+  email = {{ $secrets.git_email }}
 
 [core]
   autocrlf = input
