@@ -27,7 +27,7 @@ keybind = ctrl+e>up=goto_split:top
 keybind = ctrl+e>down=goto_split:bottom
 
 keybind = ctrl+e>-=new_split:down
-keybind = ctrl+e>shift+\=new_split:right
+keybind = ctrl+e>|=new_split:right
 keybind = ctrl+e>equal=equalize_splits
 keybind = ctrl+e>w=close_surface
 keybind = ctrl+e>z=toggle_split_zoom
