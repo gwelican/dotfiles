@@ -37,3 +37,4 @@ alias vi=nvim
 alias vim=nvim
 alias k=kubectl
 alias c=chezmoi
+alias gg=lazygit
