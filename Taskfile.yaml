@@ -1,7 +1,12 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 
 version: '3'
-includes:
-  nix:
-    taskfile: nix/Taskfile.yaml
-    dir: ./nix
+tasks:
+  hello:
+    cmds:
+      - echo 'Hello World from Task!'
+    silent: true
+# includes:
+#   nix:
+#     taskfile: nix/Taskfile.yaml
+#     dir: ./nix
