@@ -1,0 +1,4 @@
+[".config/nvim"]
+type = "git-repo"
+url = "https://github.com/gwelican/nvim.git"
+refreshPeriod = "6h"
