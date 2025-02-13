@@ -97,3 +97,12 @@ customCommands:
         {{`filter: '^(?P<number>\d+)\.\s(?P<message>.+)$'
         valueFormat: "{{ .message }}"
         labelFormat: "{{ .number }}: {{ .message | green }}"`}}
+
+  - key: "W"
+    prompts:
+      - type: "input"
+        title: "Commit"
+        initialValue: ""
+    command: {{`'git commit -m "{{index .PromptResponses 0}}" --no-verify'`}}
+    context: "global"
+    subprocess: true
