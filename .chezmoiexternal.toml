@@ -2,3 +2,7 @@
 type = "git-repo"
 url = "https://github.com/gwelican/nvim.git"
 refreshPeriod = "6h"
+[".tmux/plugins/tpm"]
+type = "git-repo"
+url = "https://github.com/tmux-plugins/tpm"
+refreshPeriod = "6h"
