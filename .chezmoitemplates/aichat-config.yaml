@@ -5,7 +5,7 @@
 clients:
 - type: openai
   api_base: https://api.openai.com/v1
-  api_key: {{ $secrets.openapi_apikey }}
+  api_key: {{ $secrets.openai_api_key }}
   # models:
   #   - name: gpt-4o-mini
   #     max_input_tokens: 128000
