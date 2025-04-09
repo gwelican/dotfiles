@@ -6,11 +6,14 @@
 [core]
   autocrlf = input
   excludesfile = ~/.gitignore_global
-  editor = vim
+  editor = nvim
   filemode = false
   quotepath = false
   whitespace = trailing-space,space-before-tab
-  pager = less -FMRiX
+  pager = delta
+
+[init]
+  defaultBranch = master
 
 [apply]
   whitespace = nowarn
@@ -18,18 +21,10 @@
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 
-[branch]
-  autosetupmerge = true
-
-[mergetool]
-  keepBackup = false
-  keeptemporaries = false
-  keepbackups = false
-  prompt = false
-  trustexitcode = false
-
-[push]
-  default = current
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 
 [color]
   ui = true
@@ -47,16 +42,9 @@
   d = diff                          # diff unstaged changes
   dc = diff --cached                # diff staged changes
   last = diff HEAD^                 # diff last committed change
-  cp = cherry-pick
-  co = checkout
-  cl = clone
-  ci = commit
   st = status -sb
-  br = branch
   diff = difftool
   unstage = reset HEAD --
-  dc = diff --cached
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 
   spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
   # reset
@@ -68,44 +56,50 @@
   snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
   snapshots = !git stash list --grep snapshot
 
-  recent-branches = !git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'
-
-  gm = git mergetool
-  gmm = git mergetool --tool=meld
-  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-
 [branch]
   autosetupmerge = true
+  autosetuprebase = always
+  autosetupmerge = always
+
 [rerere]
   enabled = true
 
-
 [diff]
-  #tool = p4mergetool
-  renames = copies
-  mnemonicprefix = true
-  colorMoved = zebra
+  external = difft
 
 [merge]
-  #tool = p4mergetool
+  {{ if eq .chezmoi.os "darwin" }}
+  tool = p4merge
+  {{ else if eq .chezmoi.os "linux" }}
+  tool = nvimdiff
+  {{ end }}
   conflictStyle = diff3
   stat = true
 
-[filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
-
-[difftool "p4mergetool"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
-
-[mergetool "p4mergetool"]
-  cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-  trustExitCode = false
+[mergetool]
+  keepBackup = false
+  keeptemporaries = false
+  keepbackups = false
   prompt = false
+  trustexitcode = false
+
+{{ if eq .chezmoi.os "darwin" }}
+[mergetool "p4merge"]
+  path = /opt/homebrew/bin/p4merge
+  cmd = /opt/homebrew/bin/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+{{ end }}
+
+{{ if eq .chezmoi.os "linux" }}
+[mergetool "nvimdiff"]
+  cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" -c "wincmd w" "$MERGED"
+  trustExitCode = true
+{{ end }}
 
 [http]
   sslVersion = tlsv1.2
+
+[fetch]
+  prune = true
 
 [pull]
   ff = only
@@ -113,3 +107,22 @@
 
 [rebase]
   autoStash = true
+  updateRefs = true
+  autosquash = true
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  light = false
+  side-by-side = true
+  line-numbers = true
+  syntax-theme = Dracula
+
+; [includeIf "gitdir:~/dev/yourcompany/"]
+;   path = ~/.gitconfig-work

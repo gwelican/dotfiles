@@ -38,3 +38,4 @@ alias vim=nvim
 alias k=kubectl
 alias c=chezmoi
 alias gg=lazygit
+alias cat='bat --paging=never'
