@@ -39,3 +39,4 @@ alias k=kubectl
 alias c=chezmoi
 alias gg=lazygit
 alias cat='bat --paging=never'
+alias cd=z
