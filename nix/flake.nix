@@ -20,19 +20,25 @@
         nixpkgs.config.allowUnfree = true;
         nix.settings.experimental-features = "nix-command flakes";
         system.configurationRevision = self.rev or self.dirtyRev or null;
-        system.stateVersion = 4;
+        system.stateVersion = 5;
         nixpkgs.hostPlatform = "aarch64-darwin";
         users.users.pvarsanyi.home = /Users/pvarsanyi;
 
         homebrew = {
           enable = true;
+          taps = [
+            "withgraphite/tap"
+          ];
           brews = [
             "mas"
             "tailscale"
+            "graphite"
           ];
           casks = [
             "hammerspoon"
             "ghostty"
+            "rustdesk"
+            "appcleaner"
           ];
           #   "hammerspoon"
           #   "firefox"
