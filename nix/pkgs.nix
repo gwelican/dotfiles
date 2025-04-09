@@ -40,13 +40,12 @@ in {
     # pkgs.helix
     unstablePkgs.zoxide
     unstablePkgs.delta
-    unstablePkgs.zellij
+    unstablePkgs.difftastic
     unstablePkgs.bat
     unstablePkgs.fd
     unstablePkgs.jq
     unstablePkgs.gnupg
     unstablePkgs.ripgrep
-    unstablePkgs.delta
     unstablePkgs.rsync
     # pkgs.go-task
     unstablePkgs.lazygit
@@ -55,12 +54,12 @@ in {
     unstablePkgs.sops
     unstablePkgs.mise
     unstablePkgs.wget
-    unstablePkgs.bat
     unstablePkgs.curl
     unstablePkgs.fastfetch
     unstablePkgs.neovim
     unstablePkgs.parallel
     unstablePkgs.up
+    unstablePkgs.ast-grep
 
     # gui
     unstablePkgs.p4v
