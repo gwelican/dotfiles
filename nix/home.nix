@@ -3,6 +3,7 @@ let
   secrets = import ./secrets.nix;
 in
 {
+  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
@@ -11,6 +12,10 @@ in
   ];
 
   home.file = {
+    ".gitconfig_mergetool".text = ''
+      [mergetool "p4merge"]
+        cmd = ${pkgs.p4v}/Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    '';
     # ".config/nvim_2".source = "${nvimRepo}";
     # ".config/lazygit/config.yml" = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/lazygit/config.yml";
     # ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
