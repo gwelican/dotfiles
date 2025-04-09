@@ -23,6 +23,4 @@ fi
 
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/gwelican/.local/share/mise/installs/mc/2023-11-20T16-30-59Z/bin/mc mc
 
-export PATH=/home/gwelican/.groundcover/bin:${PATH}
