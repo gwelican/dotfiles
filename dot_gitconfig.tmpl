@@ -83,17 +83,9 @@
   prompt = false
   trustexitcode = false
 
-{{ if eq .chezmoi.os "darwin" }}
-[mergetool "p4merge"]
-  path = /opt/homebrew/bin/p4merge
-  cmd = /opt/homebrew/bin/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
-{{ end }}
-
-{{ if eq .chezmoi.os "linux" }}
 [mergetool "nvimdiff"]
   cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" -c "wincmd w" "$MERGED"
   trustExitCode = true
-{{ end }}
 
 [http]
   sslVersion = tlsv1.2
@@ -124,5 +116,7 @@
   line-numbers = true
   syntax-theme = Dracula
 
+[includeIf "gitdir:~/"]
+  path = ~/.gitconfig_mergetool
 ; [includeIf "gitdir:~/dev/yourcompany/"]
 ;   path = ~/.gitconfig-work
