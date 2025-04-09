@@ -84,7 +84,7 @@
   trustexitcode = false
 
 [mergetool "nvimdiff"]
-  cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" -c "wincmd w" "$MERGED"
+  cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
   trustExitCode = true
 
 [http]
