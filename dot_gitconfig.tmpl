@@ -48,7 +48,6 @@
 
   spr  = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
   # reset
-  unstage = reset HEAD              # remove files from index (tracking)
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
   filelog = log -u                  # show changes to a file
   mt = mergetool                    # fire up the merge tool
@@ -59,7 +58,10 @@
 [branch]
   autosetupmerge = true
   autosetuprebase = always
-  autosetupmerge = always
+  ; autosetupmerge = always
+
+[remote]
+  pushDefault = origin
 
 [rerere]
   enabled = true
