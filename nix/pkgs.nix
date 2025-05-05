@@ -1,18 +1,14 @@
-{ upkgs, spkgs, architecture, ...}:
-let
-  stablePkgs = import spkgs {
-    system = architecture;
-    config = { allowUnfree = true; };
 
-  };
-  unstablePkgs = import upkgs {
-    system = architecture;
-    config = { allowUnfree = true; };
-  };
-in {
-  environment.systemPackages = [
-    stablePkgs.go-task
+{ unstablePkgs, stablePkgs, ...}:
+builtins.trace "Loading pkgs.nix" (
+let
+  isDarwin = unstablePkgs.stdenv.isDarwin;
+  macPackages = [
     unstablePkgs.mkalias
+  ];
+  commonPackages = [
+    # taskWrapper
+    unstablePkgs.nil
     unstablePkgs.rsync
     unstablePkgs.fping
     unstablePkgs.fzf
@@ -24,16 +20,30 @@ in {
     unstablePkgs.kubectx
     unstablePkgs.kubernetes-helm
     unstablePkgs.lsd
-    unstablePkgs.tailspin
     unstablePkgs.atuin
     unstablePkgs.starship
     unstablePkgs.tmux
     unstablePkgs.watchexec
     unstablePkgs.nmap
+    unstablePkgs.krew
+    unstablePkgs.pnpm
+    unstablePkgs.kubectl
+    unstablePkgs.direnv
+    unstablePkgs.kubectl-cnpg
+    unstablePkgs.kubectl-ktop
+    unstablePkgs.kubectl-neat
+    unstablePkgs.kubectl-df-pv
+
+    unstablePkgs.kubectl-rook-ceph
+
+    unstablePkgs.kubectl-node-shell
+
+    unstablePkgs.kubectl-view-allocations
+    unstablePkgs.kubecolor
+
 
     # devtools
     unstablePkgs.mosh
-    unstablePkgs.parallel
     unstablePkgs.mise
     unstablePkgs.tailspin
     unstablePkgs.ncdu
@@ -47,8 +57,11 @@ in {
     unstablePkgs.gnupg
     unstablePkgs.ripgrep
     unstablePkgs.rsync
-    # pkgs.go-task
+    
+    stablePkgs.go-task
     unstablePkgs.lazygit
+    unstablePkgs.jj
+    unstablePkgs.lazyjj
     unstablePkgs.gcc
     unstablePkgs.stern
     unstablePkgs.sops
@@ -57,24 +70,57 @@ in {
     unstablePkgs.curl
     unstablePkgs.fastfetch
     unstablePkgs.neovim
-    unstablePkgs.parallel
     unstablePkgs.up
     unstablePkgs.ast-grep
-
-    # gui
+    unstablePkgs.lsd
+    unstablePkgs.tailspin
+    unstablePkgs.atuin
+    unstablePkgs.starship
+    unstablePkgs.tmux
+    unstablePkgs.watchexec
+    unstablePkgs.nmap
+    unstablePkgs.mosh
+    unstablePkgs.parallel
+    unstablePkgs.mise
+    unstablePkgs.ncdu
+    unstablePkgs.zoxide
+    unstablePkgs.delta
+    unstablePkgs.difftastic
+    unstablePkgs.bat
+    unstablePkgs.fd
+    unstablePkgs.jq
+    unstablePkgs.gnupg
+    unstablePkgs.ripgrep
+    unstablePkgs.gcc
+    unstablePkgs.stern
+    unstablePkgs.sops
+    unstablePkgs.wget
+    unstablePkgs.curl
+    unstablePkgs.fastfetch
+    unstablePkgs.neovim
+    unstablePkgs.up
+    unstablePkgs.ast-grep
+    unstablePkgs.topgrade
+    unstablePkgs.glow
+    unstablePkgs.cowsay
+  ];
+  guiPackages = [
     unstablePkgs.p4v
-    # unstablePkgs.openscad
     unstablePkgs.karabiner-elements
-
     unstablePkgs.fira-code
     unstablePkgs.vscode
     unstablePkgs.discord
-    unstablePkgs.topgrade
-    unstablePkgs.glow
-    # unstablePkgs.ghostty
     unstablePkgs.wezterm
     unstablePkgs.spotify
-    unstablePkgs.p4v
     unstablePkgs.obsidian
+    # unstablePkgs.ghostty
+    # unstablePkgs.openscad
   ];
+in
+
+  if isDarwin then {
+  environment.systemPackages = commonPackages ++ guiPackages ++ macPackages;
+} else {
+  home.packages = commonPackages;
 }
+)
