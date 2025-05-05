@@ -123,8 +123,27 @@
             };
           }
           (
-            import ./pkgs.nix { upkgs = nixpkgs; spkgs = stablePkgs; architecture = "aarch64-darwin"; }
+            import ./pkgs.nix { 
+              unstablePkgs = nixpkgs.legacyPackages.aarch64-darwin;
+              stablePkgs = stablePkgs.legacyPackages.aarch64-darwin;
+            }
           )
+        ];
+      };
+      homeConfigurations."bastion" = builtins.trace "✅ Evaluating homeConfiguration for bastion" home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ./home.nix
+          {
+            home = {
+              username = "gwelican";
+              homeDirectory = "/home/gwelican";
+            };
+          }
+          (import ./pkgs.nix {
+            unstablePkgs = nixpkgs.legacyPackages.x86_64-linux;
+            stablePkgs = stablePkgs.legacyPackages.x86_64-linux;
+          })
         ];
       };
     };
