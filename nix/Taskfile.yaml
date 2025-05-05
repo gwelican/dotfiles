@@ -1,7 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 
-version: '3'
+version: "3"
 tasks:
+  apply-bastion-flake:
+    cmds:
+      - home-manager switch --flake .#bastion
+
   apply-mac-flake:
     desc: Apply the mac flake
     cmds:
