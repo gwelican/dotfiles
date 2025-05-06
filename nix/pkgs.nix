@@ -33,6 +33,7 @@ let
     unstablePkgs.kubectl-ktop
     unstablePkgs.kubectl-neat
     unstablePkgs.kubectl-df-pv
+    unstablePkgs.aichat
 
     unstablePkgs.kubectl-rook-ceph
 
@@ -73,7 +74,6 @@ let
     unstablePkgs.up
     unstablePkgs.ast-grep
     unstablePkgs.lsd
-    unstablePkgs.tailspin
     unstablePkgs.atuin
     unstablePkgs.starship
     unstablePkgs.tmux
