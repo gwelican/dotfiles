@@ -10,7 +10,7 @@ tasks:
     desc: Apply the mac flake
     cmds:
       # - nixos-rebuild switch --flake .#mac
-      - nix run nix-darwin -- switch --flake .#mac
+      - nix run nix-darwin -- switch --flake .#mac --impure
 
   update:
     desc: Update nix channels and flake
@@ -24,6 +24,7 @@ tasks:
     cmds:
       - nix-channel --update
     ignore_error: true
+
   update-flake:
     desc: Update flake
     cmds:

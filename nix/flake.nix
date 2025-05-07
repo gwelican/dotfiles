@@ -17,7 +17,6 @@
     let
       secrets = ./secrets.nix;
       macConfiguration = {pkgs, lib, config, ...}: {
-        nixpkgs.config.allowUnfree = true;
         nix.settings.experimental-features = "nix-command flakes";
         system.configurationRevision = self.rev or self.dirtyRev or null;
         system.stateVersion = 5;
@@ -31,7 +30,7 @@
           ];
           brews = [
             "mas"
-            "tailscale"
+            # "tailscale"
             "graphite"
           ];
           casks = [
@@ -86,7 +85,6 @@
           pkgs.lib.mkForce ''
         # Set up applications.
         echo "setting up ${env}/Applications..." >&2
-        echo "Ok: ${pkgs.p4v}"
         rm -rf /Applications/Nix\ Apps
         mkdir -p /Applications/Nix\ Apps
         find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
@@ -123,7 +121,7 @@
             };
           }
           (
-            import ./pkgs.nix { 
+            import ./pkgs.nix {
               unstablePkgs = nixpkgs.legacyPackages.aarch64-darwin;
               stablePkgs = stablePkgs.legacyPackages.aarch64-darwin;
             }
