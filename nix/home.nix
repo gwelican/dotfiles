@@ -14,22 +14,10 @@ in
   # home.homeDirectory = "/home/gwelican";
   # home.username = "gwelican";
   home.file = {
-    # ".local/bin/task".source = "${pkgs.go-task}/bin/go-task";
     ".gitconfig_mergetool".text = ''
       [mergetool "p4merge"]
         cmd = ${pkgs.p4v}/Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
     '';
-    # ".config/nvim_2".source = "${nvimRepo}";
-    # ".config/lazygit/config.yml" = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/lazygit/config.yml";
-    # ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/starship/starship.toml";
-    # ".config/atuin/config.toml".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/atuin/atuin.toml";
-    # ".gitconfig".source = pkgs.substituteAll { src = ../git/gitconfig; git_email = secrets.git_email; };
-    # ".gitignore_global".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/git/.gitignore_global";
-    # ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/tmux/tmux.conf";
-    # ".wezterm.lua".source = config.lib.file.mkOutOfStoreSymlink "/Users/pvarsanyi/git/dotfiles/wezterm/.wezterm.lua";
-    # ".zshrc_2".source = "${dotfilesRepo}/zsh/zshrc";
-    # ".zshrc.d_2".source = "${dotfilesRepo}/zsh/zshrc.d";
-
   };
 
   # Home Manager can also manage your environment variables through
