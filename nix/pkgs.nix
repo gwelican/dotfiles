@@ -62,7 +62,7 @@ let
 
     stablePkgs.go-task
     unstablePkgs.lazygit
-    unstablePkgs.jj
+    unstablePkgs.jujutsu
     unstablePkgs.lazyjj
     unstablePkgs.gcc
     unstablePkgs.stern

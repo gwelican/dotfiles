@@ -11,6 +11,8 @@ tasks:
     cmds:
       # - nixos-rebuild switch --flake .#mac
       - nix run nix-darwin -- switch --flake .#mac --impure
+    env:
+      NIXPKGS_ALLOW_UNFREE: 1
 
   update:
     desc: Update nix channels and flake

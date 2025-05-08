@@ -14,6 +14,10 @@ in
   # home.homeDirectory = "/home/gwelican";
   # home.username = "gwelican";
   home.file = {
+    ".gitconfig_mergetool".text = ''
+      [mergetool "p4merge"]
+        cmd = ${pkgs.p4v}/Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    '';
   };
 
   # Home Manager can also manage your environment variables through
