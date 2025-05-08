@@ -35,7 +35,8 @@ alias t='task'
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias k=kubectl
+# alias k=kubectl
+alias k=kubecolor
 alias c=chezmoi
 alias gg=lazygit
 alias cat='bat --paging=never'

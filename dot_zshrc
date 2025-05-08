@@ -1,3 +1,4 @@
+setopt nullglob
 
 zshrc_d="$HOME/.zshrc.d/"
 
