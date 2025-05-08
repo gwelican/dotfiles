@@ -34,6 +34,7 @@ let
     unstablePkgs.kubectl-neat
     unstablePkgs.kubectl-df-pv
     unstablePkgs.aichat
+    unstablePkgs.carapace
 
     unstablePkgs.kubectl-rook-ceph
 
@@ -58,7 +59,7 @@ let
     unstablePkgs.gnupg
     unstablePkgs.ripgrep
     unstablePkgs.rsync
-    
+
     stablePkgs.go-task
     unstablePkgs.lazygit
     unstablePkgs.jj
