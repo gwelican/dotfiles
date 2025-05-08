@@ -33,3 +33,7 @@ fi
 
 [[ $commands[stern] ]] && source <(stern --completion zsh)
 [[ $commands[pv-migrate] ]] && source <(pv-migrate completion zsh)
+
+source <(kubectl completion zsh)
+# make completion work with kubecolor
+compdef kubecolor=kubectl
