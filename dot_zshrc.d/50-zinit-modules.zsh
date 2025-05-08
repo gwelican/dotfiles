@@ -63,7 +63,6 @@ zinit wait'2c' lucid for \
 
 zt 0a light-mode for \
     OMZP::kubectx \
-    # OMZP::kubectl \
     OMZP::git \
     OMZP::sudo \
     OMZP::aws \
