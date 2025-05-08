@@ -107,7 +107,7 @@
               useUserPackages = true;
               backupFileExtension = "bak";
               # useGlobalPkgs = true;
-              users.pvarsanyi = import ./home.nix;
+              users.pvarsanyi = import ./mac-home.nix;
             };
           }
           macConfiguration
