@@ -3,16 +3,39 @@
 version: "3"
 tasks:
   apply-bastion-flake:
+    desc: Apply the bastion flake
     cmds:
       - home-manager switch --flake .#bastion
 
+  dry-run-mac:
+    desc: Dry run macos configuration
+    deps:
+      - task: build-mac
+    cmds:
+      - sudo ./result/sw/bin/darwin-rebuild switch --dry-run --flake .#{{ .TARGET_HOST }}
+    vars:
+      TARGET_HOST: mac
+
+  build-mac:
+    desc: Build macos configuration
+    cmds:
+      - nix --extra-experimental-features 'nix-command flakes'  build ".#darwinConfigurations.{{ .TARGET_HOST }}.system"
+      # - darwin-rebuild build --flake .#{{ .TARGET_HOST }}
+    vars:
+      TARGET_HOST: mac
+
   apply-mac-flake:
     desc: Apply the mac flake
+    # deps:
+      # - task: build-mac
     cmds:
       # - nixos-rebuild switch --flake .#mac
-      - nix run nix-darwin -- switch --flake .#mac --impure
+      # - sudo ./result/sw/bin/darwin-rebuild switch --show-trace --flake .#{{ .TARGET_HOST }}
+      - sudo nix run nix-darwin -- switch --flake .#{{ .TARGET_HOST }}
     env:
       NIXPKGS_ALLOW_UNFREE: 1
+    vars:
+      TARGET_HOST: mac
 
   update:
     desc: Update nix channels and flake
@@ -32,3 +55,12 @@ tasks:
     cmds:
       - nix flake update
     ignore_error: true
+
+  gc:
+    desc: Garbage collect nix store
+    cmds:
+      - nix-env --delete-generations {{ .generations }}
+      - nix-store --gc
+    ignore_error: true
+    vars:
+      generations: 5
