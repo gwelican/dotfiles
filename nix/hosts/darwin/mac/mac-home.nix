@@ -11,10 +11,14 @@ in
     pkgs.git
   ];
 
-  # home.homeDirectory = "/home/gwelican";
+  # home.homeDirectory = "/Users/pvarsanyi";
   # home.username = "gwelican";
-  home.file = {
-  };
+  # home.file = {
+  #   ".gitconfig_mergetool".text = ''
+  #     [mergetool "p4merge"]
+  #       cmd = ${pkgs.p4v}/Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+  #   '';
+  # };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
