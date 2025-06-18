@@ -18,6 +18,9 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    mac-app-util.url = "github:hraban/mac-app-util";
+
+
   };
 
   outputs = { ... }@ inputs:
@@ -32,6 +35,7 @@
     in {
       darwinConfigurations = {
         mac = libx.mkDarwin { hostname = "mac"; username = "pvarsanyi"; };
+        bastion = libx.mkLinux { hostname = "bastion"; username = "gwelican"; };
       };
     };
 }
