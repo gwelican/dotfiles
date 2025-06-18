@@ -33,6 +33,7 @@ in
     obsidian
     # unstablePkgs.ghostty
     # unstablePkgs.openscad
+    mas
 
     comma
     nix
@@ -75,7 +76,6 @@ in
     # global.autoUpdate = true;
 
     brews = [
-      "mas"
       "graphite"
     ];
     # taps = [
@@ -156,8 +156,13 @@ in
       # "soundsource"
     ];
     masApps = {
-      # "Telegram" = 747648890;
-      # "Amphetamine" = 937984704;
+      "Telegram" = 747648890;
+      "Amphetamine" = 937984704;
+      "HiddenBar" = 1452453066;
+      "Messenger" = 1480068668;
+      "Home Assistant Companion" = 1099568401;
+      "Microsoft Remote Desktop" = 1295203466;
+
       # "AutoMounter" = 1160435653;
       # "Bitwarden" = 1352778147;
       # "Creator's Best Friend" = 1524172135;
@@ -165,8 +170,6 @@ in
       # "Disk Speed Test" = 425264550;
       # "Fantastical" = 975937182;
       # "Ivory for Mastodon by Tapbots" = 6444602274;
-      # "Home Assistant Companion" = 1099568401;
-      # "Microsoft Remote Desktop" = 1295203466;
       # "Perplexity" = 6714467650;
       # "Resize Master" = 102530679;
       # "rCmd" = 1596283165;
@@ -263,25 +266,25 @@ in
       programs.direnv.enable = true;
       programs.zsh.enable = true;
 
-      system.activationScripts.applications.text = let
-            env = pkgs.buildEnv {
-              name = "system-applications";
-              paths = config.environment.systemPackages;
-              pathsToLink = "/Applications";
-            };
-          in
-            pkgs.lib.mkForce ''
-          # Set up applications.
-          echo "setting up ${env}/Applications..." >&2
-          rm -rf /Applications/Nix\ Apps
-          mkdir -p /Applications/Nix\ Apps
-          find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-          while read -r src; do
-            app_name=$(basename "$src")
-              echo "copying $src" >&2
-              ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-              done
-            '';
+      # system.activationScripts.applications.text = let
+      #       env = pkgs.buildEnv {
+      #         name = "system-applications";
+      #         paths = config.environment.systemPackages;
+      #         pathsToLink = "/Applications";
+      #       };
+      #     in
+      #       pkgs.lib.mkForce ''
+      #     # Set up applications.
+      #     echo "setting up ${env}/Applications..." >&2
+      #     rm -rf /Applications/Nix\ Apps
+      #     mkdir -p /Applications/Nix\ Apps
+      #     find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+      #     while read -r src; do
+      #       app_name=$(basename "$src")
+      #         echo "copying $src" >&2
+      #         ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+      #         done
+      #       '';
 
 
       NSGlobalDomain.AppleICUForce24HourTime = true;
