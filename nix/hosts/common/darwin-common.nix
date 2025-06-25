@@ -75,9 +75,9 @@ in
     };
     # global.autoUpdate = true;
 
-    brews = [
-      "graphite"
-    ];
+    # brews = [
+    #   "graphite"
+    # ];
     # taps = [
     #   "withgraphite/tap"
     # ];
