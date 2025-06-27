@@ -22,20 +22,22 @@ tasks:
       - nix --extra-experimental-features 'nix-command flakes'  build ".#darwinConfigurations.{{ .TARGET_HOST }}.system"
       # - darwin-rebuild build --flake .#{{ .TARGET_HOST }}
     vars:
-      TARGET_HOST: mac
+      TARGET_HOST:
+        sh: hostname -s
 
   apply-mac-flake:
     desc: Apply the mac flake
     # deps:
-      # - task: build-mac
+    # - task: build-mac
     cmds:
       # - nixos-rebuild switch --flake .#mac
       # - sudo ./result/sw/bin/darwin-rebuild switch --show-trace --flake .#{{ .TARGET_HOST }}
-      - sudo nix run nix-darwin -- switch --flake .#{{ .TARGET_HOST }}
+      - sudo nix run nix-darwin -- switch --flake ".#{{ .TARGET_HOST }}"
     env:
       NIXPKGS_ALLOW_UNFREE: 1
     vars:
-      TARGET_HOST: mac
+      TARGET_HOST:
+        sh: hostname -s
 
   update:
     desc: Update nix channels and flake
