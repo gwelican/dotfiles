@@ -28,7 +28,6 @@ in
     p4v
     karabiner-elements
     vscode
-    discord
     wezterm
     spotify
     obsidian
@@ -70,7 +69,7 @@ in
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "none"; # change to zap
+      cleanup = "zap"; # change to zap
       # autoUpdate = true;
       # upgrade = true;
     };
@@ -100,7 +99,7 @@ in
       # "bambu-studio"
       # "bentobox"
       # #"clop"
-      # "discord"
+      "discord"
       # "displaylink"
       # #"docker"
       # "element"
@@ -148,7 +147,7 @@ in
       # "tailscale"
       # #"wireshark"
       # "viscosity"
-      # "visual-studio-code"
+      "visual-studio-code"
       # "vlc"
       # # "lm-studio"
       #
