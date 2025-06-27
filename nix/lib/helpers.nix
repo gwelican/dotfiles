@@ -38,7 +38,12 @@
         #       nodejs-slim = prev.nodejs-slim_22;
         #     })
         #   ];
-        #
+        {
+         security.sudo.extraConfig = ''
+         ${username} ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild, /nix/store/*/bin/darwin-rebuild
+         '';
+        }
+
         inputs.home-manager.darwinModules.home-manager {
             networking.hostName = hostname;
             home-manager.useGlobalPkgs = true;
