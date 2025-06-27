@@ -23,7 +23,7 @@ in
 
   launchd.user.agents.setFinderSidebar = {
     serviceConfig = {
-      KeepAlive = true;
+      KeepAlive = false;
       RunAtLoad = true;
       ProcessType = "Background";
     };
