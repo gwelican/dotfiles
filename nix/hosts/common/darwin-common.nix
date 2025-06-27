@@ -21,19 +21,29 @@ in
     hostPlatform = lib.mkDefault "${system}";
   };
 
+  launchd.user.agents.setFinderSidebar = {
+    # enable = true;
+    # runAtLoad = true;
+    serviceConfig = {
+      KeepAlive = true;
+      RunAtLoad = true;
+      ProcessType = "Background";
+    };
+    script = ''
+      ${pkgs.mysides}/bin/mysides remove git 2>/dev/null || true
+      ${pkgs.mysides}/bin/mysides add git file:///Users/${username}/git
+    '';
+  };
   environment.systemPackages = with pkgs; [
     nixpkgs-unstable.legacyPackages.${pkgs.system}.mkalias
 
     zoxide
     p4v
     karabiner-elements
-    vscode
-    wezterm
-    spotify
-    obsidian
+    # obsidian
     # unstablePkgs.ghostty
     # unstablePkgs.openscad
-    mas
+    mysides
 
     comma
     nix
@@ -70,26 +80,41 @@ in
     enable = true;
     onActivation = {
       cleanup = "zap"; # change to zap
-      # autoUpdate = true;
-      # upgrade = true;
+      autoUpdate = true;
+      upgrade = true;
     };
     # global.autoUpdate = true;
 
     brews = [
       # "graphite"
+      "mas"
     ];
-    # taps = [
-    #   "withgraphite/tap"
-    # ];
+    taps = [
+    "homebrew/cask"
+    "homebrew/core"
+    "homebrew/bundle"
+    ];
     casks = [
+      "bettertouchtool"
       "hammerspoon"
       "ghostty"
       "rustdesk"
       "appcleaner"
       "cursor"
       "brave-browser"
-      # "screenflow"
-      # "cleanshot"
+      "discord"
+      "wezterm"
+      "spotify"
+      "tailscale"
+      "visual-studio-code"
+      "obsidian"
+      "ollama"
+      "zen"
+      "orcaslicer"
+      "nextcloud"
+      "screenflow"
+      "cleanshot"
+      "1password"
       # "adobe-creative-cloud"
       # #"nikitabobko/tap/aerospace"
       # "alacritty"
@@ -99,7 +124,6 @@ in
       # "bambu-studio"
       # "bentobox"
       # #"clop"
-      "discord"
       # "displaylink"
       # #"docker"
       # "element"
@@ -108,17 +132,8 @@ in
       # "elgato-stream-deck"
       # "firefox"
       # "flameshot"
-      # "font-fira-code"
-      # "font-fira-code-nerd-font"
-      # "font-fira-mono-for-powerline"
-      # "font-hack-nerd-font"
-      # "font-jetbrains-mono-nerd-font"
-      # "font-meslo-lg-nerd-font"
-      # "ghostty"
-      # "google-chrome"
       # "iina"
       # "istat-menus"
-      # "iterm2"
       # "jordanbaird-ice"
       # "lm-studio"
       # "logitech-options"
@@ -126,36 +141,28 @@ in
       # "marta"
       # "mqtt-explorer"
       # "music-decoy" # github/FuzzyIdeas/MusicDecoy
-      # "nextcloud"
       # "notion"
       # "obs"
-      # "obsidian"
-      # "ollama"
       # "omnidisksweeper"
       # "orbstack"
-      # "openscad"
+      "openscad"
       # "openttd"
-      # "plexamp"
+      "plexamp"
       # "popclip"
-      # "prusaslicer"
-      # "raycast"
+      "raycast"
       # "signal"
       # "shortcat"
-      # "slack"
-      # "spotify"
       # "steam"
-      # "tailscale"
       # #"wireshark"
       # "viscosity"
-      "visual-studio-code"
-      # "vlc"
+      "vlc"
       # # "lm-studio"
       #
       # # # rogue amoeba
       # "audio-hijack"
       # "farrago"
-      # "loopback"
-      # "soundsource"
+      "loopback"
+      "soundsource"
     ];
     masApps = {
       "Telegram" = 747648890;
@@ -164,6 +171,7 @@ in
       "Messenger" = 1480068668;
       "Home Assistant Companion" = 1099568401;
       "Microsoft Remote Desktop" = 1295203466;
+      # "Plexamp" = 1500797510;
 
       # "AutoMounter" = 1160435653;
       # "Bitwarden" = 1352778147;
@@ -204,6 +212,7 @@ in
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
+
   # macOS configuration
   system.defaults = {
     NSGlobalDomain.AppleShowAllExtensions = true;
@@ -230,16 +239,12 @@ in
     dock.tilesize = 48;
     dock.minimize-to-application = true;
     dock.mineffect = "scale";
-    dock.persistent-apps = [
-      "${pkgs.obsidian}/Applications/Obsidian.app"
-      "${pkgs.wezterm}/Applications/Wezterm.app"
-      "${pkgs.spotify}/Applications/Spotify.app"
-      "/Applications/Telegram.app"
-      "/Applications/Slack.app"
-      "/Applications/WezTerm.app"
-      "/Applications/Discord.app"
-      "/Applications/Messenger.app"
-    ];
+    # dock.persistent-apps = [
+      # "/Applications/Obsidian.app"
+      # "${pkgs.wezterm}/Applications/Wezterm.app"
+      # "/Applications/Spotify.app"
+      # "/Applications/Messenger.app"
+    # ];
   };
 
   system.defaults.CustomUserPreferences = {
