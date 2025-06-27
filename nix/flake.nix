@@ -34,6 +34,7 @@
 
     in {
       darwinConfigurations = {
+        lux = libx.mkDarwin { hostname = "lux"; username = "gwelican"; };
         mac = libx.mkDarwin { hostname = "mac"; username = "pvarsanyi"; };
         bastion = libx.mkLinux { hostname = "bastion"; username = "gwelican"; };
       };
