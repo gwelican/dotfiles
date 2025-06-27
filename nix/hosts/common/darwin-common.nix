@@ -24,6 +24,7 @@ in
   environment.systemPackages = with pkgs; [
     nixpkgs-unstable.legacyPackages.${pkgs.system}.mkalias
 
+    zoxide
     p4v
     karabiner-elements
     vscode
@@ -75,9 +76,11 @@ in
     };
     # global.autoUpdate = true;
 
-    # brews = [
-    #   "graphite"
-    # ];
+    brews = [
+      "brave-browser"
+      "cursor"
+      # "graphite"
+    ];
     # taps = [
     #   "withgraphite/tap"
     # ];
