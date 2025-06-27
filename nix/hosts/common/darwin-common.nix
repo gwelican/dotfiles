@@ -77,8 +77,6 @@ in
     # global.autoUpdate = true;
 
     brews = [
-      "brave-browser"
-      "cursor"
       # "graphite"
     ];
     # taps = [
@@ -89,6 +87,8 @@ in
       "ghostty"
       "rustdesk"
       "appcleaner"
+      "cursor"
+      "brave-browser"
       # "screenflow"
       # "cleanshot"
       # "adobe-creative-cloud"
