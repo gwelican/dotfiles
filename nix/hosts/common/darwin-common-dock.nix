@@ -11,6 +11,7 @@
       "/Applications/Spotify.app"
       "/Applications/Plexamp.app"
       "/Applications/Ghostty.app"
+      "/Applications/Messenger.app"
     ];
   };
 }
