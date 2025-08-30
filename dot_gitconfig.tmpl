@@ -122,3 +122,8 @@
   path = ~/.gitconfig_mergetool
 ; [includeIf "gitdir:~/dev/yourcompany/"]
 ;   path = ~/.gitconfig-work
+
+[diff "sopsd"]
+  textconv = sops -d
+  cachetextconv = true
+
