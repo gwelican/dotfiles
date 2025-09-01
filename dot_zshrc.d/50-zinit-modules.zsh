@@ -9,9 +9,6 @@ zinit load hlissner/zsh-autopair
 zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit load zsh-users/zsh-autosuggestions
 
-export ATUIN_NOBIND="true"
-zinit load atuinsh/atuin
-
 function from-where {
   local candidate
     echo "Completion used:"
