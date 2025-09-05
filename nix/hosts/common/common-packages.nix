@@ -40,6 +40,7 @@ in
 
       kubectl-view-allocations
       kubecolor
+      devenv
 
 
       # devtools
