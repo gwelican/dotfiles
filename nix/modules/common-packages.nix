@@ -1,7 +1,4 @@
-{ inputs, pkgs, unstablePkgs, ... }:
-let
-  inherit (inputs) nixpkgs nixpkgs-unstable;
-in
+{ pkgs, unstablePkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -41,7 +38,6 @@ in
 
       kubectl-view-allocations
       kubecolor
-      devenv
 
 
       # devtools
@@ -105,5 +101,7 @@ in
       ast-grep
       topgrade
       glow
+    
     ];
 }
+
