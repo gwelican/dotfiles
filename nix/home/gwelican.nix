@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, unstablePkgs, ... }:
+{ config, inputs, pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   home.stateVersion = "24.11";
@@ -13,6 +13,17 @@
   #   })
   # ];
 
+  targets.darwin.defaults = {
+      "com.apple.Spotlight".MenuItemHidden = true;
+
+   "com.apple.symbolichotkeys" = {
+       # Disable spotlight hotkeys
+        AppleSymbolicHotKeys = {
+          "64".enabled = false; # Cmd-Space
+          "65".enabled = false; # Option/Ctrl-Cmd-Space
+        };
+      };
+  };
   programs.gpg.enable = true;
 
   programs.direnv = {
@@ -167,12 +178,8 @@
         hostname = "ssh.github.com";
         port = 443;
       };
-      "*" = {
-        user = "root";
-      };
-      # wd
-      "dev" = {
-        hostname = "100.68.216.79";
+      "bastion" = {
+        hostname = "192.168.1.136";
         user = "gwelican";
       };
       # lancs

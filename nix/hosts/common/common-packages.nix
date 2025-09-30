@@ -9,6 +9,7 @@ in
       nil
       rsync
       fping
+      rclone
       fzf
       unstablePkgs.zsh
       zsh-wd
@@ -50,7 +51,9 @@ in
       ncdu
 
       zoxide
+      mkcert
       delta
+      iperf
       difftastic
       bat
       fd
