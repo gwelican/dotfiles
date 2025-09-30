@@ -20,23 +20,48 @@
 
     mac-app-util.url = "github:hraban/mac-app-util";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    # flake-parts.inputs.nixpkgs.follows = "nixpkgs";
+
 
   };
 
-  outputs = { ... }@ inputs:
-    with inputs;
-    let
+  outputs = { flake-parts, ... }@ inputs:
+     flake-parts.lib.mkFlake { inherit inputs; } {
+     systems = [ "x86_64-linux" "aarch64-darwin" ];
 
-      inherit (self) outputs;
+      perSystem = { system, pkgs, ... }: {
+        # Common packages available on all hosts
+        packages = {
+          common = pkgs.git;
+        };
+      };
 
-      stateVersion = "24.05";
-      libx = import ./lib { inherit inputs outputs stateVersion; };
-
-    in {
+    # Use top-level flake options for darwin and linux configurations
+    flake = {
       darwinConfigurations = {
-        lux = libx.mkDarwin { hostname = "lux"; username = "gwelican"; };
-        mac = libx.mkDarwin { hostname = "mac"; username = "pvarsanyi"; };
-        bastion = libx.mkLinux { hostname = "bastion"; username = "gwelican"; };
+
+        lux = import ./hosts/lux.nix { inherit inputs; };
+      };
+      nixosConfigurations = {
+        bastion = import ./hosts/bastion.nix { inherit inputs; };
       };
     };
+    };
+
+    # with inputs;
+    # let
+    #
+    #   inherit (self) outputs;
+    #
+    #   stateVersion = "24.05";
+    #   libx = import ./lib { inherit inputs outputs stateVersion; };
+    #
+    # in {
+    #   darwinConfigurations = {
+    #     lux = libx.mkDarwin { hostname = "lux"; username = "gwelican"; };
+    #     mac = libx.mkDarwin { hostname = "mac"; username = "pvarsanyi"; };
+    #     bastion = libx.mkLinux { hostname = "bastion"; username = "gwelican"; };
+    #   };
+    # };
 }

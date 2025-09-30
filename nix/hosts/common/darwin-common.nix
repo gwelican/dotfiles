@@ -1,6 +1,7 @@
-{ inputs, outputs, config, lib, hostname, system, username, pkgs, unstablePkgs, ... }:
+{ pkgs, unstablePkgs, lib, config, ... }:
 let
-  inherit (inputs) nixpkgs nixpkgs-unstable;
+  username = "gwelican";
+  system = "aarch64-darwin";
 in
 {
   users.users.${username}.home = "/Users/${username}";
@@ -53,16 +54,16 @@ in
   ];
 
   # pins to stable as unstable updates very often
-  nix.registry = {
-    n.to = {
-      type = "path";
-      path = inputs.nixpkgs;
-    };
-    u.to = {
-      type = "path";
-      path = inputs.nixpkgs-unstable;
-    };
-  };
+  # nix.registry = {
+  #   n.to = {
+  #     type = "path";
+  #     path = inputs.nixpkgs;
+  #   };
+  #   u.to = {
+  #     type = "path";
+  #     path = inputs.nixpkgs-unstable;
+  #   };
+  # };
 
   programs.nix-index.enable = true;
 
@@ -83,6 +84,7 @@ in
     "homebrew/cask"
     "homebrew/core"
     "homebrew/bundle"
+      # "1password"
     ];
     casks = [
       "bettertouchtool"
@@ -95,16 +97,16 @@ in
       "discord"
       "wezterm"
       "spotify"
-      "tailscale"
+      # "tailscale"
       "visual-studio-code"
       "obsidian"
-      "ollama"
+      # "ollama"
       "zen"
-      "orcaslicer"
-      "nextcloud"
-      "screenflow"
-      "cleanshot"
       "1password"
+      "linearmouse"
+      "1password-cli"
+      "steam"
+      "1password/tap/1password-cli"
       # "adobe-creative-cloud"
       # #"nikitabobko/tap/aerospace"
       # "alacritty"
@@ -222,6 +224,7 @@ in
     LaunchServices.LSQuarantine = false; # disables "Are you sure?" for new apps
     loginwindow.GuestEnabled = false;
     finder.FXPreferredViewStyle = "Nlsv";
+
     dock.autohide = false;
     dock.orientation = "bottom";
     dock.show-recents = false;
