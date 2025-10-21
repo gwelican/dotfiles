@@ -47,6 +47,8 @@ in
             "homebrew/homebrew-core" = homebrew-core;
             "homebrew/homebrew-cask" = homebrew-cask;
             "homebrew/homebrew-bundle" = homebrew-bundle;
+            "sst/homebrew-tap" = homebrew-sst;
+
           };
         };
       }
