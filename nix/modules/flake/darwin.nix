@@ -6,31 +6,88 @@
   flake = {
     darwinModules.default = ../darwin;
 
-    darwinConfigurations.lux = let
-      unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.aarch64-darwin;
-    in inputs.nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      
-      modules = [
-        ../../hosts/darwin/lux
-        self.darwinModules.default
-        inputs.home-manager.darwinModules.home-manager
-        inputs.nix-homebrew.darwinModules.nix-homebrew
-
-        {
-          home-manager = {
-            useGlobalPkgs = false;
-            useUserPackages = true;
-            extraSpecialArgs = {inherit self inputs unstablePkgs;};
-            backupFileExtension = "backup";
-            users.gwelican.imports = [self.homeModules.gwelican];
+    darwinConfigurations = let
+      mkDarwinSystem = {
+        hostname,
+        username,
+        homeModule,
+        system ? "aarch64-darwin",
+      }: let
+        unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${system};
+        hostOverridesPath = ../../hosts/darwin/${hostname}/default.nix;
+        
+        # Check if host-specific override file exists
+        hostOverrides = if builtins.pathExists hostOverridesPath then [hostOverridesPath] else [];
+        
+        # Base host configuration with user settings
+        baseHostConfig = {
+          networking.hostName = hostname;
+          networking.computerName = hostname;
+          system.defaults.smb.NetBIOSName = hostname;
+          system.primaryUser = username;
+          
+          users.users.${username} = {
+            name = username;
+            home = "/Users/${username}";
           };
+        };
+        
+      in inputs.nix-darwin.lib.darwinSystem {
+        inherit system;
+        
+        modules = [
+          # Base Darwin configuration (common settings, packages, etc.)
+          self.darwinModules.default
+          
+          # Common Darwin configuration files
+          ../../hosts/common/darwin-common.nix
+          ../../hosts/common/darwin-common-dock.nix
+          
+          # Base host configuration (hostname, user, etc.)
+          baseHostConfig
+          
+          # External modules
+          inputs.home-manager.darwinModules.home-manager
+          inputs.nix-homebrew.darwinModules.nix-homebrew
 
-          nixpkgs.config.allowUnfree = true;
-        }
-      ];
+          {
+            home-manager = {
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {inherit self inputs unstablePkgs;};
+              backupFileExtension = "backup";
+              users.${username}.imports = [homeModule];
+            };
 
-      specialArgs = {inherit self inputs unstablePkgs;};
+            nixpkgs.config.allowUnfree = true;
+          }
+        ] ++ hostOverrides; # Only add host overrides if the file exists
+
+        specialArgs = {inherit self inputs unstablePkgs;};
+      };
+    in {
+      # Personal development machine (gwelican user, with overrides)
+      lux = mkDarwinSystem {
+        hostname = "lux";
+        username = "gwelican";
+        homeModule = self.homeModules.gwelican;
+      };
+      
+      # Work/other machine (pvarsanyi user, may or may not have overrides)
+      mac = mkDarwinSystem {
+        hostname = "mac";
+        username = "pvarsanyi";
+        homeModule = self.homeModules.pvarsanyi;
+      };
+      
+      # Example: You could add a work machine like this:
+      # work-macbook = mkDarwinSystem {
+      #   hostname = "work-macbook";
+      #   username = "pvarsanyi";  # or your work username
+      #   homeModule = self.homeModules.pvarsanyi;
+      # };
+      # 
+      # Then optionally create hosts/darwin/work-macbook/default.nix with work-specific overrides
     };
   };
 }
