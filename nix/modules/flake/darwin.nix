@@ -36,12 +36,8 @@
         inherit system;
         
         modules = [
-          # Base Darwin configuration (common settings, packages, etc.)
+          # Base Darwin configuration (system, packages, homebrew, defaults, fonts)
           self.darwinModules.default
-          
-          # Common Darwin configuration files
-          ../../hosts/common/darwin-common.nix
-          ../../hosts/common/darwin-common-dock.nix
           
           # Base host configuration (hostname, user, etc.)
           baseHostConfig
