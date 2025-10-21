@@ -53,15 +53,5 @@
     # let
     #
     #   inherit (self) outputs;
-    #
-    #   stateVersion = "24.05";
-    #   libx = import ./lib { inherit inputs outputs stateVersion; };
-    #
-    # in {
-    #   darwinConfigurations = {
-    #     lux = libx.mkDarwin { hostname = "lux"; username = "gwelican"; };
-    #     mac = libx.mkDarwin { hostname = "mac"; username = "pvarsanyi"; };
-    #     bastion = libx.mkLinux { hostname = "bastion"; username = "gwelican"; };
-    #   };
-    # };
+
 }
