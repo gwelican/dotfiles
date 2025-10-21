@@ -2,4 +2,7 @@
 1password-cli = "latest"
 age = "latest"
 chezmoi = "latest"
+go = "latest"
 node = "latest"
+python = "latest"
+rust = "latest"

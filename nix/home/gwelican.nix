@@ -1,5 +1,15 @@
-{ config, inputs, pkgs, lib, ... }:
 {
+  config,
+  inputs,
+  pkgs,
+  lib,
+  self,
+  ...
+}: {
+  imports = [
+    self.homeModules.default
+  ];
+
   nixpkgs.config.allowUnfree = true;
   home.stateVersion = "24.11";
 
@@ -13,16 +23,9 @@
   #   })
   # ];
 
-  targets.darwin.defaults = {
-      "com.apple.Spotlight".MenuItemHidden = true;
-
-   "com.apple.symbolichotkeys" = {
-       # Disable spotlight hotkeys
-        AppleSymbolicHotKeys = {
-          "64".enabled = false; # Cmd-Space
-          "65".enabled = false; # Option/Ctrl-Cmd-Space
-        };
-      };
+  myHome = lib.mkIf pkgs.stdenv.isDarwin {
+    desktop.macos.enable = true;
+    services.raycast.enable = true;
   };
   programs.gpg.enable = true;
 
@@ -169,11 +172,14 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+
     extraConfig = ''
   StrictHostKeyChecking no
     '';
     matchBlocks = {
-      # ~/.ssh/config
+      "*" = {
+      };
       "github.com" = {
         hostname = "ssh.github.com";
         port = 443;
@@ -182,22 +188,6 @@
         hostname = "192.168.1.136";
         user = "gwelican";
       };
-      # lancs
-      # "e elrond" = {
-      #   hostname = "100.117.223.78";
-      #   user = "gwelicanktz";
-      # };
-      # # jb
-      # "core" = {
-      #   hostname = "demo.selfhosted.show";
-      #   user = "ironicbadger";
-      #   port = 53142;
-      # };
-      # "status" = {
-      #   hostname = "hc.ktz.cloud";
-      #   user = "ironicbadger";
-      #   port = 53142;
-      # };
     };
   };
 }
