@@ -42,6 +42,7 @@ in
     comma
     nix
     
+    # Potentially useful packages:
     # unstablePkgs.ghostty
     # unstablePkgs.openscad
   ];
@@ -81,10 +82,9 @@ in
       "mas"
     ];
     taps = [
-    "homebrew/cask"
-    "homebrew/core"
-    "homebrew/bundle"
-      # "1password"
+      "homebrew/cask"
+      "homebrew/core"
+      "homebrew/bundle"
     ];
     casks = [
       "bettertouchtool"
@@ -108,7 +108,15 @@ in
       "steam"
       "1password/tap/1password-cli"
       # "adobe-creative-cloud"
-      # #"nikitabobko/tap/aerospace"
+      "raycast"
+      # "steam"
+      "vlc"
+      # "audio-hijack"
+      # "farrago"
+      "loopback"
+      "soundsource"
+      
+      # Commonly used apps you might want to enable:
       # "alacritty"
       # "alcove"
       # "audacity"

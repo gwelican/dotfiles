@@ -6,7 +6,9 @@
   flake = {
     nixosModules.default = ../nixos;
 
-    nixosConfigurations.bastion = inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations.bastion = let
+      unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+    in inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       
       modules = [
@@ -18,7 +20,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = {inherit self inputs;};
+            extraSpecialArgs = {inherit self inputs unstablePkgs;};
             backupFileExtension = "backup";
             users.gwelican.imports = [self.homeModules.gwelican];
           };
@@ -27,7 +29,7 @@
         }
       ];
 
-      specialArgs = {inherit self inputs;};
+      specialArgs = {inherit self inputs unstablePkgs;};
     };
   };
 }
