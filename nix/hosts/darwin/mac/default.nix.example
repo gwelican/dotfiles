@@ -1,0 +1,41 @@
+# Mac host-specific configuration
+# This file contains overrides and additions specific to the "mac" host
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  username = "workusername";
+  hostname = "mac";
+in {
+  # Host identity
+  networking.hostName = hostname;
+  networking.computerName = hostname;
+  system.defaults.smb.NetBIOSName = hostname;
+  system.primaryUser = username;
+
+  # User configuration
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+  };
+
+  # Mac-specific applications (different from lux)
+  homebrew.casks = [
+    # Add mac-specific apps here
+  ];
+
+  homebrew.brews = [
+    # Add mac-specific brews here
+  ];
+
+  # Mac-specific system packages
+  environment.systemPackages = with pkgs; [
+    # Add mac-specific packages here
+  ];
+
+  # Mac-specific system defaults
+  # system.defaults = {
+  #   # Add mac-specific overrides here
+  # };
+}
