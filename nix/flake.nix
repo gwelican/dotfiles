@@ -23,30 +23,30 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     # flake-parts.inputs.nixpkgs.follows = "nixpkgs";
 
+    homebrew-sst = {
+      url = "github:sst/homebrew-tap";
+      flake = false;
+    };
 
   };
 
-  outputs = { flake-parts, ... }@ inputs:
-     flake-parts.lib.mkFlake { inherit inputs; } {
-     systems = [ "x86_64-linux" "aarch64-darwin" ];
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-darwin"];
 
-      perSystem = { system, pkgs, ... }: {
-        # Common packages available on all hosts
+      imports = [
+        ./modules/flake
+      ];
+
+      perSystem = {
+        system,
+        pkgs,
+        ...
+      }: {
         packages = {
           common = pkgs.git;
         };
       };
-
-    # Use top-level flake options for darwin and linux configurations
-    flake = {
-      darwinConfigurations = {
-
-        lux = import ./hosts/lux.nix { inherit inputs; };
-      };
-      nixosConfigurations = {
-        bastion = import ./hosts/bastion.nix { inherit inputs; };
-      };
-    };
     };
 
     # with inputs;
