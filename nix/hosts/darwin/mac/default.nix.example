@@ -1,41 +1,44 @@
-# Mac host-specific configuration
-# This file contains overrides and additions specific to the "mac" host
+# Mac host-specific overrides (OPTIONAL)
+# Base configuration (hostname, user, etc.) is handled automatically by the flake
 {
+  config,
   pkgs,
   lib,
   ...
 }: let
-  username = "workusername";
-  hostname = "mac";
+  username = config.system.primaryUser; # Use the primary user set by the flake
 in {
-  # Host identity
-  networking.hostName = hostname;
-  networking.computerName = hostname;
-  system.defaults.smb.NetBIOSName = hostname;
-  system.primaryUser = username;
-
-  # User configuration
-  users.users.${username} = {
-    name = username;
-    home = "/Users/${username}";
-  };
-
-  # Mac-specific applications (different from lux)
+  # Mac-specific applications (work-focused)
   homebrew.casks = [
-    # Add mac-specific apps here
+    "slack"
+    "microsoft-teams"
+    "microsoft-office"
+    # Add work-specific apps here
   ];
 
   homebrew.brews = [
-    # Add mac-specific brews here
+    # Add work-specific CLI tools here
   ];
 
   # Mac-specific system packages
   environment.systemPackages = with pkgs; [
-    # Add mac-specific packages here
+    # Add work-specific packages here
   ];
 
-  # Mac-specific system defaults
-  # system.defaults = {
-  #   # Add mac-specific overrides here
-  # };
+  # Mac-specific dock configuration (work-focused)
+  system.defaults.dock.persistent-apps = [
+    "/Applications/Brave Browser.app"
+    "/Applications/Microsoft Teams.app"
+    "/Applications/Slack.app"
+    "/Applications/Microsoft Excel.app"
+    "/Applications/Obsidian.app"
+    # Add work-specific dock apps here
+  ];
+
+  # Mac-specific system defaults (work environment)
+  system.defaults = {
+    dock.tilesize = 32; # Smaller dock for work
+    dock.autohide = true; # More screen space for work
+    # Add other work-specific overrides here
+  };
 }

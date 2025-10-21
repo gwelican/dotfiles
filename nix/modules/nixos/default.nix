@@ -1,6 +1,7 @@
+# Main NixOS module - imports all NixOS-specific configuration
 {pkgs, ...}: {
   imports = [
-    ../common-packages.nix
+    ./packages.nix  # Linux-specific and shared packages
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
