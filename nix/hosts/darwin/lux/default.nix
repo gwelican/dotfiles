@@ -72,9 +72,21 @@ in {
     '';
   };
 
-  # Lux-specific system defaults (override common settings if needed)
-  # system.defaults = {
-  #   dock.tilesize = 64; # Example: larger dock icons on this machine
-  # };
+  # Lux-specific dock configuration
+  system.defaults.dock.persistent-apps = [
+    "/Applications/Obsidian.app"
+    "/Applications/Spotify.app"
+    "/Applications/Brave Browser.app"
+    "/Applications/Wezterm.app"
+    "/Applications/Cursor.app"
+    "/Applications/Discord.app"
+    # Add more lux-specific dock apps here
+  ];
+
+  # Other lux-specific system defaults
+  system.defaults = {
+    dock.tilesize = 64; # Larger dock icons for development machine
+    # Add other lux-specific overrides here
+  };
 }
 

@@ -1,12 +1,11 @@
-{ pkgs, unstablePkgs, ... }:
-{
-  nixpkgs.config.allowUnfree = true;
+# Cross-platform packages shared between Darwin and Linux systems
+{pkgs, unstablePkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # Nix tools
     nil
     comma
-    
-    # System tools
+
+    # Essential system utilities (cross-platform)
     rsync
     fping
     rclone
@@ -34,8 +33,8 @@
     ncdu
     nmap
     mosh
-    
-    # Dev tools
+
+    # Development tools (cross-platform)
     unstablePkgs.zsh
     zsh-wd
     zsh-z
@@ -54,8 +53,8 @@
     sops
     go-task
     lazygit
-    
-    # Kubernetes tools
+
+    # Kubernetes tools (cross-platform)
     unstablePkgs.talosctl
     kustomize
     kubectx
@@ -70,6 +69,8 @@
     kubectl-node-shell
     kubectl-view-allocations
     kubecolor
+
+    # Platform-agnostic packages that might be useful
+    # unstablePkgs.ghostty  # Cross-platform terminal
   ];
 }
-

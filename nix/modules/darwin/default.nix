@@ -1,13 +1,10 @@
-{pkgs, ...}: {
+# Main Darwin module - imports all Darwin-specific configuration
+{...}: {
   imports = [
-    ../common-packages.nix
+    ./system.nix
+    ./packages.nix
+    ./homebrew.nix
+    ./macos-defaults.nix
+    ./fonts.nix
   ];
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  programs.zsh.enable = true;
-  environment.shells = [pkgs.zsh];
-
-  system.stateVersion = 5;
-  nixpkgs.hostPlatform = "aarch64-darwin";
 }
