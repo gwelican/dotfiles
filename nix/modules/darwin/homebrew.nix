@@ -57,8 +57,6 @@
       "soundsource"
       
       # Commonly used apps you might want to enable:
-      # "tailscale"
-      # "ollama"
       # "adobe-creative-cloud"
       # "steam"
       # "audio-hijack"
