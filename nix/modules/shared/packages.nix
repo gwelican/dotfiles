@@ -33,6 +33,7 @@
     ncdu
     nmap
     mosh
+    chezmoi
 
     # Development tools (cross-platform)
     unstablePkgs.zsh
