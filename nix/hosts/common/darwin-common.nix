@@ -97,10 +97,8 @@ in
       "discord"
       "wezterm"
       "spotify"
-      # "tailscale"
       "visual-studio-code"
       "obsidian"
-      # "ollama"
       "zen"
       "1password"
       "linearmouse"
@@ -184,7 +182,6 @@ in
       # "Resize Master" = 102530679;
       # "rCmd" = 1596283165;
       # "Snippety" = 1530751461;
-      # #"Tailscale" = 1475387142;
       # "The Unarchiver" = 425424353;
       # "Todoist" = 585829637;
       # "UTM" = 1538878817;
