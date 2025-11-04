@@ -34,6 +34,7 @@
     nmap
     mosh
     chezmoi
+    goose-cli
 
     # Development tools (cross-platform)
     unstablePkgs.zsh
