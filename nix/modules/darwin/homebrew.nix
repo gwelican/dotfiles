@@ -12,6 +12,7 @@
     # Common homebrew brews (CLI tools)
     brews = [
       "mas"
+      # "block-goose-cli"
       # "graphite"
     ];
 
@@ -28,6 +29,7 @@
       "bettertouchtool"
       "hammerspoon"
       "raycast"
+      "block-goose"
       
       # Development tools
       "ghostty"
@@ -39,7 +41,7 @@
       
       # Browsers
       "brave-browser"
-      "zen"
+      "floorp"
       
       # Media
       "spotify"
@@ -84,7 +86,7 @@
     masApps = {
       "Telegram" = 747648890;
       "Amphetamine" = 937984704;
-      "HiddenBar" = 1452453066;
+      # "HiddenBar" = 1452453066;
       "Messenger" = 1480068668;
       "Home Assistant Companion" = 1099568401;
       "Windows App" = 1295203466;
