@@ -1,3 +1,0 @@
-b() {
-	~/bin/bashful run ~/bashful/bashful.yml "$@"
-}

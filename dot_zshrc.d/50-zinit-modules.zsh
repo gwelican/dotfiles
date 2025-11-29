@@ -9,45 +9,11 @@ zinit load hlissner/zsh-autopair
 zinit ice wait lucid atload"!_zsh_autosuggest_start"
 zinit load zsh-users/zsh-autosuggestions
 
-function from-where {
-  local candidate
-    echo "Completion used:"
-    whence -v $_comps[$1] | offset
-    echo "Candidate completions:"
-    for candidate in $^fpath/$_comps[$1](N^/); do
-      echo -n "  "
-      if (( ${+commands[exa]} )); then
-        exa --long --no-permissions --no-filesize --no-user --no-time "$candidate"
-      else
-        ls -l "$candidate"
-      fi
-    done
-}
-
-zinit wait lucid light-mode for \
-  has'docker' \
-  as"completion" \
-  id-as"docker-completion/_docker" \
-  nocompile \
-  is-snippet \
-  '@https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker'
-
-
-zinit wait lucid light-mode for \
-  has'docker' \
-  as"completion" \
-  id-as"docker-completion/_docker" \
-  nocompile \
-  is-snippet \
-  'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
-
-
 zinit ice lucid wait'2' atinit'zpcompinit' atload'zpcdreplay -q'
 
 zinit light Aloxaf/fzf-tab
 zinit load wfxr/forgit
 zinit ice wait"3" lucid
-zinit light bonnefoa/kubectl-fzf
 
 zinit wait'2c' lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
@@ -55,8 +21,8 @@ zinit wait'2c' lucid for \
     atload"!_zsh_autosuggest_start" \
     atinit"export ZSH_AUTOSUGGEST_USE_ASYNC=1; export ZSH_AUTOSUGGEST_MANUAL_REBIND=1; export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" \
         zsh-users/zsh-autosuggestions \
-    blockf \
-        zsh-users/zsh-completions
+    # blockf \
+    #     zsh-users/zsh-completions  # Disabled to avoid conflicts with carapace
 
 zt 0a light-mode for \
     OMZP::kubectx \
@@ -73,16 +39,14 @@ zt 0a light-mode for \
     djui/alias-tips \
     paoloantinori/hhighlighter \
     willghatch/zsh-saneopt \
-    Valodim/zsh-curl-completion \
     zsh-users/zsh-history-substring-search \
-    rimraf/k \
     has'git' pick'init.zsh' atload'alias gi="git-ignore"' blockf \
     laggardkernel/git-ignore \
     has'git-extras' \
-    https://github.com/tj/git-extras/blob/master/etc/git-extras-completion.zsh \
     as"program" pick"bin/git-dsf" \
     zdharma-continuum/zsh-diff-so-fancy
 
+    # rimraf/k \
 zt 0b light-mode for \
   has'man' \
         ael-code/zsh-colored-man-pages \
