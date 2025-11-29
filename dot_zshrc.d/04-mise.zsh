@@ -1,5 +1,5 @@
 # ASDF
 export AWS_HOME=~/.aws
 
-eval "$(mise activate zsh)"
+eval "$(/home/gwelican/.local/bin/mise activate zsh)"
 eval "$(direnv hook zsh)"
