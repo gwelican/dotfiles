@@ -1,5 +1,5 @@
 # mise
-eval "$(mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
 eval "$(direnv hook zsh)"
 
 # init
