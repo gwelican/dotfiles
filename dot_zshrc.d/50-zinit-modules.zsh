@@ -1,28 +1,9 @@
 zt()  { zinit depth'3' lucid ${1/#[0-9][a-c]/wait"$1"} "${@:2}"; }
 
 zinit light ohmyzsh/ohmyzsh
-
-# zinit ice wait lucid
-# zinit load hlissner/zsh-autopair
-
-# zsh-autosuggestions
-zinit ice wait lucid atload"!_zsh_autosuggest_start"
-zinit load zsh-users/zsh-autosuggestions
-
-# zinit ice lucid wait'2' atinit'zpcompinit' atload'zpcdreplay -q'
 zinit light Aloxaf/fzf-tab
-# zinit load wfxr/forgit
-# zinit ice wait"3" lucid
-
-# zinit wait'2c' lucid for \
-#     atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
-#         zdharma-continuum/fast-syntax-highlighting \
-#     atload"!_zsh_autosuggest_start" \
-#     atinit"export ZSH_AUTOSUGGEST_USE_ASYNC=1; export ZSH_AUTOSUGGEST_MANUAL_REBIND=1; export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" \
-#         zsh-users/zsh-autosuggestions \
-    # blockf \
-    #     zsh-users/zsh-completions  # Disabled to avoid conflicts with carapace
-
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
 zt 0a light-mode for \
     OMZP::kubectx \
     OMZP::git \
@@ -51,4 +32,5 @@ zt 0a light-mode for \
   has'man' \
         ael-code/zsh-colored-man-pages \
         # MichaelAquilina/zsh-auto-notify
+
 
