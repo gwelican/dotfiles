@@ -3,6 +3,7 @@
 age = "latest"
 chezmoi = "latest"
 go = "latest"
+neovim = "latest"
 node = "latest"
 opencode = "latest"
 python = "latest"
