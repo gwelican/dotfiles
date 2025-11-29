@@ -1,5 +1,9 @@
 setopt nullglob
 
+autoload -Uz compinit
+compinit
+autoload -U +X bashcompinit && bashcompinit
+
 zshrc_d="$HOME/.zshrc.d/"
 
 # Source files in $HOME/.zshrc.d/
@@ -8,19 +12,3 @@ if [ -d "$zshrc_d" ]; then
         source "$file"
     done
 fi
-
-# Add functions directory to fpath
-fpath=(
-    "$zshrc_d/functions/"
-    $fpath
-)
-
-# Autoload user functions
-if [ -d "$zshrc_d/functions/" ]; then
-    for function in "$zshrc_d/functions"/*; do
-        autoload -Uz "${function##*/}"
-    done
-fi
-
-
-autoload -U +X bashcompinit && bashcompinit
