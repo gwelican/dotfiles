@@ -76,9 +76,9 @@ in {
   system.defaults.dock.persistent-apps = [
     "/Applications/Obsidian.app"
     "/Applications/Spotify.app"
-    "/Applications/Brave Browser.app"
-    "/Applications/Wezterm.app"
-    "/Applications/Cursor.app"
+    "/Applications/Floorp.app"
+    # "/Applications/Wezterm.app"
+    "/Applications/Goose.app"
     "/Applications/Discord.app"
     # Add more lux-specific dock apps here
   ];

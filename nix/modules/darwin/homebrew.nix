@@ -12,6 +12,7 @@
     # Common homebrew brews (CLI tools)
     brews = [
       "mas"
+      "kopia"
       # "block-goose-cli"
       # "graphite"
     ];
@@ -25,6 +26,7 @@
 
     # Common homebrew casks (GUI applications)
     casks = [
+      "mole"
       # Essential productivity tools
       "bettertouchtool"
       "hammerspoon"
@@ -57,6 +59,7 @@
       "1password-cli"
       "loopback"
       "soundsource"
+      "kopiaui"
       
       # Commonly used apps you might want to enable:
       # "adobe-creative-cloud"
