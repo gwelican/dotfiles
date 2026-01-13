@@ -89,6 +89,7 @@ customCommands:
     description: Pick AI commit
     command: {{`'git commit -m "{{.Form.Msg}}"'`}}
     context: files
+    subprocess: true
     prompts:
       - type: "menuFromCommand"
         title: "ai Commits"
