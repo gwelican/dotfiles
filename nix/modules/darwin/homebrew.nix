@@ -1,6 +1,7 @@
 # Common homebrew configuration for Darwin hosts
 # Host-specific apps should be added in host override files
 {...}: {
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -13,6 +14,7 @@
     brews = [
       "mas"
       "kopia"
+      "mole"
       # "block-goose-cli"
       # "graphite"
     ];
@@ -26,7 +28,6 @@
 
     # Common homebrew casks (GUI applications)
     casks = [
-      "mole"
       # Essential productivity tools
       "bettertouchtool"
       "hammerspoon"
@@ -90,7 +91,6 @@
       "Telegram" = 747648890;
       "Amphetamine" = 937984704;
       # "HiddenBar" = 1452453066;
-      "Messenger" = 1480068668;
       "Home Assistant Companion" = 1099568401;
       "Windows App" = 1295203466;
       

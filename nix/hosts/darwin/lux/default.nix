@@ -27,6 +27,7 @@ in {
       "homebrew/homebrew-cask" = homebrew-cask;
       "homebrew/homebrew-bundle" = homebrew-bundle;
       "sst/homebrew-tap" = homebrew-sst;
+      "anomalyco/homebrew-tap" = homebrew-anomalyco;
     };
   };
 
@@ -49,8 +50,8 @@ in {
   ];
   
   homebrew.brews = [
-    "sst/tap/opencode"
-    "statix"  
+    "anomalyco/tap/opencode"
+    "statix"
   ];
 
   # Lux-specific system packages
