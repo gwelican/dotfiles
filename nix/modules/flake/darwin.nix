@@ -38,13 +38,17 @@
         modules = [
           # Base Darwin configuration (system, packages, homebrew, defaults, fonts)
           self.darwinModules.default
-          
+
           # Base host configuration (hostname, user, etc.)
           baseHostConfig
-          
+
           # External modules
           inputs.home-manager.darwinModules.home-manager
           inputs.nix-homebrew.darwinModules.nix-homebrew
+
+          {
+            nixpkgs.overlays = [ inputs.neovim-nightly.overlays.default ];
+          }
 
           {
             home-manager = {
