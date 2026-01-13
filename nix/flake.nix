@@ -33,6 +33,10 @@
       flake = false;
     };
 
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
+
   };
 
   outputs = inputs @ {flake-parts, ...}:
