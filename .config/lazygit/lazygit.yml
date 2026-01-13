@@ -1,4 +1,0 @@
-customCommands:
-  - key: 'p'
-    context: 'global'
-    command: 'git pull origin --rebase'
