@@ -47,6 +47,16 @@ in {
     
     # Utilities
     "nextcloud"
+    
+    # Additional apps from darwin-common (lux-specific)
+    "cursor"
+    "discord"
+    "spotify"
+    "obsidian"
+    "raycast"
+    "vlc"
+    "loopback"
+    "soundsource"
   ];
   
   homebrew.brews = [
