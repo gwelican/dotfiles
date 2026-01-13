@@ -1,0 +1,9 @@
+model: local:llama3.1:8b
+
+clients:
+  - type: openai-compatible
+    name: local
+    api_base: http://localhost:11434/v1
+    models:
+      - name: llama3.1:8b
+        max_input_tokens: 128000
