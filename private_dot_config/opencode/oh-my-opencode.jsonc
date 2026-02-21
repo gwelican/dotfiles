@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "model": "lms-local/qwen3-coder-30b-a3b-instruct",
+  "tmux": {
+    "enabled": true,
+    "layout": "main-vertical",
+    "main_pane_size": 60,
+    "main_pane_min_width": 120,
+    "agent_pane_min_width": 40
+  },
+  "providerConcurrency": {
+    "lmstudio": 1
+  },
+  "defaultConcurrency": 1,
+  "modelFallbacks": [
+    "lms-local/qwen3-coder-30b-a3b-instruct",
+    "lms-local/glm-4.7-flash",
+    "lms-local/deepseek-r1-distill-qwen-32b"
+  ],
+  "agents": {
+    "sisyphus-junior": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "sisyphus": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "prometheus": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "atlas": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "hephestus": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "oracle": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "librarian": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "metis": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "momus": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    // opencode primary agents
+    "build": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "plan": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    // opencode sub agents
+    "explore": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    },
+    "general": {
+      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+    }
+  }
+}
