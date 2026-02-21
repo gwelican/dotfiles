@@ -1,0 +1,77 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "prometheus",
+  "provider": {
+    "llama-local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "lm-local",
+      "options": {
+        "baseURL": "http://192.168.1.127:8080/v1",
+      },
+      "models": {
+        "qwen3-coder-30b-a3b-instruct": {
+          "name": "qwen3-coder-30b-a3b-instruct",
+          "options": {
+            "num_ctx": 96000,
+            "maxTokens": 512
+          },
+        },
+      }
+    },
+    "lms-local": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "lms-local",
+      "options": {
+        "baseURL": "http://192.168.1.127:1234/v1",
+      },
+      "models": {
+        "qwen3-coder-30b-a3b-instruct": {
+          "name": "qwen3-coder-30b-a3b-instruct",
+          "options": {
+            "num_ctx": 96000,
+            "maxTokens": 512
+          },
+        },
+        "deepseek-r1-distill-qwen-32b": {
+          "name": "DeepSeek R1 Distill Qwen 32B (Q4_K_M)",
+          "options": {
+            "num_ctx": 96000,
+            "maxTokens": 512
+          }
+        },
+        "glm-4.7-flash": {
+          "name": "GLM 4.7 Flash (Q4_K_M)",
+          "options": {
+            "num_ctx": 96000,
+            "maxTokens": 512
+          }
+        }
+        // "qwen2.5-coder:14b-instruct-q3_K_S": {
+        //   "name": "qwen2.5-coder:14b-instruct-q3_K_S",
+        // },
+        // "qwen2.5-coder:14b-instruct-q3_K_M": {
+        //   "name": "qwen2.5-coder:14b-instruct-q3_K_M",
+        // },
+        // "qwen2.5-coder:14b-instruct-q3_K_L": {
+        //   "name": "qwen2.5-coder:14b-instruct-q3_K_L",
+        // },
+        // "qwen2.5-coder:14b-instruct": {
+        //   "name": "qwen2.5-coder:14b-instruct",
+        // },
+        // "qwen2.5-coder:7b-instruct": {
+        //   "name": "qwen2.5-coder:7b-instruct",
+        // },
+        // "llama3.1:8b": {
+        //   "name": "llama3.1:8b",
+        // },
+        // "qwen2.5-coder:32b-instruct": {
+        //   "name": "qwen2.5-coder:32b-instruct",
+        // }
+      }
+    }
+  },
+  "plugin": [
+    "oh-my-opencode",
+    "@ramtinj95/opencode-tokenscope"
+  ]
+}
