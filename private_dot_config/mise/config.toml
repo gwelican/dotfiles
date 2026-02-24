@@ -22,7 +22,7 @@ _.python.venv = { path = "{{config_root}}/.venv", create = true }
 "aqua:kubernetes-sigs/kustomize" = "5.7.1"
 "aqua:kubernetes/kubectl" = "1.34.0"
 "aqua:mikefarah/yq" = "4.49.2"
-"aqua:siderolabs/talos" = "1.11.5"
+"aqua:siderolabs/talos" = "1.12.4"
 "aqua:yannh/kubeconform" = "0.7.0"
 "aqua:anomalyco/opencode" = "1.1.15"
 "aqua:kubernetes-sigs/krew" = "0.4.5"
