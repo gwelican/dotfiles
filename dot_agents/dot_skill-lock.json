@@ -1,0 +1,23 @@
+{
+  "version": 3,
+  "skills": {
+    "sequential-thinking": {
+      "source": "huynguyen03dev/opencode-setup",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/huynguyen03dev/opencode-setup.git",
+      "skillPath": "skills/sequential-thinking/SKILL.md",
+      "skillFolderHash": "bb5d04628021f5f1af6d759c31e03fd5aad75523",
+      "installedAt": "2026-02-24T18:34:15.049Z",
+      "updatedAt": "2026-02-24T18:34:15.049Z"
+    }
+  },
+  "dismissed": {},
+  "lastSelectedAgents": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "github-copilot",
+    "goose",
+    "opencode"
+  ]
+}
