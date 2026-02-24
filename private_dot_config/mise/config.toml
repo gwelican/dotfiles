@@ -24,7 +24,7 @@ _.python.venv = { path = "{{config_root}}/.venv", create = true }
 "aqua:mikefarah/yq" = "4.49.2"
 "aqua:siderolabs/talos" = "1.12.4"
 "aqua:yannh/kubeconform" = "0.7.0"
-"aqua:anomalyco/opencode" = "1.1.15"
+"aqua:anomalyco/opencode" = "1.2.10"
 "aqua:kubernetes-sigs/krew" = "0.4.5"
 "aqua:openai/codex" = "v0.25.0"
 
