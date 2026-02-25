@@ -36,6 +36,11 @@
           "num_ctx": 32768,
           "max_tokens": 4096
         },
+        "nanbeige.nanbeige4.1-3b/Nanbeige.Nanbeige4.1-3B.Q4_K_S.gguf": {
+          "name": "nanbeige4.1-3b",
+          "num_ctx": "262144",
+          "max_tokens": 4096
+        },
 
         // ---------- Distilled small reasoning / helper ----------
         "deepseek-r1-distill-qwen-1.5b": {
