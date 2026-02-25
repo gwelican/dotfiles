@@ -3,9 +3,15 @@ export CARAPACE_EXCLUDES='task,pv-migrate,flux' # exclude task, pv-migrate from 
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
+if (( $+commands[task] )); then
 eval "$(task --completion zsh)"
+fi
+if (( $+commands[pv-migrate] )); then
 eval "$(pv-migrate completion zsh)"
-eval "$(flux completion zsh)"
+fi
+if (( $+commands[flux] )); then
+  eval "$(flux completion zsh)"
+fi
 
 compdef kubecolor=kubectl
 compdef t=task
