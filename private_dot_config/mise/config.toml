@@ -14,6 +14,7 @@ _.python.venv = { path = "{{config_root}}/.venv", create = true }
 "aqua:jqlang/jq" = "1.8.1"
 "aqua:mikefarah/yq" = "4.52.4"
 "aqua:anomalyco/opencode" = "1.2.10"
+"aqua:1password/cli" = "2.31.1"
 
 zoxide = "0.9.9"
 bat = "0.26.1"
