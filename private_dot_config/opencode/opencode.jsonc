@@ -2,18 +2,19 @@
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "prometheus",
   "provider": {
-    "llama-local": {
+    "wsl": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "lm-local",
+      "name": "wsl",
       "options": {
         "baseURL": "http://192.168.1.127:8080/v1",
       },
       "models": {
-        "qwen3-coder-30b-a3b-instruct": {
-          "name": "qwen3-coder-30b-a3b-instruct",
-          "options": {
-            "num_ctx": 96000,
-            "maxTokens": 512
+        "qwen3.5": {
+          "name": "qwen3.5",
+          "id": "DrQwen",
+          "limit": {
+            "context": 131072,
+            "output": 4096
           },
         },
       }
@@ -27,41 +28,50 @@
       "models": {
         // ---------- Light general models ----------
         "qwen3-4b": {
+          "variants": {},
           "name": "Qwen3 4B (Q4_K_M)",
-          "num_ctx": 262144,
-          "max_tokens": 4096
+          "limit": {
+            "context": 262144,
+            "output": 4096
+          },
         },
         "qwen3-8b": {
           "name": "Qwen3 8B (Q4_K_M)",
-          "num_ctx": 32768,
-          "max_tokens": 4096
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          }
         },
         "nanbeige.nanbeige4.1-3b/Nanbeige.Nanbeige4.1-3B.Q4_K_S.gguf": {
           "name": "nanbeige4.1-3b",
-          "num_ctx": "262144",
-          "max_tokens": 4096
+          "limit": {
+            "context": 262144,
+            "output": 4096
+          }
         },
-
         // ---------- Distilled small reasoning / helper ----------
         "deepseek-r1-distill-qwen-1.5b": {
           "name": "DeepSeek R1 Distill Qwen 1.5B (Q8_0)",
-          "num_ctx": 131072,
-          "max_tokens": 4096
+          "limit": {
+            "context": 131072,
+            "output": 4096
+          }
         },
-
         // ---------- Big reasoning models (32B / 30B MoE) ----------
         "deepseek-r1-distill-qwen-32b": {
           "name": "DeepSeek R1 Distill Qwen 32B (Q4_K_M)",
-          "num_ctx": 96000,
-          "max_tokens": 4096
+          "limit": {
+            "context": 96000,
+            "output": 4096
+          }
         },
-
         "glm-4.7-flash": {
           "name": "GLM-4.7-Flash (30B MoE, Q4_K_M)",
-          "num_ctx": 96000,
-          "max_tokens": 4096
+          "limit": {
+            "context": 96000,
+            "output": 4096
+          }
         }
-
       }
     }
   },
