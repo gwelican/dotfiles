@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
-  "model": "lms-local/qwen3-coder-30b-a3b-instruct",
+  "model": "wsl/qwen3.5",
   "tmux": {
     "enabled": true,
     "layout": "main-vertical",
@@ -13,51 +13,51 @@
   },
   "defaultConcurrency": 1,
   "modelFallbacks": [
-    "lms-local/qwen3-coder-30b-a3b-instruct",
-    "lms-local/glm-4.7-flash",
-    "lms-local/deepseek-r1-distill-qwen-32b"
+    "wsl/qwen3.5",
+    // "lms-local/glm-4.7-flash",
+    // "lms-local/deepseek-r1-distill-qwen-32b"
   ],
   "agents": {
     "sisyphus-junior": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "sisyphus": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "prometheus": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "atlas": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "hephestus": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "oracle": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "librarian": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "metis": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "momus": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     // opencode primary agents
     "build": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "plan": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     // opencode sub agents
     "explore": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     },
     "general": {
-      "model": "lms-local/qwen3-coder-30b-a3b-instruct"
+      "model": "wsl/qwen3.5"
     }
   }
 }
