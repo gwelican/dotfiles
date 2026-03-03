@@ -54,4 +54,4 @@ yt-dlp = "2026.02.04"
 yamllint = "1.38.0"
 yamlfmt = "0.21.0"
 go = "1.26.0" # generally good to have 
-node = "25.7.0" # for vim plugins
+node = "25.8.0" # for vim plugins
