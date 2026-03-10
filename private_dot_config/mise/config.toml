@@ -24,6 +24,7 @@ fzf = "aqua:junegunn/fzf"
 lazygit = "aqua:jesseduffield/lazygit"
 rclone = "aqua:rclone/rclone"
 yamlfmt = "aqua:google/yamlfmt"
+exa = "aqua:ogham/exa"
 
 [tools]
 "python" = "3.14.3"
@@ -55,3 +56,5 @@ node = "25.7.0" # for vim plugins
 pipx = "1.8.0"
 uv = "0.10.9"
 rust = "1.94.0"
+starship = "1.24.2"
+exa = "0.10.1"
