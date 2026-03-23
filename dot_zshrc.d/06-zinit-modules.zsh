@@ -6,7 +6,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 zt 0a light-mode for \
     OMZP::kubectx \
-    OMZP::git \
     OMZP::sudo \
     OMZP::aws \
     OMZP::command-not-found \
