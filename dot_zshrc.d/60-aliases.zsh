@@ -41,3 +41,6 @@ alias c=chezmoi
 alias gg=lazygit
 alias cat='bat --paging=never'
 alias cd=z
+
+alias gpf='git push --force-with-lease'
+alias gp='git push'

@@ -1,0 +1,37 @@
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://192.168.1.127:1234/v1",
+      "api": "openai-completions",
+      "apiKey": "local-llama",
+      "models": [
+        {
+          "id": "qwen3.5-9b-coding",
+          "contextWindow": 262144,
+          "maxTokens": 4096
+        },
+        {
+          "id": "qwen3.5-27b-coding",
+          "contextWindow": 60000,
+          "maxTokens": 4096
+        },
+        {
+          "id": "omni-9b-coding",
+          "contextWindow": 262144,
+          "maxTokens": 4096,
+          "reasoning": false
+        },
+        {
+          "id": "omni-9b-high-coding",
+          "contextWindow": 60000,
+          "maxTokens": 4096
+        },
+        {
+          "id": "qwen3.5-27b-thinking",
+          "contextWindow": 60000,
+          "maxTokens": 4096
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,40 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
-  "model": "wsl/qwen3.5",
+  "agents": {
+    "sisyphus-junior": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "sisyphus": {
+      "model": "opencode-go/kimi-k2.5",
+      "variant": "max"
+    },
+    "explore": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "prometheus": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "atlas": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "hephestus": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "oracle": {
+      "model": "opencode-go/kimi-k2.5",
+      "variant": "high"
+    },
+    "librarian": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "metis": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    },
+    "momus": {
+      "model": "local-llama/qwen3.5-9b-coding"
+    }
+  },
+  "model": "local-llama/qwen3.5-9b-coding",
   "tmux": {
     "enabled": true,
     "layout": "main-vertical",
@@ -8,56 +42,19 @@
     "main_pane_min_width": 120,
     "agent_pane_min_width": 40
   },
-  "providerConcurrency": {
-    "lmstudio": 1
-  },
   "defaultConcurrency": 1,
   "modelFallbacks": [
-    "wsl/qwen3.5",
-    // "lms-local/glm-4.7-flash",
-    // "lms-local/deepseek-r1-distill-qwen-32b"
+    "local-llama/qwen3.5-9b-coding"
   ],
-  "agents": {
-    "sisyphus-junior": {
-      "model": "wsl/qwen3.5"
+  "categories": {
+    "small": {
+      "model": "local-llama/qwen3.5-9b-coding"
     },
-    "sisyphus": {
-      "model": "wsl/qwen3.5"
+    "medium": {
+      "model": "opencode-go/kimi-k2.5"
     },
-    "prometheus": {
-      "model": "wsl/qwen3.5"
-    },
-    "atlas": {
-      "model": "wsl/qwen3.5"
-    },
-    "hephestus": {
-      "model": "wsl/qwen3.5"
-    },
-    "oracle": {
-      "model": "wsl/qwen3.5"
-    },
-    "librarian": {
-      "model": "wsl/qwen3.5"
-    },
-    "metis": {
-      "model": "wsl/qwen3.5"
-    },
-    "momus": {
-      "model": "wsl/qwen3.5"
-    },
-    // opencode primary agents
-    "build": {
-      "model": "wsl/qwen3.5"
-    },
-    "plan": {
-      "model": "wsl/qwen3.5"
-    },
-    // opencode sub agents
-    "explore": {
-      "model": "wsl/qwen3.5"
-    },
-    "general": {
-      "model": "wsl/qwen3.5"
+    "large": {
+      "model": "opencode-go/kimi-k2.5"
     }
   }
 }

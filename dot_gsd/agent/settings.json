@@ -1,0 +1,8 @@
+{
+  "defaultProvider": "ollama",
+  "defaultModel": "omni-9b-coding",
+  "defaultThinkingLevel": "off",
+  "quietStartup": true,
+  "collapseChangelog": true,
+  "lastChangelogVersion": "2.29.0"
+}
