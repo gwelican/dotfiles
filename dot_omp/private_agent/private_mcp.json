@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
+  "mcpServers": {
+    "ghostfolio": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "ghostfolio-mcp"
+      ]
+    },
+    "homeassistant": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "mcp-proxy",
+        "--transport",
+        "streamablehttp",
+        "http://192.168.1.240:9583/private_fl9YgpPmtUrcRClfJUrv6A"
+      ]
+    }
+  }
+}
