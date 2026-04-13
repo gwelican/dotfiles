@@ -36,7 +36,7 @@ sops = "3.12.1"
 task = "3.48.0"
 jq = "1.8.1"
 yq = "4.52.4"
-opencode = "1.2.10"
+opencode = "1.4.3"
 1password-cli = "2.31.1"
 
 zoxide = "0.9.9"
