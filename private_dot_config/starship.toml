@@ -22,6 +22,7 @@ style = 'bold fg:hostname_fg'
 format = '[$user]($style)'
 style_user = 'bold fg:yellow'
 style_root = 'bold fg:red'
+show_always = true
 
 #[palettes.red]
 
