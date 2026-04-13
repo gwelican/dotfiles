@@ -2,6 +2,9 @@
 
 version: '3'
 includes:
+  llama:
+    taskfile: Taskfile.llama.yaml
+    optional: true
   ppy:
     taskfile: Taskfile.ppy.yaml
     optional: true
