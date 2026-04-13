@@ -6,11 +6,10 @@ display:
 statusLine: 
   preset: default
 modelRoles: 
-  default: llama/gemma-4-26b-a4b-coding
-  slow: opencode-go/kimi-k2.5
-  plan: opencode-go/kimi-k2.5
+  default: llama/omni-9b-coding
+  slow: llama/qwen3.5-27b-thinking
+  plan: llama/qwen3.5-27b-thinking
   commit: llama/omni-9b-coding
   task: llama/omni-9b-coding
   vision: llama/omni-9b-coding
   smol: llama/omni-9b-coding
-lastChangelogVersion: 14.0.2
