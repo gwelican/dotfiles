@@ -12,6 +12,9 @@ fi
 if (( $+commands[flux] )); then
   eval "$(flux completion zsh)"
 fi
+if (( $+commands[mise] )); then
+  eval "$(mise completion zsh)"
+fi
 
 compdef kubecolor=kubectl
 compdef t=task
