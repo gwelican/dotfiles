@@ -19,7 +19,6 @@ zt 0a light-mode for \
     willghatch/zsh-saneopt \
     zsh-users/zsh-history-substring-search \
     has'git' pick'init.zsh' atload'alias gi="git-ignore"' blockf \
-    laggardkernel/git-ignore \
     has'git-extras' \
     as"program" pick"bin/git-dsf" \
     zdharma-continuum/zsh-diff-so-fancy
