@@ -20,6 +20,7 @@ fi
 
 compdef kubecolor=kubectl
 compdef t=task
+compdef _cd z
 
 # to avoid issues with carapace
 zstyle ':fzf-tab:*' query-string ''.
@@ -27,7 +28,7 @@ zstyle ':fzf-tab:*' fzf-preview ''
 
 zstyle ':fzf-tab:complete:(cat|bat|grep|vim|nvim|nano|code):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 {}'
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Grouping: Group results by category (e.g., "Parameters", "Commands")
 zstyle ':completion:*' group-name ''
