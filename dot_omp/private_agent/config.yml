@@ -6,10 +6,25 @@ display:
 statusLine: 
   preset: default
 modelRoles: 
-  default: llama/omni-9b-coding
-  slow: llama/qwen3.5-27b-thinking
-  plan: llama/qwen3.5-27b-thinking
-  commit: llama/omni-9b-coding
-  task: llama/omni-9b-coding
-  vision: llama/omni-9b-coding
-  smol: llama/omni-9b-coding
+  default: openai-codex/gpt-5.5
+  slow: opencode-go/kimi-k2.6
+  plan: opencode-go/kimi-k2.6
+  commit: llama/gemma-4-26b-a4b-coding
+  task: opencode-go/kimi-k2.6
+  vision: llama/gemma-4-26b-a4b-coding
+  smol: llama/gemma-4-26b-a4b-coding
+  designer: opencode-go/kimi-k2.6
+lastChangelogVersion: 15.0.2
+searxng: 
+  endpoint: http://192.168.4.87:8080
+  language: en
+providers: 
+  webSearch: searxng
+web_search: 
+  preferredProvider: searxng
+browser: 
+  headless: false
+memories: 
+  enabled: true
+memory: 
+  backend: local
