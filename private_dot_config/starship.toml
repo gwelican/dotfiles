@@ -4,7 +4,7 @@
 # Inserts a blank line between shell prompts
 add_newline = false
 
-format = '''$time$username@$hostname $directory$git_branch $git_status$git_state$kubernetes [](bold fg:228) '''
+format = '''$time$username@$hostname $directory$git_branch $git_status$git_state$kubernetes [](bold fg:228) $python'''
 #format = '''
 #[ ](bold fg:start bg:time_bg)$time$hostname [ ](bold fg:time_bg bg:directory_bg)$directory[ ](bold fg:directory_bg bg:git_branch_bg)$git_branch[](bold fg:git_branch_bg bg:git_dirty_bg)$git_status$git_state[](bold fg:228) '''
 
@@ -61,7 +61,7 @@ format = "[$time ](fg:time_fg bg:time_bg)"
 
 [git_branch]
 style = "bold fg:git_branch_fg bg:git_branch_bg"
-format =  "[$symbol$branch(:$remote_branch)]($style)"
+format = "[$symbol$branch(:$remote_branch)]($style)"
 # 
 
 [git_status]
@@ -122,6 +122,11 @@ success_symbol = '[➜](bold red)' # The 'success_symbol' segment is being set t
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[python]
+symbol = '👾 '
+pyenv_version_name = true
+disabled = false
 
 # format = """
 # [](#9A348E)\
