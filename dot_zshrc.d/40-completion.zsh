@@ -16,6 +16,8 @@ if (( $+commands[mise] )); then
   eval "$(mise completion zsh)"
 fi
 
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
 compdef kubecolor=kubectl
 compdef t=task
 
