@@ -44,3 +44,8 @@ alias cd=z
 
 alias gpf='git push --force-with-lease'
 alias gp='git push'
+
+if [[ "$(uname)" == "Linux" ]]; then
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+fi
