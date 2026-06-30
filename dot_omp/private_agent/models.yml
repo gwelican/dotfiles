@@ -2,10 +2,41 @@ providers:
   omnirouter:
     baseUrl: http://192.168.4.86:20128
     api: openai-responses
-    apiKey: placeholder
-    authHeader: true
     discovery:
       type: llama.cpp
+    modelOverrides:
+      llamacpp/qwen36-35b-coder:think:
+        reasoning: true
+        compat:
+          thinkingFormat: qwen-chat-template
+      llama-cpp/qwen36-35b-coder:think:
+        reasoning: true
+        compat:
+          thinkingFormat: qwen-chat-template
+      llamacpp/gemma4-12b:
+        input: ["text", "image"]
+      llama-cpp/gemma4-12b:
+        input: ["text", "image"]
+      llamacpp/gemma4-26b-a4b:
+        input: ["text", "image"]
+      llama-cpp/gemma4-26b-a4b:
+        input: ["text", "image"]
+      llamacpp/gemma4-31b-coder:
+        input: ["text", "image"]
+      llama-cpp/gemma4-31b-coder:
+        input: ["text", "image"]
+      llamacpp/qwen35-9b-mythos:
+        input: ["text", "image"]
+      llama-cpp/qwen35-9b-mythos:
+        input: ["text", "image"]
+      llamacpp/qwen35-9b-vision:
+        input: ["text", "image"]
+      llama-cpp/qwen35-9b-vision:
+        input: ["text", "image"]
+      llamacpp/qwen36-27b-mythos:
+        input: ["text", "image"]
+      llama-cpp/qwen36-27b-mythos:
+        input: ["text", "image"]
   # llama:
   #   baseUrl: http://192.168.1.127:1234/v1
   #   api: openai-responses
