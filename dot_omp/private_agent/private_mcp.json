@@ -6,7 +6,8 @@
       "command": "uvx",
       "args": [
         "ghostfolio-mcp"
-      ]
+      ],
+      "enabled": false
     },
     "homeassistant": {
       "type": "stdio",
@@ -16,7 +17,8 @@
         "--transport",
         "streamablehttp",
         "http://192.168.1.240:9583/private_fl9YgpPmtUrcRClfJUrv6A"
-      ]
+      ],
+      "enabled": false
     }
   }
 }

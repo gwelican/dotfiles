@@ -3,18 +3,19 @@ theme:
 symbolPreset: nerd
 display: 
   showTokenUsage: true
+  cacheMissMarker: true
 statusLine: 
   preset: default
+  showHookStatus: true
 modelRoles: 
-  default: openai-codex/gpt-5.5
-  slow: opencode-go/kimi-k2.6
-  plan: opencode-go/kimi-k2.6
-  commit: llama/gemma-4-26b-a4b-coding
-  task: opencode-go/kimi-k2.6
+  default: omnirouter/llama-cpp/qwen36-35b-coder
+  slow: omnirouter/pc-llama/qwen36-35b-coder
+  plan: omnirouter/opencode-go/glm-5.2
+  commit: omirouter/pc-llama/qwen36-35b-coder
+  task: omirouter/pc-llama/qwen36-35b-coder
   vision: llama/gemma-4-26b-a4b-coding
-  smol: llama/gemma-4-26b-a4b-coding
+  smol: omnirouter/llamacpp/qwen36-35b-coder:think
   designer: opencode-go/kimi-k2.6
-lastChangelogVersion: 15.0.2
 searxng: 
   endpoint: http://192.168.4.87:8080
   language: en
@@ -23,8 +24,37 @@ providers:
 web_search: 
   preferredProvider: searxng
 browser: 
-  headless: false
+  headless: true
 memories: 
   enabled: true
 memory: 
-  backend: local
+  backend: mnemopi
+setupVersion: 1
+hideThinkingBlock: true
+autolearn: 
+  enabled: true
+mnemopi: 
+  scoping: global
+task: 
+  agentModelOverrides: 
+    task: omnirouter/pc-llama/qwen36-35b-coder
+  showResolvedModelBadge: true
+  eager: default
+compaction: 
+  strategy: context-full
+defaultThinkingLevel: auto
+advisor: 
+  enabled: true
+  subagents: false
+steeringMode: one-at-a-time
+features: 
+  unexpectedStopDetection: true
+edit: 
+  mode: hashline
+mcp: 
+  discoveryMode: true
+  notifications: true
+plan: 
+  defaultOnStartup: false
+secrets: 
+  enabled: true
