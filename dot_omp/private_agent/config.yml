@@ -1,60 +1,67 @@
-theme: 
+theme:
   dark: dark-solarized
 symbolPreset: nerd
-display: 
+display:
   showTokenUsage: true
   cacheMissMarker: true
-statusLine: 
+statusLine:
   preset: default
   showHookStatus: true
-modelRoles: 
-  default: omnirouter/llama-cpp/qwen36-35b-coder
-  slow: omnirouter/pc-llama/qwen36-35b-coder
+modelRoles:
+  default: omnirouter/llamacpp/qwen36-35b-coder:think
+  slow: omnirouter/llamacpp/qwen36-35b-coder
   plan: omnirouter/opencode-go/glm-5.2
-  commit: omirouter/pc-llama/qwen36-35b-coder
-  task: omirouter/pc-llama/qwen36-35b-coder
-  vision: llama/gemma-4-26b-a4b-coding
+  commit: omnirouter/llamacpp/qwen36-35b-coder
+  task: omnirouter/llamacpp/qwen36-35b-coder
+  vision: omnirouter/llama-cpp/gemma4-26b-a4b
   smol: omnirouter/llamacpp/qwen36-35b-coder:think
   designer: opencode-go/kimi-k2.6
-searxng: 
+searxng:
   endpoint: http://192.168.4.87:8080
   language: en
-providers: 
+providers:
   webSearch: searxng
-web_search: 
+web_search:
   preferredProvider: searxng
-browser: 
+browser:
   headless: true
-memories: 
+memories:
   enabled: true
-memory: 
-  backend: mnemopi
+memory:
+  backend: agentmemory
+  agentmemory:
+    url: http://192.168.4.76:3111
 setupVersion: 1
-hideThinkingBlock: true
-autolearn: 
+hideThinkingBlock: false
+autolearn:
   enabled: true
-mnemopi: 
-  scoping: global
-task: 
-  agentModelOverrides: 
-    task: omnirouter/pc-llama/qwen36-35b-coder
+task:
   showResolvedModelBadge: true
   eager: default
-compaction: 
-  strategy: context-full
+compaction:
+  strategy: auto
 defaultThinkingLevel: auto
-advisor: 
+advisor:
   enabled: true
   subagents: false
 steeringMode: one-at-a-time
-features: 
+features:
   unexpectedStopDetection: true
-edit: 
+edit:
   mode: hashline
-mcp: 
+mcp:
   discoveryMode: true
   notifications: true
-plan: 
+plan:
   defaultOnStartup: false
-secrets: 
+secrets:
   enabled: true
+disabledExtensions:
+  - skill:understand
+  - skill:understand-chat
+  - skill:understand-dashboard
+  - skill:understand-diff
+  - skill:understand-domain
+  - skill:understand-explain
+  - skill:understand-knowledge
+  - skill:understand-onboard
