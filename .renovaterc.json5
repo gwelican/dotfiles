@@ -16,7 +16,7 @@
       matchPackageNames: [
         "/cli/cli/",
         "/opencode/",
-        "/carapace/",
+        "/carapace-sh/carapace-bin/,
         "/go-task/task/",
       ],
       matchUpdateTypes: [
