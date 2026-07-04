@@ -39,7 +39,7 @@ yq = "4.53.3"
 opencode = "1.17.13"
 1password-cli = "2.31.1"
 
-zoxide = "0.9.9"
+zoxide = "0.10.0"
 bat = "0.26.1"
 atuin = "18.16.1"
 chezmoi = "2.70.5"
