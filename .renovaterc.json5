@@ -18,6 +18,11 @@
         "/opencode/",
         "/carapace-sh/carapace-bin/",
         "/go-task/task/",
+        "/astral-sh/uv/",
+        "/jdx/usage/",
+        "/junegunn/fzf/",
+        "/ajeetdsouza/zoxide/",
+        "/jesseduffield/lazygit/",
       ],
       matchUpdateTypes: [
         "patch",
