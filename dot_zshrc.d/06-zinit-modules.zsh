@@ -8,16 +8,7 @@ zt 0a light-mode for \
     OMZP::kubectx \
     OMZP::sudo \
     OMZP::aws \
-    OMZP::command-not-found \
-    OMZP::extract \
-    OMZP::virtualenv \
-    OMZP::gradle \
-    OMZP::colorize \
     OMZL::termsupport.zsh \
-    skx/sysadmin-util \
-    djui/alias-tips \
-    willghatch/zsh-saneopt \
-    zsh-users/zsh-history-substring-search \
     has'git' pick'init.zsh' atload'alias gi="git-ignore"' blockf \
     has'git-extras' \
     as"program" pick"bin/git-dsf" \
