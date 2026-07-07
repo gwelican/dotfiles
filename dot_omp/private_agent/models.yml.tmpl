@@ -1,8 +1,9 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
 providers:
   omnirouter:
     baseUrl: http://192.168.4.86:20128
     api: openai-responses
-    apiKey: ${OMNIROUTER_API_KEY}
+    apiKey: {{ $secrets.omnirouter_api_key }}
     authHeader: true
     discovery:
       type: llama.cpp
