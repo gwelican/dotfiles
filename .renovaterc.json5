@@ -10,6 +10,7 @@
       groupName: "mise tools",
       ignoreTests: true,
       matchDatasources: [
+        "aqua",
         "github-releases",
         "github-tags",
       ],
