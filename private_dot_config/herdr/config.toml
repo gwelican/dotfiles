@@ -1,0 +1,31 @@
+[theme]
+name = "catppuccin"
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+accent = "cyan"
+
+[experimental]
+pane_history = true
+switch_ascii_input_source_in_prefix = false
+
+[keys]
+prefix = "ctrl+a"
+focus_pane_left = "prefix+left"
+focus_pane_down = "prefix+down"
+focus_pane_up = "prefix+up"
+focus_pane_right = "prefix+right"
+cycle_pane_next = "prefix+tab"
+goto = "prefix+f"
+
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+description = "Open lazygit in a new pane"
+
+[worktrees]
+directory = "~/.herdr/worktrees"
