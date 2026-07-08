@@ -14,13 +14,15 @@ modelRoles:
   commit: omnirouter/llamacpp/qwen36-35b-coder
   task: omnirouter/llamacpp/qwen36-35b-coder
   vision: omnirouter/llama-cpp/gemma4-26b-a4b
-  smol: omnirouter/llamacpp/qwen36-35b-coder:think
+  smol: omnirouter/llamacpp/qwen36-35b-coder
   designer: opencode-go/kimi-k2.6
+  advisor: omnirouter/opencode-go/glm-5.2
 searxng: 
   endpoint: http://192.168.4.87:8080
   language: en
 providers: 
   webSearch: searxng
+  autoThinkingModel: online
 web_search: 
   preferredProvider: searxng
 browser: 
@@ -43,7 +45,7 @@ compaction:
 defaultThinkingLevel: auto
 advisor: 
   enabled: true
-  subagents: false
+  subagents: true
 steeringMode: one-at-a-time
 features: 
   unexpectedStopDetection: true
