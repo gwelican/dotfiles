@@ -22,6 +22,8 @@ compdef kubecolor=kubectl
 compdef t=task
 compdef _cd z
 compdef _cat bat
+compdef eza=ls
+
 
 # to avoid issues with carapace
 zstyle ':fzf-tab:*' query-string ''.
