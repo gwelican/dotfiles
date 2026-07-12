@@ -1,3 +1,4 @@
+onboarding = false
 [theme]
 name = "catppuccin"
 
@@ -13,7 +14,7 @@ pane_history = true
 switch_ascii_input_source_in_prefix = false
 
 [keys]
-prefix = "ctrl+a"
+prefix = "ctrl+b"
 focus_pane_left = "prefix+left"
 focus_pane_down = "prefix+down"
 focus_pane_up = "prefix+up"
