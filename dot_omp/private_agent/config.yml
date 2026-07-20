@@ -1,64 +1,66 @@
-theme: 
+theme:
   dark: dark-solarized
 symbolPreset: nerd
-display: 
+display:
   showTokenUsage: true
   cacheMissMarker: true
-statusLine: 
+statusLine:
   preset: default
   showHookStatus: true
-modelRoles: 
-  default: omnirouter/llamacpp/qwen36-35b-coder
-  slow: omnirouter/llamacpp/qwen36-35b-coder
-  plan: omnirouter/opencode-go/glm-5.2
-  commit: omnirouter/llamacpp/qwen36-35b-coder
-  task: omnirouter/llamacpp/qwen36-35b-coder
-  vision: omnirouter/llama-cpp/gemma4-26b-a4b
-  smol: omnirouter/llamacpp/qwen36-35b-coder
-  designer: opencode-go/kimi-k2.6
-  advisor: omnirouter/opencode-go/glm-5.2
-searxng: 
+modelRoles:
+  slow: llama/slow
+  plan: llama/plan
+  commit: llama/commit
+  task: llama/task
+  vision: llama/vision
+  smol: llama/smol
+  designer: llama/designer
+  advisor: omnirouter/cx/gpt-5.5
+  default: llama/default
+  tiny: llama/tiny
+  assistant: llama/assistant
+searxng:
   endpoint: http://192.168.4.87:8080
   language: en
-providers: 
+providers:
   webSearch: searxng
   autoThinkingModel: online
-web_search: 
+web_search:
   preferredProvider: searxng
-browser: 
+browser:
   headless: true
-memories: 
+memories:
   enabled: true
-memory: 
+memory:
   backend: agentmemory
-  agentmemory: 
+  agentmemory:
     url: http://192.168.4.76:3111
 setupVersion: 1
 hideThinkingBlock: false
-autolearn: 
+autolearn:
   enabled: true
-task: 
+task:
   showResolvedModelBadge: true
-  eager: default
-compaction: 
+  eager: task
+  maxConcurrency: 2
+compaction:
   strategy: auto
 defaultThinkingLevel: auto
-advisor: 
+advisor:
   enabled: true
   subagents: true
 steeringMode: one-at-a-time
-features: 
+features:
   unexpectedStopDetection: true
-edit: 
+edit:
   mode: hashline
-mcp: 
-  discoveryMode: true
+mcp:
   notifications: true
-plan: 
+plan:
   defaultOnStartup: false
-secrets: 
+secrets:
   enabled: true
-disabledExtensions: 
+disabledExtensions:
   - skill:understand
   - skill:understand-chat
   - skill:understand-dashboard
@@ -67,3 +69,4 @@ disabledExtensions:
   - skill:understand-explain
   - skill:understand-knowledge
   - skill:understand-onboard
+
