@@ -2,14 +2,14 @@
 providers:
   omnirouter:
     baseUrl: http://192.168.4.86:20128
-    api: openai-models-list
+    api: openai-completions
     apiKey: {{ $secrets.omnirouter_api_key }}
     authHeader: true
     discovery:
-      type: llama.cpp
+      type: openai-models-list
   llama:
     baseUrl: http://192.168.1.127:1234/v1
-    api: openai-models-list
+    api: openai-completions
     auth: none
     discovery:
-      type: llama.cpp
+      type: openai-models-list
