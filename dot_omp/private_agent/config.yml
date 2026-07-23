@@ -24,6 +24,7 @@ searxng:
   language: en
 providers:
   webSearch: searxng
+  enabled: true
   autoThinkingModel: online
 web_search:
   preferredProvider: searxng
@@ -55,6 +56,7 @@ features:
 edit:
   mode: hashline
 mcp:
+  discoveryMode: true
   notifications: true
 plan:
   defaultOnStartup: false
@@ -69,4 +71,16 @@ disabledExtensions:
   - skill:understand-explain
   - skill:understand-knowledge
   - skill:understand-onboard
-
+terminal:
+  showProgress: true
+tui:
+  tight: false
+branchSummary:
+  enabled: true
+bash:
+  autoBackground:
+    enabled: true
+inspect_image:
+  enabled: true
+checkpoint:
+  enabled: false
