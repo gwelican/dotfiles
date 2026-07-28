@@ -39,13 +39,13 @@ goto = "prefix+f"
 prefix = "ctrl+a"
 split_vertical = "prefix+|"
 reload_config = "prefix+r"
-last_pane = "ctrl+a"
+last_pane = "ctrl+`"
 previous_tab = ["prefix+p", "alt+left"]
 next_tab = ["prefix+n", "alt+right"]
-focus_pane_left = ["prefix+left", "ctrl+left"]
-focus_pane_right = ["prefix+right", "ctrl+right"]
-focus_pane_up = ["prefix+up", "ctrl+up"]
-focus_pane_down = ["prefix+down", "ctrl+down"]
+focus_pane_left = ["prefix+left"]
+focus_pane_right = ["prefix+right"]
+focus_pane_up = ["prefix+up"]
+focus_pane_down = ["prefix+down"]
 toggle_sidebar = ["ctrl+p"]
 
 
