@@ -41,7 +41,7 @@ opencode = "1.18.7"
 
 zoxide = "0.10.0"
 bat = "0.26.1"
-atuin = "18.18.0"
+atuin = "18.18.1"
 chezmoi = "2.71.1"
 carapace = "1.7.3"
 direnv = "2.37.1"
