@@ -1,0 +1,6 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
+
+NTFY_URL=https://ntfy.gwelican.eu/herdr
+NTFY_TITLE=Herdr
+NTFY_TOKEN={{ $secrets.ntfy_token }}
+NTFY_LINES=12
