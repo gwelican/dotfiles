@@ -21,11 +21,6 @@
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 
-[filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
-  required = true
-
 [color]
   ui = true
 
@@ -90,7 +85,7 @@
   trustExitCode = true
 
 [http]
-  sslVersion = tlsv1.2
+  sslVersion = tlsv1.3
 
 [fetch]
   prune = true
