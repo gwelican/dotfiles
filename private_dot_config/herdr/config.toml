@@ -2,25 +2,55 @@ onboarding = false
 [theme]
 name = "catppuccin"
 
+[theme.custom]
+panel_bg   = "#303446"
+surface0   = "#414559"
+surface1   = "#51576d"
+overlay0   = "#737994"
+overlay1   = "#838ba7"
+text       = "#c6d0f5"
+subtext0   = "#a5adce"
+mauve      = "#ca9ee6"
+green      = "#a6d189"
+yellow     = "#e5c890"
+red        = "#e78284"
+blue       = "#8caaee"
+teal       = "#94d2f6"
+peach      = "#ef9f76"
+
 [ui.toast]
-delivery = "system"
+delivery = "herdr"
 
 [ui]
 show_agent_labels_on_pane_borders = true
 accent = "cyan"
+# pane_borders = true
+# pane_gaps = true
+pane_borders = true
+pane_gaps = true
+copy_on_select = true
 
 [experimental]
 pane_history = true
-switch_ascii_input_source_in_prefix = false
+switch_ascii_input_source_in_prefix = true
 
 [keys]
-prefix = "ctrl+b"
-focus_pane_left = "prefix+left"
-focus_pane_down = "prefix+down"
-focus_pane_up = "prefix+up"
-focus_pane_right = "prefix+right"
-cycle_pane_next = "prefix+tab"
 goto = "prefix+f"
+prefix = "ctrl+a"
+split_vertical = "prefix+|"
+reload_config = "prefix+r"
+last_pane = "ctrl+a"
+previous_tab = ["prefix+p", "alt+left"]
+next_tab = ["prefix+n", "alt+right"]
+focus_pane_left = ["prefix+left", "ctrl+left"]
+focus_pane_right = ["prefix+right", "ctrl+right"]
+focus_pane_up = ["prefix+up", "ctrl+up"]
+focus_pane_down = ["prefix+down", "ctrl+down"]
+toggle_sidebar = ["ctrl+p"]
+
+
+[session]
+resume_agents_on_restore = true
 
 [[keys.command]]
 key = "prefix+g"
