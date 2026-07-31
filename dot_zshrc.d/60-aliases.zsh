@@ -56,6 +56,7 @@ alias la='eza -lah --icons --git'
 alias tree='eza --tree --icons'
 
 
+alias find=fd
 # Better cat
 alias cat='bat'
 
