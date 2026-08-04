@@ -1,13 +1,15 @@
-theme:
+theme: 
   dark: dark-solarized
 symbolPreset: nerd
-display:
+extensions: 
+  - /home/gwelican/.omp/agent/extensions/mcp-skill-autorouter.ts
+display: 
   showTokenUsage: true
   cacheMissMarker: true
-statusLine:
+statusLine: 
   preset: default
   showHookStatus: true
-modelRoles:
+modelRoles: 
   slow: llama/slow
   plan: llama/plan
   commit: llama/commit
@@ -19,50 +21,71 @@ modelRoles:
   default: llama/default
   tiny: llama/tiny
   assistant: llama/assistant
-searxng:
+searxng: 
   endpoint: http://192.168.4.87:8080
   language: en
-providers:
-  webSearch: searxng
+providers: 
   enabled: true
   autoThinkingModel: online
-web_search:
-  preferredProvider: searxng
-browser:
+  webSearchOrder: 
+    - searxng
+    - perplexity
+    - gemini
+    - anthropic
+    - codex
+    - xai
+    - zai
+    - exa
+    - tinyfish
+    - jina
+    - kagi
+    - tavily
+    - firecrawl
+    - brave
+    - kimi
+    - parallel
+    - synthetic
+    - startpage
+    - duckduckgo
+    - ecosia
+    - google
+    - mojeek
+    - public
+browser: 
   headless: true
-memories:
+memories: 
   enabled: true
-memory:
+memory: 
   backend: agentmemory
-  agentmemory:
+  agentmemory: 
     url: http://192.168.4.76:3111
 setupVersion: 1
 hideThinkingBlock: false
-autolearn:
+autolearn: 
   enabled: true
-task:
+task: 
   showResolvedModelBadge: true
   eager: task
   maxConcurrency: 2
-compaction:
-  strategy: auto
+compaction: 
+  strategy: snapcompact
+  handoffSaveToDisk: true
 defaultThinkingLevel: auto
-advisor:
+advisor: 
   enabled: true
   subagents: true
 steeringMode: one-at-a-time
-features:
+features: 
   unexpectedStopDetection: true
-edit:
+edit: 
   mode: hashline
-mcp:
-  discoveryMode: true
-  notifications: true
-plan:
+mcp: 
+  notifications: false
+plan: 
   defaultOnStartup: false
-secrets:
+secrets: 
   enabled: true
-disabledExtensions:
+disabledExtensions: 
   - skill:understand
   - skill:understand-chat
   - skill:understand-dashboard
@@ -71,16 +94,24 @@ disabledExtensions:
   - skill:understand-explain
   - skill:understand-knowledge
   - skill:understand-onboard
-terminal:
+terminal: 
   showProgress: true
-tui:
+tui: 
   tight: false
-branchSummary:
+branchSummary: 
   enabled: true
-bash:
-  autoBackground:
+bash: 
+  autoBackground: 
     enabled: true
-inspect_image:
-  enabled: true
-checkpoint:
+inspect_image: 
+  mode: "on"
+checkpoint: 
   enabled: false
+tools: 
+  xdev: true
+  xdevDocs: catalog
+vault: 
+  enabled: true
+dev: 
+  autoqaConsent: granted
+  autoqa: false
