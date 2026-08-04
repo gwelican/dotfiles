@@ -1,23 +1,58 @@
 {
   "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
   "mcpServers": {
-    "ghostfolio": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "ghostfolio-mcp"
-      ],
+    "toolhive-core": {
+      "type": "http",
+      "url": "http://192.168.4.91:4483/core/mcp",
+      "headers": {},
       "enabled": false
     },
-    "homeassistant": {
-      "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "mcp-proxy",
-        "--transport",
-        "streamablehttp",
-        "http://192.168.1.240:9583/private_fl9YgpPmtUrcRClfJUrv6A"
-      ],
+    "toolhive-observability": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/observability/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-media": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/media/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-home": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/home/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-creative": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/creative/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-finance": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/finance/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-tasks": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/tasks/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-admin": {
+      "type": "http",
+      "url": "http://192.168.4.91:4483/mcp",
+      "headers": {},
+      "enabled": false
+    },
+    "toolhive-remote": {
+      "type": "http",
+      "url": "https://192.168.4.91:4483/",
+      "headers": {},
       "enabled": false
     }
   }
