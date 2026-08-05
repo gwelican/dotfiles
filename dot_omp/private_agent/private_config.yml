@@ -1,33 +1,31 @@
-theme: 
+theme:
   dark: dark-solarized
 symbolPreset: nerd
-extensions: 
+extensions:
   - /home/gwelican/.omp/agent/extensions/mcp-skill-autorouter.ts
-display: 
+display:
   showTokenUsage: true
   cacheMissMarker: true
-statusLine: 
+statusLine:
   preset: default
   showHookStatus: true
-modelRoles: 
+modelRoles:
+  default: llama/default
+  smol: llama/smol
   slow: llama/slow
   plan: llama/plan
   commit: llama/commit
   task: llama/task
   vision: llama/vision
-  smol: llama/smol
   designer: llama/designer
   advisor: omnirouter/cx/gpt-5.5
-  default: llama/default
-  tiny: llama/tiny
-  assistant: llama/assistant
-searxng: 
+searxng:
   endpoint: http://192.168.4.87:8080
   language: en
-providers: 
+providers:
   enabled: true
   autoThinkingModel: online
-  webSearchOrder: 
+  webSearchOrder:
     - searxng
     - perplexity
     - gemini
@@ -51,41 +49,41 @@ providers:
     - google
     - mojeek
     - public
-browser: 
+browser:
   headless: true
-memories: 
+memories:
   enabled: true
-memory: 
+memory:
   backend: agentmemory
-  agentmemory: 
+  agentmemory:
     url: http://192.168.4.76:3111
 setupVersion: 1
 hideThinkingBlock: false
-autolearn: 
+autolearn:
   enabled: true
-task: 
+task:
   showResolvedModelBadge: true
   eager: task
   maxConcurrency: 2
-compaction: 
+compaction:
   strategy: snapcompact
   handoffSaveToDisk: true
 defaultThinkingLevel: auto
-advisor: 
+advisor:
   enabled: true
   subagents: true
 steeringMode: one-at-a-time
-features: 
+features:
   unexpectedStopDetection: true
-edit: 
+edit:
   mode: hashline
-mcp: 
+mcp:
   notifications: false
-plan: 
+plan:
   defaultOnStartup: false
-secrets: 
+secrets:
   enabled: true
-disabledExtensions: 
+disabledExtensions:
   - skill:understand
   - skill:understand-chat
   - skill:understand-dashboard
@@ -94,24 +92,24 @@ disabledExtensions:
   - skill:understand-explain
   - skill:understand-knowledge
   - skill:understand-onboard
-terminal: 
+terminal:
   showProgress: true
-tui: 
+tui:
   tight: false
-branchSummary: 
+branchSummary:
   enabled: true
-bash: 
-  autoBackground: 
+bash:
+  autoBackground:
     enabled: true
-inspect_image: 
+inspect_image:
   mode: "on"
-checkpoint: 
+checkpoint:
   enabled: false
-tools: 
+tools:
   xdev: true
   xdevDocs: catalog
-vault: 
+vault:
   enabled: true
-dev: 
+dev:
   autoqaConsent: granted
   autoqa: false
