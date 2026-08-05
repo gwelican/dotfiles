@@ -9,37 +9,37 @@
     },
     "toolhive-observability": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/observability/mcp",
+      "url": "http://192.168.4.91:4483/observability/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-media": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/media/mcp",
+      "url": "http://192.168.4.91:4483/media/mcp",
       "headers": {},
-      "enabled": false
+      "enabled": true
     },
     "toolhive-home": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/home/mcp",
+      "url": "http://192.168.4.91:4483/home/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-creative": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/creative/mcp",
+      "url": "http://192.168.4.91:4483/creative/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-finance": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/finance/mcp",
+      "url": "http://192.168.4.91:4483/finance/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-tasks": {
       "type": "http",
-      "url": "https://192.168.4.91:4483/tasks/mcp",
+      "url": "http://192.168.4.91:4483/tasks/mcp",
       "headers": {},
       "enabled": false
     },
