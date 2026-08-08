@@ -60,26 +60,6 @@
     ];
   };
 
-  # programs.git = {
-  #   enable = true;
-  #   userEmail = "gwelicanktz@gmail.com";
-  #   userName = "gwelican Kretzschmar";
-  #   diff-so-fancy.enable = true;
-  #   lfs.enable = true;
-  #   extraConfig = {
-  #     init = {
-  #       defaultBranch = "main";
-  #     };
-  #     merge = {
-  #       conflictStyle = "diff3";
-  #       tool = "meld";
-  #     };
-  #     pull = {
-  #       rebase = true;
-  #     };
-  #   };
-  # };
-
   programs.htop = {
     enable = true;
     settings.show_program_path = true;
