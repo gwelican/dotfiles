@@ -3,20 +3,20 @@ onboarding = false
 name = "catppuccin"
 
 [theme.custom]
-panel_bg   = "#303446"
-surface0   = "#414559"
-surface1   = "#51576d"
-overlay0   = "#737994"
-overlay1   = "#838ba7"
-text       = "#c6d0f5"
-subtext0   = "#a5adce"
-mauve      = "#ca9ee6"
-green      = "#a6d189"
-yellow     = "#e5c890"
-red        = "#e78284"
-blue       = "#8caaee"
-teal       = "#94d2f6"
-peach      = "#ef9f76"
+panel_bg = "#303446"
+surface0 = "#414559"
+surface1 = "#51576d"
+overlay0 = "#737994"
+overlay1 = "#838ba7"
+text = "#c6d0f5"
+subtext0 = "#a5adce"
+mauve = "#ca9ee6"
+green = "#a6d189"
+yellow = "#e5c890"
+red = "#e78284"
+blue = "#8caaee"
+teal = "#94d2f6"
+peach = "#ef9f76"
 
 [ui.toast]
 delivery = "herdr"
@@ -35,7 +35,7 @@ pane_history = true
 switch_ascii_input_source_in_prefix = true
 
 [keys]
-goto = "prefix+f"
+goto = "prefix+F"
 prefix = "ctrl+a"
 split_vertical = "prefix+|"
 reload_config = "prefix+r"
@@ -57,6 +57,34 @@ key = "prefix+g"
 type = "pane"
 command = "lazygit"
 description = "Open lazygit in a new pane"
+
+[[keys.command]]
+key = "prefix+shift+b"            # toggle the docked beads sidebar
+type = "plugin_action"
+command = "herdr-beads.open-dock"
+
+[[keys.command]]
+key = "prefix+shift+k"             # toggle the floating beads board
+type = "plugin_action"
+command = "herdr-beads.open-board"
+
+[[keys.command]]
+key = "prefix+t"
+type = "plugin_action"
+command = "herdr-navigator.open"
+description = "jump to anything"
+
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "sessionizer.open"
+description = "open project workspace"
+
+[[keys.command]]
+key = "prefix+shift+w"
+type = "plugin_action"
+command = "sessionizer.worktree-open"
+description = "open worktree workspace"
 
 [worktrees]
 directory = "~/.herdr/worktrees"
