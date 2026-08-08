@@ -33,23 +33,23 @@
       "hammerspoon"
       "raycast"
       "block-goose"
-      
+
       # Development tools
       "ghostty"
-      "cursor"
       "visual-studio-code"
-      
+      "zen"
+
       # Communication
       "discord"
-      
+
       # Browsers
       "brave-browser"
       "floorp"
-      
+
       # Media
       "spotify"
       "vlc"
-      
+
       # Utilities
       "rustdesk"
       "appcleaner"
@@ -61,7 +61,8 @@
       "loopback"
       "soundsource"
       "kopiaui"
-      
+      "openscad"
+
       # Commonly used apps you might want to enable:
       # "adobe-creative-cloud"
       # "steam"
@@ -90,10 +91,10 @@
     masApps = {
       "Telegram" = 747648890;
       "Amphetamine" = 937984704;
-      # "HiddenBar" = 1452453066;
+      "HiddenBar" = 1452453066;
       "Home Assistant Companion" = 1099568401;
       "Windows App" = 1295203466;
-      
+
       # Additional apps you might want:
       # "Bitwarden" = 1352778147;
       # "DaVinci Resolve" = 571213070;

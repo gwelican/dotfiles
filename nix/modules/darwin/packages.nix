@@ -10,6 +10,10 @@
     mysides            # macOS Finder sidebar management
     p4v               # Perforce GUI (often used on macOS dev machines)
 
+    # Additional Darwin utilities
+    zoxide             # Smart cd command
+    comma              # Wrapper for nix-shell
+
     # macOS-specific utilities
     # Add other Darwin-only packages here
 

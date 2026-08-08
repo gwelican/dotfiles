@@ -49,7 +49,6 @@ in {
     "nextcloud"
     
     # Additional apps from darwin-common (lux-specific)
-    "cursor"
     "discord"
     "spotify"
     "obsidian"
@@ -70,18 +69,7 @@ in {
     # Add any lux-specific packages here
   ];
 
-  # Lux-specific finder sidebar (personal git directory)
-  launchd.user.agents.setFinderSidebar = {
-    serviceConfig = {
-      KeepAlive = false;
-      RunAtLoad = true; 
-      ProcessType = "Background";
-    };
-    script = ''
-      ${pkgs.mysides}/bin/mysides remove git 2>/dev/null || true
-      ${pkgs.mysides}/bin/mysides add git file:///Users/${username}/git
-    '';
-  };
+
 
   # Lux-specific dock configuration
   system.defaults.dock.persistent-apps = [
