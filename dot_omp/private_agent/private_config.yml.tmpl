@@ -1,8 +1,9 @@
----
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
 theme:
   dark: dark-solarized
 symbolPreset: nerd
-extensions: [/home/gwelican/.omp/agent/extensions/mcp-skill-autorouter.ts]
+extensions:
+  - /home/{{ $secrets.linux_username }}/.omp/agent/extensions/mcp-skill-autorouter.ts
 display:
   showTokenUsage: true
   cacheMissMarker: true
@@ -17,7 +18,7 @@ modelRoles:
   advisor: openai-codex/gpt-5.4-mini
   vision: openai-codex/gpt-5.4-mini
 searxng:
-  endpoint: http://192.168.4.87:8080
+  endpoint: http://{{ $secrets.searxng_host }}:{{ $secrets.searxng_port }}
   language: en
 providers:
   enabled: true
@@ -53,7 +54,7 @@ memories:
 memory:
   backend: agentmemory
   agentmemory:
-    url: http://192.168.4.76:3111
+    url: http://{{ $secrets.agentmemory_host }}:{{ $secrets.agentmemory_port }}
 setupVersion: 1
 hideThinkingBlock: false
 autolearn:
