@@ -1,3 +1,4 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "prometheus",
@@ -6,7 +7,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "local-llama",
       "options": {
-        "baseURL": "http://192.168.1.127:1234/v1"
+        "baseURL": "http://{{ $secrets.ollama_local_host }}:{{ $secrets.ollama_local_port }}/v1"
       },
       "models": {
         "qwen3.5-9b-coding": {
@@ -81,7 +82,7 @@
         "-y",
         "supergateway",
         "--streamableHttp",
-        "https://n8n.gwelican.eu/mcp-server/http",
+        "https://{{ $secrets.n8n_domain }}/mcp-server/http",
         "--header",
         "authorization:Bearer {env:N8N_MCP_TOKEN}"
       ]

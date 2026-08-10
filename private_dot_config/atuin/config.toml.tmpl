@@ -1,5 +1,6 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
 auto_sync = true
-sync_address = "https://atuin.gwelican.eu"
+sync_address = "https://{{ $secrets.atuin_domain }}"
 key_path = "~/.atuin-key"
 style = "full"
 inline_height = 0
