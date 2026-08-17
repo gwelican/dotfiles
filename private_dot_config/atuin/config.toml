@@ -31,3 +31,9 @@ records = true
 
 [theme]
 name = "catppuccin-frappe-sapphire"
+
+[ai]
+enabled = true
+
+[pty_proxy]
+enabled = true
