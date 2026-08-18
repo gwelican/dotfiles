@@ -1,3 +1,4 @@
+---
 theme:
   dark: dark-solarized
 symbolPreset: nerd
@@ -14,10 +15,10 @@ modelRoles:
   smol: llama/smol
   slow: llama/slow
   plan: llama/plan
-  commit: llama/commit
+  # vision: llama/vision
+  # designer: llama/designer
+  # commit: llama/commit
   task: llama/task
-  vision: llama/vision
-  designer: llama/designer
   advisor: omnirouter/cx/gpt-5.5
   tiny: openai/gpt-5.4-nano
 searxng:
