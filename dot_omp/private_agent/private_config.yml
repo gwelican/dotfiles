@@ -19,7 +19,7 @@ modelRoles:
   vision: llama/vision
   designer: llama/designer
   advisor: omnirouter/cx/gpt-5.5
-  tiny: llama/tiny
+  tiny: openai/gpt-5.4-nano
 searxng:
   endpoint: http://192.168.4.87:8080
   language: en
