@@ -86,5 +86,17 @@ type = "plugin_action"
 command = "sessionizer.worktree-open"
 description = "open worktree workspace"
 
+[[keys.command]]
+key = "prefix+alt+t"
+type = "plugin_action"
+command = "tab-smart-rename.rename-now"
+description = "smart rename current tab"
+
+# [[keys.command]]
+# key = "prefix+alt+t"
+# type = "plugin_action"
+# command = "tab-smart-rename.rename-all"
+# description = "force smart rename all tabs"
+
 [worktrees]
 directory = "~/.herdr/worktrees"
