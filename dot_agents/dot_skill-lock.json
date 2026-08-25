@@ -318,6 +318,15 @@
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-20T07:42:54.830Z",
       "updatedAt": "2026-07-20T07:42:54.830Z"
+    },
+    "music-caption-rewriter": {
+      "source": "MiniMax-AI/MiniMax-Music3",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/MiniMax-AI/MiniMax-Music3.git",
+      "skillPath": "skills/music-caption-rewriter/SKILL.md",
+      "skillFolderHash": "eb37396ab91f2d89d73ab072fde2f029ce823f38",
+      "installedAt": "2026-08-20T02:04:46.730Z",
+      "updatedAt": "2026-08-20T02:04:46.730Z"
     }
   },
   "dismissed": {
