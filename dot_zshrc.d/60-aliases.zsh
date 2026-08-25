@@ -64,7 +64,7 @@ alias cat='bat'
 # Core utilities
 # =========================================================
 
-alias grep='rg --color=auto'
+alias grep='rg --color=always'
 alias diff='diff --color=auto'
 alias df='df -h'
 #
