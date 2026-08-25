@@ -2,8 +2,7 @@
 theme:
   dark: dark-solarized
 symbolPreset: nerd
-extensions:
-  - /home/gwelican/.omp/agent/extensions/mcp-skill-autorouter.ts
+extensions: [/home/gwelican/.omp/agent/extensions/mcp-skill-autorouter.ts]
 display:
   showTokenUsage: true
   cacheMissMarker: true
@@ -15,12 +14,12 @@ modelRoles:
   smol: llama/smol
   slow: llama/slow
   plan: llama/plan
+  task: llama/task
+  advisor: openai-codex/gpt-5.4-mini
+  tiny: openai/gpt-5.4-nano
   # vision: llama/vision
   # designer: llama/designer
   # commit: llama/commit
-  task: llama/task
-  advisor: opencode-go/glm-5.2
-  tiny: openai/gpt-5.4-nano
 searxng:
   endpoint: http://192.168.4.87:8080
   language: en
@@ -104,7 +103,7 @@ bash:
   autoBackground:
     enabled: true
 inspect_image:
-  mode: "on"
+  mode: 'on'
 checkpoint:
   enabled: false
 tools:
