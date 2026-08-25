@@ -26,6 +26,7 @@ rclone = "aqua:rclone/rclone"
 yamlfmt = "aqua:google/yamlfmt"
 exa = "aqua:ogham/exa"
 treefmt = "aqua:numtide/treefmt"
+yayamlls = "github:home-operations/yayamlls"
 
 [tools]
 "python" = "3.14.7"
@@ -71,3 +72,4 @@ fastfetch = "2.67.1"
 rtk = "v0.45.0"
 delta = "0.19.2"
 herdr = "v0.8.2"
+yayamlls = "0.2.0"
