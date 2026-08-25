@@ -47,6 +47,8 @@ focus_pane_right = ["prefix+right"]
 focus_pane_up = ["prefix+up"]
 focus_pane_down = ["prefix+down"]
 toggle_sidebar = ["ctrl+p"]
+# Unbind built-in help; the keybind browser popup (below) replaces it.
+help = ""
 
 
 [session]
@@ -97,6 +99,12 @@ key = "prefix+I"
 type = "plugin_action"
 command = "ray.plugin-manager.open"
 description = "open plugin manager"
+
+[[keys.command]]
+key = "prefix+?"
+type = "plugin_action"
+command = "gwelican.keybinds.open"
+description = "open keybind browser (replaces built-in help)"
 
 [worktrees]
 directory = "~/.herdr/worktrees"
