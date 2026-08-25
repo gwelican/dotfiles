@@ -423,6 +423,206 @@
     }
   },
   {
+    "plugin_id": "ntindle.herdr-resurrect",
+    "name": "herdr-resurrect",
+    "version": "0.2.0",
+    "min_herdr_version": "0.7.0",
+    "description": "tmux-resurrect for herdr: snapshot the whole herd (workspaces, tabs, panes, cwd, running programs, agents) and bring it back after a crash or reboot.",
+    "manifest_path": "/home/gwelican/.config/herdr/plugins/github/ntindle.herdr-resurrect-6e4571261caf/herdr-plugin.toml",
+    "plugin_root": "/home/gwelican/.config/herdr/plugins/github/ntindle.herdr-resurrect-6e4571261caf",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "actions": [
+      {
+        "id": "delete-space",
+        "title": "Resurrect: delete saved space…",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bash",
+          "delete-space.sh"
+        ]
+      },
+      {
+        "id": "open-space",
+        "title": "Resurrect: open saved space…",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bash",
+          "open-space.sh"
+        ]
+      },
+      {
+        "id": "restore",
+        "title": "Resurrect: restore last snapshot",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "bin/restore.js"
+        ]
+      },
+      {
+        "id": "restore-preview",
+        "title": "Resurrect: preview restore (dry run)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "bin/restore.js",
+          "--dry-run"
+        ]
+      },
+      {
+        "id": "save",
+        "title": "Resurrect: save snapshot",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "bin/save.js"
+        ]
+      },
+      {
+        "id": "save-space",
+        "title": "Resurrect: save this space as…",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bash",
+          "save-space.sh"
+        ]
+      },
+      {
+        "id": "snapshots",
+        "title": "Resurrect: list snapshots",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "bin/list.js"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      },
+      {
+        "on": "pane.created",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      },
+      {
+        "on": "workspace.closed",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      },
+      {
+        "on": "workspace.created",
+        "command": [
+          "node",
+          "bin/on-event.js"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "autosave",
+        "title": "resurrect autosave",
+        "placement": "split",
+        "command": [
+          "node",
+          "bin/autosave.js"
+        ]
+      },
+      {
+        "id": "delete-space-ui",
+        "title": "Delete space",
+        "placement": "overlay",
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/delete-space-ui.sh\""
+        ]
+      },
+      {
+        "id": "open-space-ui",
+        "title": "Open space",
+        "placement": "overlay",
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/open-space-ui.sh\""
+        ]
+      },
+      {
+        "id": "save-space-ui",
+        "title": "Save space",
+        "placement": "overlay",
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/save-space-ui.sh\""
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "ntindle",
+      "repo": "herdr-resurrect",
+      "resolved_commit": "5afa6755d4f35c62c7522ba4fd04922d1ac69602",
+      "managed_path": "/home/gwelican/.config/herdr/plugins/github/ntindle.herdr-resurrect-6e4571261caf",
+      "installed_unix_ms": 1787678699254
+    }
+  },
+  {
     "plugin_id": "sessionizer",
     "name": "Sessionizer",
     "version": "0.7.2",
@@ -493,214 +693,6 @@
       "resolved_commit": "6ce092f659f139f50f41f1d33700be7501599349",
       "managed_path": "/home/gwelican/.config/herdr/plugins/github/sessionizer-66e03d1ff740",
       "installed_unix_ms": 1786231870226
-    }
-  },
-  {
-    "plugin_id": "tab-smart-rename",
-    "name": "Smart Rename",
-    "version": "0.2.0",
-    "min_herdr_version": "0.7.0",
-    "description": "Context-aware names for Herdr workspaces and task tabs.",
-    "manifest_path": "/home/gwelican/.config/herdr/plugins/github/tab-smart-rename-c4dbca297d1d/herdr-plugin.toml",
-    "plugin_root": "/home/gwelican/.config/herdr/plugins/github/tab-smart-rename-c4dbca297d1d",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos",
-      "windows"
-    ],
-    "build": [
-      {
-        "command": [
-          "bun",
-          "install",
-          "--production",
-          "--frozen-lockfile"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "check-ai",
-        "title": "Smart Rename: check AI config",
-        "description": "Validate the provider and naming prompt without making a request.",
-        "contexts": [
-          "global",
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "check-ai"
-        ]
-      },
-      {
-        "id": "configure-ai",
-        "title": "Smart Rename: configure AI",
-        "description": "Open the private AI provider configuration.",
-        "contexts": [
-          "global",
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "configure-ai"
-        ]
-      },
-      {
-        "id": "configure-prompt",
-        "title": "Smart Rename: configure prompt",
-        "description": "Open the private naming prompt.",
-        "contexts": [
-          "global",
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "configure-prompt"
-        ]
-      },
-      {
-        "id": "rename-all",
-        "title": "Smart Rename: all tabs",
-        "description": "Reclaim and rename every tab sequentially.",
-        "contexts": [
-          "global",
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "all"
-        ]
-      },
-      {
-        "id": "rename-now",
-        "title": "Smart Rename: current tab",
-        "description": "Reclaim and rename the current tab now.",
-        "contexts": [
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "rename-now"
-        ]
-      },
-      {
-        "id": "reset-tab",
-        "title": "Smart Rename: reset tab",
-        "description": "Clear the current tab's manual lock and evaluate it.",
-        "contexts": [
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "reset-tab"
-        ]
-      },
-      {
-        "id": "reset-workspace",
-        "title": "Smart Rename: reset workspace",
-        "description": "Clear the current workspace's manual lock and evaluate it.",
-        "contexts": [
-          "workspace",
-          "tab",
-          "pane"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "reset-workspace"
-        ]
-      },
-      {
-        "id": "start",
-        "title": "Smart Rename: start",
-        "description": "Start the detached Smart Rename worker.",
-        "contexts": [
-          "global",
-          "workspace"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "start"
-        ]
-      },
-      {
-        "id": "status",
-        "title": "Smart Rename: status",
-        "description": "Report worker status.",
-        "contexts": [
-          "global",
-          "workspace"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "status"
-        ]
-      },
-      {
-        "id": "stop",
-        "title": "Smart Rename: stop",
-        "description": "Stop the Smart Rename worker.",
-        "contexts": [
-          "global",
-          "workspace"
-        ],
-        "command": [
-          "bun",
-          "src/cli.ts",
-          "stop"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "prompt-config",
-        "title": "Smart Rename Prompt",
-        "description": "Edit the private naming prompt.",
-        "placement": "overlay",
-        "command": [
-          "bun",
-          "src/configure.ts",
-          "prompt"
-        ]
-      },
-      {
-        "id": "provider-config",
-        "title": "Smart Rename AI",
-        "description": "Edit the private OpenAI-compatible provider configuration.",
-        "placement": "overlay",
-        "command": [
-          "bun",
-          "src/configure.ts"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "iurysza",
-      "repo": "herdr-tab-smart-rename",
-      "resolved_commit": "b646cc32799801a23cc9b23d298879e602037e2b",
-      "managed_path": "/home/gwelican/.config/herdr/plugins/github/tab-smart-rename-c4dbca297d1d",
-      "installed_unix_ms": 1787636851781
     }
   },
   {
