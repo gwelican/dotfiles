@@ -87,16 +87,16 @@ command = "sessionizer.worktree-open"
 description = "open worktree workspace"
 
 [[keys.command]]
-key = "prefix+alt+t"
-type = "plugin_action"
-command = "tab-smart-rename.rename-now"
-description = "smart rename current tab"
+key = "ctrl+space"
+type = "shell"
+command = "\"$HERDR_BIN_PATH\" plugin pane open --plugin cesarferreira.herdr-palette --entrypoint picker"
+description = "Open Herdr Palette"
 
-# [[keys.command]]
-# key = "prefix+alt+t"
-# type = "plugin_action"
-# command = "tab-smart-rename.rename-all"
-# description = "force smart rename all tabs"
+[[keys.command]]
+key = "prefix+I"
+type = "plugin_action"
+command = "ray.plugin-manager.open"
+description = "open plugin manager"
 
 [worktrees]
 directory = "~/.herdr/worktrees"
