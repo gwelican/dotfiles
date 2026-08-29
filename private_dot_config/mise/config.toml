@@ -14,7 +14,6 @@ task = "aqua:go-task/task"
 jq = "aqua:jqlang/jq"
 yq = "aqua:mikefarah/yq"
 opencode = "aqua:anomalyco/opencode"
-1password-cli = "aqua:1password/cli"
 
 bat = "aqua:sharkdp/bat"
 atuin = "aqua:atuinsh/atuin"
