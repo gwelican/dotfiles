@@ -28,6 +28,7 @@ exa = "aqua:ogham/exa"
 treefmt = "aqua:numtide/treefmt"
 yayamlls = "github:home-operations/yayamlls"
 flate = "github:home-operations/flate"
+lean-ctx = "aqua:yvgude/lean-ctx"
 
 [tools]
 "python" = "3.14.7"
@@ -75,3 +76,4 @@ delta = "0.19.2"
 herdr = "v0.8.2"
 yayamlls = "0.2.0"
 flate = "v0.6.0"
+lean-ctx = "3.9.20"
