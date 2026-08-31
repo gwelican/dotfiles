@@ -8,49 +8,6 @@ alias allpods="kubectl get pod --all-namespaces -o wide"
 alias backup='cat ~/tobackup|grep -v "^#" | xargs restic backup -v --exclude-if-present .nobackup --tag all'
 alias stup='task stup modified:yesterday'
 
-# Remove oh-my-zsh's ls alias first
-unalias ls 2>/dev/null
-# Better ls
-function ls() {
-  local args=()
-  local has_t=false
-  local has_r=false
-
-  # Parse user's flags
-  for arg in "$@"; do
-    if [[ "$arg" == -* ]] && [[ "$arg" != --* ]]; then
-      [[ "$arg" == *t* ]] && has_t=true
-      [[ "$arg" == *r* ]] && has_r=true
-      # Remove t and r, keep other flags like 'a'
-      local cleaned=$(echo "$arg" | sed 's/[tr]//g')
-      [[ "$cleaned" != "-" ]] && args+=("$cleaned")
-    else
-      args+=("$arg")
-    fi
-  done
-
-  # Build base args
-  if $has_t; then
-    # For time sorting: use all defaults
-    args=(-lh --group-directories-first --icons=auto "${args[@]}")
-    if $has_r; then
-      args+=(--sort oldest)
-    else
-      args+=(--sort newest)
-    fi
-  else
-    # For normal listing: use all defaults
-    args=(-lh --group-directories-first --icons=auto "${args[@]}")
-  fi
-
-  eza "${args[@]}"
-}
-
-# Detailed listing
-alias ll='eza -lh --icons --git'
-
-# Detailed listing including hidden files
-alias la='eza -lah --icons --git'
 
 # Tree view
 alias tree='eza --tree --icons'
@@ -70,6 +27,17 @@ alias df='df -h'
 #
 # ls Aliases
 #
+# Remove oh-my-zsh's ls alias first
+unalias ls 2>/dev/null
+alias ls='eza --icons'
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale' # all list
+alias ll='eza -lbF --icons --git' # list, size, type, git 
+alias llm='eza -lbGd --git --sort=modified' # long list, modified date sort
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+alias lS='eza -1' # one column, just names
+alias lt='eza --tree --level=2' # tree
+alias ltr='eza -lh --icons=auto --sort newest'
+
 
 alias df='df -h'
 alias du='du -h'
