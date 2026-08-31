@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@dietrichgebert/ponytail": "https://github.com/DietrichGebert/ponytail",
-    "@juicesharp/rpiv-web-tools": "^1.4.2",
+    "@juicesharp/rpiv-web-tools": "^2.0.0",
     "@oh-my-pi/subagents": "^1.3.3710",
     "pi-goal": "npm:pi-goal",
     "pi-goal-x": "npm:pi-goal-x",
