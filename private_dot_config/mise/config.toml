@@ -1,6 +1,7 @@
 [settings]
 idiomatic_version_file_enable_tools = ["ruby"]
 lockfile = true
+experimental = true
 
 [env]
 _.python.venv = { path = "{{config_root}}/.venv", create = true }
@@ -14,6 +15,7 @@ task = "aqua:go-task/task"
 jq = "aqua:jqlang/jq"
 yq = "aqua:mikefarah/yq"
 opencode = "aqua:anomalyco/opencode"
+lean-ctx = "aqua:yvgude/lean-ctx"
 
 bat = "aqua:sharkdp/bat"
 atuin = "aqua:atuinsh/atuin"
@@ -28,7 +30,6 @@ exa = "aqua:ogham/exa"
 treefmt = "aqua:numtide/treefmt"
 yayamlls = "github:home-operations/yayamlls"
 flate = "github:home-operations/flate"
-lean-ctx = "aqua:yvgude/lean-ctx"
 
 [tools]
 "python" = "3.14.7"
