@@ -29,6 +29,7 @@ exa = "aqua:ogham/exa"
 treefmt = "aqua:numtide/treefmt"
 yayamlls = "github:home-operations/yayamlls"
 flate = "github:home-operations/flate"
+difftastic = "aqua:Wilfred/difftastic"
 
 [tools]
 "python" = "3.14.8"
