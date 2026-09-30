@@ -29,7 +29,7 @@ alias df='df -h'
 #
 # Remove oh-my-zsh's ls alias first
 unalias ls 2>/dev/null
-alias ls='eza --icons'
+alias ls='eza --icons=always'
 alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale' # all list
 alias ll='eza -lbF --icons --git' # list, size, type, git 
 alias llm='eza -lbGd --git --sort=modified' # long list, modified date sort
