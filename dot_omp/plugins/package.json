@@ -7,7 +7,7 @@
     "pi-goal": "npm:pi-goal",
     "pi-goal-x": "npm:pi-goal-x",
     "pi-lean-ctx": "npm:pi-lean-ctx@^3.10.0",
-    "pi-mcp-adapter": "npm:pi-mcp-adapter@^3.0.0",
+    "pi-mcp-adapter": "npm:pi-mcp-adapter@^4.0.0",
     "pi-token-meter": "^0.1.0",
     "pi-true-queue": "npm:pi-true-queue"
   }
