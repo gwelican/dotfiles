@@ -36,4 +36,4 @@ name = "catppuccin-frappe-sapphire"
 enabled = true
 
 [pty_proxy]
-enabled = true
+enabled = false
