@@ -44,7 +44,7 @@ yq = "4.54.1"
 
 zoxide = "0.10.0"
 bat = "0.26.1"
-atuin = "18.24.3"
+atuin = "18.24.4"
 chezmoi = "2.73.3"
 carapace = "1.8.1"
 direnv = "2.38.2"
