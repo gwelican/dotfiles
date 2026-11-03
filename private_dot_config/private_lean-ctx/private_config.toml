@@ -52,6 +52,15 @@ shell_allowlist_extra = [
     "systemctl",
     "podman",
     "mise",
+    "ffprobe",
+    "ssh",
+    "direnv",
+    "chezmoi",
+    "pipx",
+    "makejinja",
+    "yamllint",
+    "yt-dlp",
+    "benchlocal-cli",
 ]
 
 [setup]
