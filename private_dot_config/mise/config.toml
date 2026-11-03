@@ -4,7 +4,6 @@ lockfile = true
 experimental = true
 
 [tool_alias]
-makejinja = "pipx:makejinja"
 gh-cli = "aqua:cli/cli"
 age = "aqua:FiloSottile/age"
 sops = "aqua:getsops/sops"
@@ -30,9 +29,7 @@ difftastic = "aqua:Wilfred/difftastic"
 
 [tools]
 "python" = "3.15.2"
-makejinja = { version = "2.8.2", python = "3.12" }
-yt-dlp = { version = "2026.10.26", python = "3.12" }
-yamllint = { version = "1.38.0", python = "3.12" }
+yt-dlp = "2026.10.26"
 gh-cli = "2.87.3"
 age = "1.3.2"
 sops = "3.13.3"
