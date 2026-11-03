@@ -1,6 +1,9 @@
 [settings]
 lockfile = true
 
+[settings.self_update]
+auto = true
+
 [tool_alias]
 gh-cli = "aqua:cli/cli"
 age = "aqua:FiloSottile/age"
@@ -73,3 +76,4 @@ flux = "2.7.5"
 kubecolor = "0.8.0"
 opencode = "2.2.5"
 prek = "0.5.9"
+watchexec = "2.8.0"
