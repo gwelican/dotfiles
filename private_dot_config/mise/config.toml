@@ -1,7 +1,5 @@
 [settings]
-idiomatic_version_file_enable_tools = ["ruby"]
 lockfile = true
-experimental = true
 
 [tool_alias]
 gh-cli = "aqua:cli/cli"
