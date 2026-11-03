@@ -6,6 +6,16 @@ auto_capture = true
 proxy_enabled = true
 allow_ide_config_dirs = false
 shell_allowlist_extra = [
+    "mise",
+    "agent-browser",
+    "wait",
+    "google-chrome",
+    "chromium",
+    "echo",
+    "chrome",
+    "dig",
+    "base64",
+    "jq",
     "kubectl",
     "flux",
     "wrestool",
@@ -51,7 +61,6 @@ shell_allowlist_extra = [
     "lsmod",
     "systemctl",
     "podman",
-    "mise",
     "ffprobe",
     "ssh",
     "direnv",
