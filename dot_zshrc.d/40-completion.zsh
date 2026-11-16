@@ -26,11 +26,9 @@ compdef _cat bat
 compdef eza=ls
 
 
-# to avoid issues with carapace
+# carapace candidates carry no completion context: {} is the raw compcap line, $realpath is empty
 zstyle ':fzf-tab:*' query-string ''.
-zstyle ':fzf-tab:*' fzf-preview ''
-
-zstyle ':fzf-tab:complete:(cat|bat|grep|vim|nvim|nano|code):*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 {}'
+zstyle ':fzf-tab:*' fzf-preview 'bat --color=always --style=numbers --line-range=:500 "${realpath:-${word%" "}}" 2>/dev/null'
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
