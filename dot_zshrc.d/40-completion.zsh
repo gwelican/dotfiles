@@ -1,5 +1,6 @@
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 export CARAPACE_EXCLUDES='task,pv-migrate,flux' # exclude task, pv-migrate from carapace
+export CARAPACE_MATCH='1' # carapace is case-sensitive by default, so ~/dow never finds Downloads
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
 
