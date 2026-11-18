@@ -1,0 +1,45 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/refs/tags/v3.17.0/pipeline/frontend/yaml/linter/schema/schema.json
+
+when:
+  - event: push
+    branch: master
+    path:
+      include:
+        - nix/**
+        - .woodpecker/nix.yaml
+  - event: pull_request
+    branch: master
+  - event: manual
+
+concurrency:
+  group: nix
+  limit: 1
+
+variables:
+  # Runner image matches the pinned nixpkgs branch in nix/flake.lock (nixos-25.11).
+  # renovate: datasource=docker depName=nixpkgs/nix-flakes
+  nix_flakes: &nix_flakes nixpkgs/nix-flakes:nixos-25.11-x86_64-linux
+
+# One step: the nix store lives in the container, so splitting the checks would
+# re-download the whole closure on every step.
+steps:
+  - name: nix-check
+    image: *nix_flakes
+    environment:
+      NIXPKGS_ALLOW_UNFREE: "1"
+      SOPS_AGE_KEY:
+        from_secret: SOPS_AGE_KEY
+    commands:
+      - |-
+        set -eu
+        printf '%s\n' "$SOPS_AGE_KEY" > nix/age.key
+        cd nix
+        export SOPS_AGE_KEY_FILE="$PWD/age.key"
+        echo "== flake check =="
+        nix flake check --impure --all-systems --extra-experimental-features "nix-command flakes"
+        echo "== linux deployment: bastion =="
+        nix build --impure --no-link --print-build-logs .#nixosConfigurations.bastion.config.system.build.toplevel
+        echo "== darwin deployment: eval only =="
+        nix eval --impure --raw .#darwinConfigurations.lux.system
+        nix eval --impure --raw .#darwinConfigurations.mac.system
