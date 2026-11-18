@@ -1,5 +1,6 @@
 # Cross-platform packages shared between Darwin and Linux systems
-{pkgs, unstablePkgs, ...}: {
+{ pkgs, unstablePkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     # Nix tools
     nil

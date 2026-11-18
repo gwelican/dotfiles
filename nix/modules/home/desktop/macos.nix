@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.myHome.desktop.macos;
-in {
+in
+{
   options.myHome.desktop.macos = {
     enable = lib.mkEnableOption "macOS desktop configuration";
   };

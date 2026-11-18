@@ -4,8 +4,10 @@
   pkgs,
   lib,
   self,
+  bastion_host,
   ...
-}: {
+}:
+{
   imports = [
     self.homeModules.default
   ];
@@ -155,17 +157,17 @@
     enableDefaultConfig = false;
 
     extraConfig = ''
-  StrictHostKeyChecking no
+      StrictHostKeyChecking ask
     '';
+
     matchBlocks = {
-      "*" = {
-      };
+      "*" = { };
       "github.com" = {
         hostname = "ssh.github.com";
         port = 443;
       };
       "bastion" = {
-        hostname = "192.168.1.136";
+        hostname = bastion_host;
         user = "gwelican";
       };
     };
