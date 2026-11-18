@@ -1,10 +1,14 @@
 # Main NixOS module - imports all NixOS-specific configuration
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
-    ./packages.nix  # Linux-specific and shared packages
+    ./packages.nix # Linux-specific and shared packages
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   programs.zsh.enable = true;
 

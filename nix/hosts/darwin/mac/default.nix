@@ -6,16 +6,18 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   username = config.system.primaryUser;
-in {
+in
+{
   # Mac-specific homebrew configuration (work machine setup)
   nix-homebrew = {
     enable = true;
     enableRosetta = true;
     autoMigrate = true;
     user = username;
-    
+
     taps = with inputs; {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
@@ -28,23 +30,23 @@ in {
     # Development tools
     "cursor"
     "visual-studio-code"
-    
+
     # Communication
     "discord"
-    
+
     # Utilities
     "brave-browser"
     "wezterm"
     "1password"
     "1password-cli"
     "raycast"
-    
+
     # Media
     "spotify"
     "obsidian"
     "vlc"
   ];
-  
+
   homebrew.brews = [
     "p4v"
   ];

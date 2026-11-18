@@ -7,47 +7,47 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   username = config.system.primaryUser; # Use the primary user set by the flake
-in {
+in
+{
   # Host-specific sudo permissions (development machine needs more access)
   security.sudo.extraConfig = ''
     ${username} ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/darwin-rebuild, /nix/store/*/bin/darwin-rebuild, /nix/var/nix/profiles/default/bin/nix
   '';
 
   # Lux-specific homebrew configuration (development/personal machine needs these taps)
-  nix-homebrew = {
+  homebrew = {
     enable = true;
-    enableRosetta = true;
-    autoMigrate = true;
     user = username;
-    
-    taps = with inputs; {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-cask" = homebrew-cask;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-      "sst/homebrew-tap" = homebrew-sst;
-      "anomalyco/homebrew-tap" = homebrew-anomalyco;
-    };
+
+    taps = [
+      "homebrew/homebrew-core"
+      "homebrew/homebrew-cask"
+      "homebrew/homebrew-bundle"
+      "sst/homebrew-tap"
+      "anomalyco/homebrew-tap"
+    ];
   };
 
   # Lux-specific applications (personal/development tools)
   homebrew.casks = [
     # Development/3D tools
     "steam"
-    "blender" 
+    "blender"
     "freecad"
     "openscad"
     "orcaslicer"
-    
-    # Media/Entertainment  
+
+    # Media/Entertainment
     "plexamp"
     "whisky"
     "stellarium"
-    
+
     # Utilities
     "nextcloud"
-    
+
     # Additional apps from darwin-common (lux-specific)
     "discord"
     "spotify"
@@ -57,7 +57,7 @@ in {
     "loopback"
     "soundsource"
   ];
-  
+
   homebrew.brews = [
     "anomalyco/tap/opencode"
     "statix"
@@ -68,8 +68,6 @@ in {
     # Development tools specific to this machine
     # Add any lux-specific packages here
   ];
-
-
 
   # Lux-specific dock configuration
   system.defaults.dock.persistent-apps = [
@@ -88,4 +86,3 @@ in {
     # Add other lux-specific overrides here
   };
 }
-

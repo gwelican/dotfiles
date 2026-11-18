@@ -121,6 +121,46 @@ Example host configuration:
 - `secrets.nix` pattern is gitignored
 - Use `lib.mkIf` for conditional configuration
 
+
+## CI (Woodpecker)
+
+Jobs live in `.woodpecker/` at the repository root and run on the self-hosted Woodpecker
+server (`https://woodpecker.gwelican.eu`), whose agent uses the Kubernetes backend — so
+every step runs on `x86_64-linux` in `nixpkgs/nix-flakes:nixos-25.11-x86_64-linux`
+(the image matches the nixpkgs branch pinned in `flake.lock`).
+
+| Job | File | What it proves |
+| --- | --- | --- |
+| `nix-check` | `.woodpecker/nix.yaml` | `nix flake check --impure --all-systems`, `nix build .#nixosConfigurations.bastion.config.system.build.toplevel` (a real Linux system build), `nix eval` of `.#darwinConfigurations.lux.system` and `.mac.system` |
+| `lint` | `.woodpecker/lint.yaml` | yamllint (`.github/lint/.yamllint.yaml`), `nix fmt -- --ci` |
+
+`task check` runs the host-safe subset locally (darwin eval, `nix fmt -- --ci`, plus a
+non-blocking `statix check`). statix reports warnings on the current tree, so it stays
+advisory rather than a gate.
+
+### Required secret
+
+The flake decrypts `nix/secrets.sops.yaml` **during evaluation**
+(`builtins.readFile` of the `secrets-json` derivation in `modules/flake/*.nix`), so every
+nix step needs `SOPS_AGE_KEY_FILE` — without the key the flake fails to evaluate, not
+merely to build. Woodpecker needs one repo secret:
+
+- `SOPS_AGE_KEY` — the age key that decrypts `nix/secrets.sops.yaml`
+
+Add it in Woodpecker → repository → Secrets (plain/env type). The pipeline writes it to
+`nix/age.key` and exports `SOPS_AGE_KEY_FILE` for the checks. Activate the repository in
+Woodpecker (Admin → Repositories → `gwelican/dotfiles`).
+
+### Limits
+
+- **Mac coverage is eval-only.** Building `aarch64-darwin` requires a macOS host and the
+  agent has no macOS runner, so CI evaluates the darwin configs to a derivation path on
+  Linux. That catches module/option errors, not build failures, not the homebrew casks.
+  Use `task build-mac` (and `task dry-run-mac`) on the Mac itself for the build.
+- **Key lands in the runner store.** The flake passes the age key as `SOPS_AGE_KEY` env of
+  the `secrets-json` derivation, so the key ends up in a `.drv` inside the runner's nix
+  store, readable by anyone with the store. Keep the runner on the bastion cluster.
+
 ## Troubleshooting
 
 ### Build Issues
@@ -144,5 +184,4 @@ Example host configuration:
 #### Future improvements
 
 Agenix secret manager
-Alejandra nix formatting
 

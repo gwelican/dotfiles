@@ -8,9 +8,18 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    homebrew-core = { url = "github:homebrew/homebrew-core"; flake = false; };
-    homebrew-cask = { url = "github:homebrew/homebrew-cask"; flake = false; };
-    homebrew-bundle = { url = "github:homebrew/homebrew-bundle"; flake = false; };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -39,28 +48,36 @@
 
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-darwin"];
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
       imports = [
         ./modules/flake
       ];
 
-      perSystem = {
-        system,
-        pkgs,
-        ...
-      }: {
-        packages = {
-          common = pkgs.git;
+      perSystem =
+        {
+          system,
+          pkgs,
+          ...
+        }:
+        {
+          packages = {
+            common = pkgs.git;
+          };
+
+          formatter = pkgs.nixfmt-tree;
         };
-      };
     };
 
-    # with inputs;
-    # let
-    #
-    #   inherit (self) outputs;
+  # with inputs;
+  # let
+  #
+  #   inherit (self) outputs;
 
 }
