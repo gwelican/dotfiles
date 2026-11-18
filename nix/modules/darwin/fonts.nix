@@ -1,5 +1,6 @@
 # Font configuration for Darwin
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.fira-mono

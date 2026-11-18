@@ -1,40 +1,48 @@
+---
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 
 version: "3"
+
+vars:
+  SOPS_KEY:
+    sh: echo "$HOME/.config/sops/age/keys.txt"
+
 tasks:
   apply-bastion-flake:
     desc: Apply the bastion flake
     cmds:
       - home-manager switch --flake .#bastion
+    env:
+      SOPS_AGE_KEY_FILE: "{{.SOPS_KEY}}"
 
   dry-run-mac:
     desc: Dry run macos configuration
     deps:
       - task: build-mac
     cmds:
-      - sudo ./result/sw/bin/darwin-rebuild switch --dry-run --flake .#{{ .TARGET_HOST }}
+      - sudo ./result/sw/bin/darwin-rebuild switch --dry-run --impure --flake ".#{{ .TARGET_HOST }}"
+    env:
+      SOPS_AGE_KEY_FILE: "{{.SOPS_KEY}}"
     vars:
       TARGET_HOST: mac
 
   build-mac:
     desc: Build macos configuration
     cmds:
-      - nix --extra-experimental-features 'nix-command flakes'  build ".#darwinConfigurations.{{ .TARGET_HOST }}.system"
-      # - darwin-rebuild build --flake .#{{ .TARGET_HOST }}
+      - nix build --impure --extra-experimental-features 'nix-command flakes' ".#darwinConfigurations.{{ .TARGET_HOST }}.system"
+    env:
+      SOPS_AGE_KEY_FILE: "{{.SOPS_KEY}}"
     vars:
       TARGET_HOST:
         sh: hostname -s
 
   apply-mac-flake:
     desc: Apply the mac flake
-    # deps:
-    # - task: build-mac
     cmds:
-      # - nixos-rebuild switch --flake .#mac
-      # - sudo ./result/sw/bin/darwin-rebuild switch --show-trace --flake .#{{ .TARGET_HOST }}
-      - sudo nix run nix-darwin -- switch --flake ".#{{ .TARGET_HOST }}"
+      - sudo nix run nix-darwin -- switch --impure --flake ".#{{ .TARGET_HOST }}"
     env:
-      NIXPKGS_ALLOW_UNFREE: 1
+      NIXPKGS_ALLOW_UNFREE: "1"
+      SOPS_AGE_KEY_FILE: "{{.SOPS_KEY}}"
     vars:
       TARGET_HOST:
         sh: hostname -s
@@ -66,3 +74,17 @@ tasks:
     ignore_error: true
     vars:
       generations: 5
+
+
+  check:
+    desc: Run the host-safe subset of the CI checks (.woodpecker/nix.yaml, lint.yaml)
+    cmds:
+      - nix eval --impure --raw .#darwinConfigurations.{{ .TARGET_HOST }}.system
+      - nix fmt -- --ci
+      - nix run nixpkgs#statix -- check . || true
+    env:
+      SOPS_AGE_KEY_FILE: "{{.SOPS_KEY}}"
+      NIXPKGS_ALLOW_UNFREE: "1"
+    vars:
+      TARGET_HOST:
+        sh: hostname -s

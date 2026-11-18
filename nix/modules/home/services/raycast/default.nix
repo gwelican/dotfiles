@@ -3,10 +3,11 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   options.myHome.services.raycast = {
     enable = lib.mkEnableOption "raycast";
-    package = lib.mkPackageOption pkgs "raycast" {};
+    package = lib.mkPackageOption pkgs "raycast" { };
   };
 
   config = lib.mkIf config.myHome.services.raycast.enable {

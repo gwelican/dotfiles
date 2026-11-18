@@ -6,6 +6,8 @@
 - `task apply-mac-flake` - Apply Darwin configuration to system
 - `statix check .` - Lint Nix files (available via homebrew on lux host)
 - `nix flake check` - Validate flake configuration
+- `task check` - Runs the host-safe subset of the Woodpecker CI checks (eval, nixfmt, statix)
+- `.woodpecker/nix.yaml` - CI runs the full set on x86_64-linux, including `nix build .#bastion`
 
 ## Code Style & Structure
 - **File naming**: Use kebab-case (e.g., `macos-defaults.nix`)  

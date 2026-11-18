@@ -1,5 +1,6 @@
 # macOS system defaults and preferences
-{lib, ...}: {
+{ lib, ... }:
+{
   # Keyboard settings
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = false;

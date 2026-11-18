@@ -1,6 +1,7 @@
 # Common homebrew configuration for Darwin hosts
 # Host-specific apps should be added in host override files
-{...}: {
+{ ... }:
+{
 
   homebrew = {
     enable = true;

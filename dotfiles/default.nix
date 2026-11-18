@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   nvimRepo = builtins.fetchGit {
     url = "https://github.com/gwelican/nvim";
