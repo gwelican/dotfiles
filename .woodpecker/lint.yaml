@@ -1,0 +1,35 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/woodpecker-ci/woodpecker/refs/tags/v3.17.0/pipeline/frontend/yaml/linter/schema/schema.json
+
+when:
+  - event: push
+    branch: master
+    path:
+      include:
+        - "**/*.nix"
+        - "**/*.yaml"
+        - "**/*.yml"
+        - .woodpecker/lint.yaml
+  - event: pull_request
+    branch: master
+  - event: manual
+
+concurrency:
+  group: lint
+  limit: 1
+
+variables:
+  # renovate: datasource=docker depName=nixpkgs/nix-flakes
+  nix_flakes: &nix_flakes nixpkgs/nix-flakes:nixos-25.11-x86_64-linux
+
+steps:
+  - name: lint
+    image: *nix_flakes
+    commands:
+      - |-
+        set -eu
+        echo "== yamllint =="
+        nix run nixpkgs#yamllint -- -c .github/lint/.yamllint.yaml .
+        echo "== nixfmt =="
+        cd nix
+        nix fmt -- --ci
