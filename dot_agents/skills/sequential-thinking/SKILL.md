@@ -21,7 +21,7 @@ This skill provides structured sequential thinking for complex problem-solving t
 
 ## Script Location
 
-The script is located at: `~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts`
+The script is located at: `~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts`
 
 Use `$SKILL_DIR` or the full path when invoking from any directory.
 
@@ -32,7 +32,7 @@ Use `$SKILL_DIR` or the full path when invoking from any directory.
 Start a thinking sequence by estimating total thoughts needed:
 
 ```bash
-bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
+bun ~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
   --thought "Initial analysis of the problem..." \
   --thought-number 1 \
   --total-thoughts 5 \
@@ -44,7 +44,7 @@ bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts
 Build on previous thoughts, adjusting estimates as needed:
 
 ```bash
-bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
+bun ~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
   --thought "Building on insight from step 1..." \
   --thought-number 2 \
   --total-thoughts 5 \
@@ -56,7 +56,7 @@ bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts
 When reconsidering earlier conclusions:
 
 ```bash
-bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
+bun ~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
   --thought "Reconsidering step 2, I realize..." \
   --thought-number 4 \
   --total-thoughts 6 \
@@ -70,7 +70,7 @@ bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts
 Explore alternative approaches:
 
 ```bash
-bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
+bun ~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
   --thought "Alternative approach from step 3..." \
   --thought-number 5 \
   --total-thoughts 7 \
@@ -84,7 +84,7 @@ bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts
 Conclude when solution is verified:
 
 ```bash
-bun ~/.config/opencode/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
+bun ~/.agents/skills/sequential-thinking/scripts/sequential-thinking.ts sequentialthinking \
   --thought "Final verified conclusion..." \
   --thought-number 6 \
   --total-thoughts 6 \
