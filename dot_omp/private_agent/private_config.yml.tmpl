@@ -18,7 +18,7 @@ modelRoles:
   advisor: openai-codex/gpt-5.4-mini
   vision: openai-codex/gpt-5.4-mini
 searxng:
-  endpoint: http://{{ $secrets.searxng_host }}:{{ $secrets.searxng_port }}
+  endpoint: {{ $secrets.searxng_base_url }}
   language: en
 providers:
   enabled: true
@@ -51,10 +51,6 @@ browser:
   headless: true
 memories:
   enabled: true
-memory:
-  backend: agentmemory
-  agentmemory:
-    url: http://{{ $secrets.agentmemory_host }}:{{ $secrets.agentmemory_port }}
 setupVersion: 1
 hideThinkingBlock: false
 autolearn:

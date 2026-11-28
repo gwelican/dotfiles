@@ -1,0 +1,8 @@
+{{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
+providers:
+  llama:
+    baseUrl: {{ $secrets.ollama_local_base_url }}/v1
+    api: openai-completions
+    auth: none
+    discovery:
+      type: openai-models-list
