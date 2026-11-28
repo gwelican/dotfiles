@@ -59,7 +59,6 @@ in
   ];
 
   homebrew.brews = [
-    "anomalyco/tap/opencode"
     "statix"
   ];
 
