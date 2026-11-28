@@ -1,61 +1,27 @@
 {{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
-{{- $th := $secrets.toolhive_base_url -}}
-{
-  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
-  "mcpServers": {
-    "toolhive-core": {
-      "type": "http",
-      "url": "{{ $th }}/core/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-observability": {
-      "type": "http",
-      "url": "{{ $th }}/observability/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-media": {
-      "type": "http",
-      "url": "{{ $th }}/media/mcp",
-      "headers": {},
-      "enabled": true
-    },
-    "toolhive-home": {
-      "type": "http",
-      "url": "{{ $th }}/home/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-creative": {
-      "type": "http",
-      "url": "{{ $th }}/creative/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-finance": {
-      "type": "http",
-      "url": "{{ $th }}/finance/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-tasks": {
-      "type": "http",
-      "url": "{{ $th }}/tasks/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-admin": {
-      "type": "http",
-      "url": "{{ $th }}/mcp",
-      "headers": {},
-      "enabled": false
-    },
-    "toolhive-remote": {
-      "type": "http",
-      "url": "https://{{ trimPrefix "http://" $th }}/",
-      "headers": {},
-      "enabled": false
-    }
-  }
-}
+{{- $base := $secrets.mcp_base_url -}}
+{{- $tok := $secrets.mcp_bearer_token -}}
+{{- /* toolhive servers: label -> (url path, enabled). Add one line to provision a server. */ -}}
+{{- $toolhive := dict
+  "arr" (list "arr" false)
+  "comfyui" (list "comfyui-mcp" false)
+  "crw" (list "crw-mcp" true)
+  "donetick" (list "donetick" true)
+  "flux" (list "flux" false)
+  "ghostfolio" (list "ghostfolio-mcp" false)
+  "grafana" (list "grafana-mcp" false)
+  "home-assistant" (list "ha" false)
+  "homebox" (list "homebox-mcp" false)
+  "hydrawise" (list "hydrawise-mcp" false)
+  "jellyfin" (list "jellyfin-mcp" false)
+  "prometheus" (list "prometheus-mcp" false)
+  "telegram" (list "telegram-mcp" false)
+  "unifi" (list "unifi" false)
+  "woodpecker-mcp" (list "woodpecker-mcp" true)
+-}}
+{{- $servers := dict -}}
+{{- range $name, $cfg := $toolhive -}}
+{{- $_ := set $servers $name (dict "type" "http" "url" (printf "%s/%s/mcp" $base (index $cfg 0)) "headers" (dict "Authorization" (printf "Bearer %s" $tok)) "enabled" (index $cfg 1)) -}}
+{{- end -}}
+{{- $_ := set $servers "rea" (dict "type" "stdio" "command" "/var/home/gwelican/.local/share/mise/shims/rea" "args" (list "mcp") "env" (dict "GHIDRA_INSTALL_DIR" "/home/gwelican/ghidra/ghidra_12.1.4_PUBLIC" "JAVA_HOME" "/home/gwelican/.local/share/flatpak/app/org.ghidra_sre.Ghidra/current/active/files/jdk") "enabled" true) -}}
+{{ dict "$schema" "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json" "mcpServers" $servers | toPrettyJson }}
