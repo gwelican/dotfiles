@@ -7,7 +7,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "local-llama",
       "options": {
-        "baseURL": "http://{{ $secrets.ollama_local_host }}:{{ $secrets.ollama_local_port }}/v1"
+        "baseURL": "{{ $secrets.ollama_local_base_url }}/v1"
       },
       "models": {
         "qwen3.5-9b-coding": {
@@ -82,7 +82,7 @@
         "-y",
         "supergateway",
         "--streamableHttp",
-        "https://{{ $secrets.n8n_domain }}/mcp-server/http",
+        "{{ $secrets.n8n_base_url }}/mcp-server/http",
         "--header",
         "authorization:Bearer {env:N8N_MCP_TOKEN}"
       ]

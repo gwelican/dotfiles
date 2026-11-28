@@ -1,58 +1,59 @@
 {{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
+{{- $th := $secrets.toolhive_base_url -}}
 {
   "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
   "mcpServers": {
     "toolhive-core": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/core/mcp",
+      "url": "{{ $th }}/core/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-observability": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/observability/mcp",
+      "url": "{{ $th }}/observability/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-media": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/media/mcp",
+      "url": "{{ $th }}/media/mcp",
       "headers": {},
       "enabled": true
     },
     "toolhive-home": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/home/mcp",
+      "url": "{{ $th }}/home/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-creative": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/creative/mcp",
+      "url": "{{ $th }}/creative/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-finance": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/finance/mcp",
+      "url": "{{ $th }}/finance/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-tasks": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/tasks/mcp",
+      "url": "{{ $th }}/tasks/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-admin": {
       "type": "http",
-      "url": "http://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/mcp",
+      "url": "{{ $th }}/mcp",
       "headers": {},
       "enabled": false
     },
     "toolhive-remote": {
       "type": "http",
-      "url": "https://{{ $secrets.toolhive_host }}:{{ $secrets.toolhive_port }}/",
+      "url": "https://{{ trimPrefix "http://" $th }}/",
       "headers": {},
       "enabled": false
     }
