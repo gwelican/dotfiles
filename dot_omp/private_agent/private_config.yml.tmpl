@@ -1,9 +1,8 @@
 {{- $secrets := include (joinPath .chezmoi.sourceDir "secrets.yaml.age") | decrypt | fromYaml -}}
+---
 theme:
   dark: dark-solarized
 symbolPreset: nerd
-extensions:
-  - /home/{{ $secrets.linux_username }}/.omp/agent/extensions/mcp-skill-autorouter.ts
 display:
   showTokenUsage: true
   cacheMissMarker: true
@@ -22,50 +21,29 @@ searxng:
   language: en
 providers:
   enabled: true
-  autoThinkingModel: online
-  webSearchOrder:
-    - searxng
-    - perplexity
-    - gemini
-    - anthropic
-    - codex
-    - xai
-    - zai
-    - exa
-    - tinyfish
-    - jina
-    - kagi
-    - tavily
-    - firecrawl
-    - brave
-    - kimi
-    - parallel
-    - synthetic
-    - startpage
-    - duckduckgo
-    - ecosia
-    - google
-    - mojeek
-    - public
 browser:
   headless: true
 memories:
   enabled: true
-setupVersion: 1
+setupVersion: 3
 hideThinkingBlock: false
 autolearn:
   enabled: true
 task:
   showResolvedModelBadge: true
   eager: task
-  maxConcurrency: 2
+  maxConcurrency: 1
+  agentAdvisor:
+    task: "on"
 compaction:
-  strategy: snapcompact
   handoffSaveToDisk: true
+  methodOrder:
+    - snapcompact
+    - remote
+    - soft
 defaultThinkingLevel: auto
 advisor:
-  enabled: true
-  subagents: true
+  enabled: false
 steeringMode: one-at-a-time
 features:
   unexpectedStopDetection: true
@@ -77,15 +55,6 @@ plan:
   defaultOnStartup: false
 secrets:
   enabled: true
-disabledExtensions:
-  - skill:understand
-  - skill:understand-chat
-  - skill:understand-dashboard
-  - skill:understand-diff
-  - skill:understand-domain
-  - skill:understand-explain
-  - skill:understand-knowledge
-  - skill:understand-onboard
 terminal:
   showProgress: true
 tui:
@@ -95,8 +64,6 @@ branchSummary:
 bash:
   autoBackground:
     enabled: true
-inspect_image:
-  mode: 'on'
 checkpoint:
   enabled: false
 tools:
@@ -113,4 +80,37 @@ disabledProviders:
   - ollama
   - llama.cpp
   - openai
-
+composer:
+  shape: band
+security:
+  enabled: true
+retry:
+  fallbackChains:
+    web:
+      - web/perplexity
+      - google-gemini-cli/gemini-2.5-flash
+      - google-antigravity/gemini-2.5-flash
+      - google/gemini-2.5-flash
+      - anthropic/claude-haiku-4-5
+      - openai-codex/gpt-5.6-luna
+      - xai/grok-4.5
+      - web/zai
+      - web/exa
+      - web/tinyfish
+      - web/jina
+      - web/kagi
+      - web/tavily
+      - web/firecrawl
+      - web/brave
+      - web/kimi
+      - web/parallel
+      - web/synthetic
+      - web/startpage
+      - web/duckduckgo
+      - web/ecosia
+      - web/google
+      - web/mojeek
+      - web/public
+      - web/hosted
+update:
+  auto: true
