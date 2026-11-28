@@ -40,7 +40,7 @@ yq = "4.54.3"
 1password-cli = "2.31.1"
 
 zoxide = "0.10.0"
-bat = "0.26.1"
+bat = "0.27.0"
 atuin = "18.25.1"
 chezmoi = "2.74.2"
 carapace = "1.8.5"
